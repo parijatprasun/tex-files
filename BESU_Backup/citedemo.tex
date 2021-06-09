@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+% LaTeX document by David J C MacKay
+% AIMS November 2004
+%
+% We recommend that you handle all your citations 
+% and your bibliography using BibTeX.
+%
+% This is an example document illustrating 
+% how to use BibTeX to make your bibliography.
+%
+% PACKAGES
+%
+\usepackage{epsfig}%    A package for including postscript figures
+\usepackage{fancybox}%  Provides ability to put verbatim text inside boxes
+\usepackage{natbib}%%%%  To change the citation style, modify this line
+% \usepackage{noindent}% This changes paragraph style
+%
+% PAGE SIZE
+%
+\textheight=10.25in
+\textwidth=6.7in
+\oddsidemargin=-0.245in
+\topmargin=-1.0in
+%
+% Pick a bibliography-style. I recommend abbrvnat. 
+%  The natbib package supports many styles.
+%  Change this style to change the appearance of the bibliography.
+%
+%\bibliographystyle{unsrtnat}
+%\bibliographystyle{plainnat}
+\bibliographystyle{abbrvnat}
+%
+% DOCUMENT CONTENTS
+%
+\begin{document}
+\title{How to make your bibliography with BibTeX}
+\author{David J. C. MacKay\\
+ AIMS\\
+ {\tt http://www.aims.ac.za/$\sim$mackay/tex/}
+}
+\date{\today\ -- Version 2.1}
+\maketitle
+ You {{can}} read the source of this document in 
+ {\tt{/home/mackay/tex/citedemo.tex}}.
+ My {\tt{.bib}} file is
+ {\tt{/home/mackay/bibs.bib}}.
+ Feel free to use these files as templates.
+
+\section{Overview}
+ BibTeX creates your bibliography from information 
+ in  a {\tt{.bib}} file, which describes articles 
+ and books in a general format (see figure \ref{example1}a).
+ You can write the entries 
+ in your {\tt{.bib}} file yourself, or copy them from 
+ other people.  (BibTeX is widely used, and the
+ internet contains
+  {\tt{.bib}} entries for most articles and books.)
+ If you edit your {\tt{.bib}} file using {\tt{emacs}}, 
+ you will find the {\tt{emacs}} toolbar offers lots of helpful 
+ operations for adding and manipulating entries.  
+ BibTeX reads your 
+  {\tt{.bib}} file  and makes a bibliography  entry
+ for each 
+ article you cite in your {\tt{.tex}} file. 
+ BibTex puts these  bibliography  entries in  a {\tt{.bbl}}
+ file, which \LaTeX\ then includes in your 
+ document.  
+ BibTeX automatically  produces a bibliography 
+ with a consistent style.
+ If you want to change the style of the bibliography, 
+ you need only change one line in your {\tt{.tex}} file. The 
+ next time you run BibTeX, it  will reread  the  {\tt{.bib}} file
+ and reformat the bibliography accordingly. 
+ 
+
+\begin{figure}[hbtp] 
+\begin{center}
+\footnotesize
+\begin{tabular}{cc}
+\begin{tabular}[b]{p{3.4in}}
+%\footnotesize
+ ~\\[-0.2in]
+\begin{verbatim}
+@article{Shannon48,
+ author = {Shannon, C. E.},
+ title = {A Mathematical Theory of Communication},
+ journal="Bell Sys. Tech. J.",
+ volume = 27,
+ pages ="379-423, 623-656",
+ year = 1948
+}
+\end{verbatim}
+\end{tabular}
+&
+\begin{tabular}[t]{c} ~\\[0.2in]
+\epsfig{figure=/home/mackay/tex/figs/balance.eps,width=2in}
+\end{tabular}
+\\[-0.2in]
+(a) & (b) \\[-0.2in]
+\end{tabular}
+\end{center}
+\caption{(a) An example {\tt{.bib}} entry.
+         Each field (author, title, journal, \ldots)
+ is surrounded either  by  braces {\tt\{}\ldots{\tt{\}}}
+ or by quotes {\tt"}\ldots{\tt"}.
+  (b)   The 12-ball weighing problem, illustrating 
+ the use of {\tt{epsfig}}.}
+\label{example1}
+\end{figure}
+
+\subsection{Citation styles}
+ Citations in articles and books come in several forms. 
+ Some journals require you to use {\em numerical\/} citations:
+\setlength{\fboxsep}{10pt}
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{5.5in}
+%\begin{quote}
+  Good error-correcting codes exist  [13]. 
+\medskip
+
+ Shannon [13] proved that reliable communication is 
+ possible.
+%\end{quote}
+\end{minipage}
+\end{Sbox}
+\ovalbox{\TheSbox}
+\end{center}
+%
+ Others prefer  an {\em author--year\/} style:
+\begin{center}
+\begin{Sbox}
+\begin{minipage}{5.5in}
+%\begin{quote}
+  Good error-correcting codes exist  (Shannon, 1948). 
+\medskip
+
+ Shannon (1948) proved that reliable communication is 
+ possible.
+%\end{quote}
+\end{minipage}
+\end{Sbox}
+\ovalbox{\TheSbox}
+\end{center}
+
+ We recommend using an author--year style wherever possible
+ because  it is   more reader-friendly. 
+
+ We recommend using the {\tt{natbib}} package
+ because 
+ it is compatible  with both  citation styles.
+ If you write a  paper and decide to change your citation style
+ from author--year to numerical, 
+ you need to change only one line in your {\tt{.tex}} file;
+  all the citations will be changed automatically.
+%  from author--year style  to numerical 
+
+\section{Using {\tt{natbib}}  in your {\tt{.tex}} file}
+\subsection{Starting and finishing}
+ Your  {\tt{.tex}}  file should have
+ the lines 
+ {\verb+\usepackage{natbib}+} 
+ and 
+ {\verb+\bibliographystyle{abbrvnat}+} 
+ before  
+ {\verb+\begin{document}+}.
+
+ At the end, put the command {\verb+\bibliography{your_bib_file}+}
+ where you want the bibliography
+ to appear. In my file, for example,  I use the command 
+ {\verb+\bibliography{/home/mackay/bibs.bib}+}.
+
+\subsection{How to cite}
+ There are two types of  citation command: 
+ {\verb+\citet+} for {\em textual\/}
+ and
+  {\verb+\citep+} for
+  {\em parenthetical\/} citations. 
+%  the two types of citation  work like this.
+ The two sentences
+\begin{quote}
+  Good error-correcting codes exist \citep{Shannon48}.
+
+  \citet{Shannon48} proved that reliable communication is possible. 
+\end{quote}
+ are produced by the following \LaTeX:
+\begin{quote}
+\tt
+  Good error-correcting codes exist \verb+\citep{Shannon48}+.
+
+  \verb+\citet{Shannon48}+ proved that reliable communication is possible. 
+\end{quote}
+ The string {\tt{Shannon48}} is the  {\em{key}\/} used to identify the 
+ corresponding {\tt{.bib}} entry in my {\tt{bibs.bib}} file, 
+ which was shown in figure \ref{example1}a.
+ This key works in the same way as the {\em labels\/} that you use
+ to refer to equations and figures. 
+
+ Textual citation is sometimes called `citing as a noun'. 
+ Other citation commands, citation styles, and package options  
+ are described in the {\tt{natbib}}
+ documentation, which you can find by 
+ typing {\tt{locate natbib}} in an xterm, or
+ by  searching on Google.
+ You can read the {\tt{natbib}} manual with this command: 
+\begin{quote}
+ \tt xdvi /usr/share/doc/texmf/latex/natbib/natbib.dvi.gz
+\end{quote}
+
+\section{How to run BibTeX}
+ Normally when you use \LaTeX, you have to run 
+\begin{quote}
+ \tt latex file
+\end{quote}
+ a couple of times, where {\tt file.tex} is your {\tt{.tex}} file. 
+ Now, you need to run {\tt{bibtex}} too. The normal sequence is:
+\begin{quote}
+ \tt latex file\\
+ \tt bibtex file \ \ \ \ 
+   {\em - give the name of your {\tt{.tex}} file here.} \\
+ \tt latex file\\
+ \tt latex file
+\end{quote}
+ I use a makefile ({\tt{/home/mackay/tex/Makefile}}) 
+ to run  BibTeX and \LaTeX\ at the appropriate times.
+ After {\tt{bibtex}} runs, and after 
+   {\tt{latex}} runs  for the third time, 
+ see if there are any error messages. 
+ The most common 
+ causes of errors are: incorrectly formatted 
+ {\tt{.bib}} entries in the {\tt{.bib}} file,
+ and incorrect {\verb+\cite+} commands in the 
+ {\tt{.tex}} file. 
+ Sometimes when you  fix an error, \LaTeX\  
+ remains confused. If so, give  \LaTeX\ 
+ a fresh start  by removing the {\tt{.bbl}}
+ and {\tt{.aux}} files created by 
+ BibTeX and \LaTeX.
+
+\bibliography{bibs.bib}
+
+
+\end{document}
+
+\begin{center}
+{\tt http://www.aims.ac.za/$\sim$mackay/tex/}
+\end{center}
+
+
+%\citet{MacKay:itp}
+
+\section{Data Compression}
+ Why is $h({\bf x}) \equiv \log_2  1/P({\bf x})$ a good measure of the 
+ information content of the outcome $\bf x$?
+ 
+

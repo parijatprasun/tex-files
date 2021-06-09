@@ -1,0 +1,1836 @@
+%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{report}
+\title{\underline{\large{Application of Wavelet Transform in Condition Monitoring of Induction Motor}}}
+\date{}
+\author{}
+
+%%%%%%%%%%%% Page Formatting %%%%%%%%%%%%
+\setlength{\parindent}{0pt}
+\setlength{\voffset}{-1in}
+\setlength{\topmargin}{15mm}
+\setlength{\headheight}{5mm}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{247mm}
+\setlength{\footskip}{10mm}
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{30mm}
+%\setlength{\evensidemargin}{18mm} % valid only for `twoside'
+\setlength{\textwidth}{157mm}
+\setlength{\marginparsep}{0mm}
+\setlength{\marginparwidth}{0mm}
+
+\flushbottom
+\frenchspacing
+
+%%%%%%%%%%%% Packages Used %%%%%%%%%%%%%%
+\usepackage{units}
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage[procnames,noprocindex,noindent]{lgrind}
+\usepackage{subfigure}
+\usepackage{cite}
+
+%%%%%%%%%% BEGINNING %%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%% This creates the cover page %%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+{\huge \textbf{Application of Wavelet Transform in}}\\
+\vspace{3.5pt}
+{\huge \textbf{Condition Monitoring of Induction Motor}}\\
+\vspace{0.5in}
+{\LARGE \textsc{Parijat Prasun Pal}}\\
+\vspace{3.5pt}
+{\Large \textsc{Roll No.} \texttt{160406005}}\\
+\vspace{3pt}
+{\Large \textsc{Registration No.} \texttt{160406005} \textsc{of} \texttt{2004-2005}}\\
+\vspace{0.5in}
+{\large \textit{Under the Guidance of}}\\
+\vspace{5pt}
+{\Large \textbf{Dr.~G.~Bandyopadhyay}}\\
+\vspace{3pt}
+{\large and}\\
+\vspace{3pt}
+{\Large \textbf{Dr.~P.~Chattopadhyay}}\\
+\vspace{0.75in}
+{\Large A Thesis}\\
+\vspace{3pt}
+\Large{submitted in partial fulfilment of}\\
+\vspace{3pt}
+\Large{the requirements for the degree of}\\
+\vspace{4.5pt}
+{\Large \textbf{Master of Engineering (Electrical Engineering)}}\\
+\vspace{3.5pt}
+{\Large Specialisation:~\textit{Power Systems}}\\
+\vspace{0.5in}
+\includegraphics[scale=0.8]{besulogo}\\
+\vspace{0.5in}
+{\Large \textsf{Department of Electrical Engineering}}\\
+\vspace{3.5pt}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\Large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\Large West Bengal, India}\\
+\vfill
+{\Large \textbf{2006}} 
+\end{center}
+\end{titlepage}
+
+%%%%%%%%% This makes the next page only with the line in \title{} %%%%%%%%%
+%\maketitle
+
+%=========== FORWARD ============
+\thispagestyle{empty}
+\pagenumbering{roman}
+\vspace*{7mm}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{25mm}
+\begin{center}
+{\Large \textbf{Forward}}
+\end{center}
+
+\noindent We hereby forward the thesis entitled ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' submitted by Parijat Prasun Pal (Registration No. 160406005 of 2004-2005) under our guidance and supervision in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialisation: \emph{Power Systems}) from this university.
+
+\vspace{25mm}
+\begin{flushleft}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay) & & (Dr.~P.~Chattopadhyay)\\
+{\footnotesize Department of Electrical Engineering,} & & {\footnotesize Department of Electrical Engineering,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur} & & {\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103} & & {\footnotesize Howrah -- 711 103}
+\end{tabular}
+
+\vspace{20mm}
+\noindent \textbf{Countersigned by}
+
+\vspace{25mm}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay)& & (Dr.~D.~Ghosh)\\
+{\footnotesize Professor and Head,}& & {\footnotesize Dean,}\\
+{\footnotesize Department of Electrical Engineering,}& &{\footnotesize Faculty of Engineering, Architecture \& TRP,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur}& &{\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103}& &{\footnotesize Howrah -- 711 103}
+\end{tabular}
+\end{flushleft}
+\clearpage
+
+%=========== CERTIFICATE OF APPROVAL ===========
+\thispagestyle{empty}
+\vspace*{7mm}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{25mm}
+\begin{center}
+{\Large \textbf{Certificate of Approval}}
+\end{center}
+
+\noindent The thesis entitled ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' submitted by Parijat Prasun Pal (Registration No. 160406005 of 2004-2005) is hereby approved as a creditable study of an engineering subject carried out and presented satisfactorily to warrant its acceptance in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialisation: \emph{Power Systems}) from this university. It is to be understood that by this approval the undersigned do not necessarily endorse or approve any statement made, opinion expressed or conclusion drawn therein, but approve the thesis only for the purpose for which it is submitted.
+
+\vspace{25mm}
+\hspace*{90mm} \textbf{Board of Examiners}
+
+\vspace{40pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+\vspace{20pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+\vspace{20pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+
+\clearpage
+
+%============ ACKNOWLEDGEMENT ============
+\thispagestyle{empty}
+\vspace*{65mm}
+\begin{center}
+{\Large \textbf{Acknowledgement}}
+\end{center}
+
+\noindent I am extremely grateful to my professors and guides Dr.~G.~Bandyopadyay, Professor and Head, and Dr.~P.~Chattopadhyay of the Department of Electrical Engineering, Bengal Engineering and Science University, Shibpur, for enriching me with their unmatched expertise and providing me with extraordinary laboratory facilities. Without their untiring effort and valuable advice it would have been an uphill task for me to proceed with my thesis. 
+
+I am deeply indebted to \emph{DST}, Govt.~of India, New Delhi; \emph{AICTE} and \emph{TEQIP}, Govt.~of India. The project work would have been impossible to carry out without the immense support they have endowed. 
+
+I am also greatly thankful to Dr.~P.~Syam for his critical examination and helpful suggestions for the improvement of my work in every possible respect and Dr.~J.~Pal for his indispensable guidelines on document preparation and tremendous enthusiasm which made it possible to present this document.
+
+Huge thanks to my friend Santanu Chatterjee for solving my apparently big problems with utmost ease and Budhaditya Biswas for always keeping my requests.
+
+Moreover the Central Library with its almost exhaustive collection of books has also been a great help to me in the course of pursuing my work. 
+
+Lastly I should never forget to pay his thanks to all my teachers and staff of the Department of Electrical Engineering for their continuous support in every way including the provision of computer and Internet facilities.
+
+\vspace{25mm}
+\hspace*{100mm} Parijat Prasun Pal
+
+%%%%%%%%% This creates the Table of Contents %%%%%%%%%%%
+\tableofcontents
+
+%%%%%%%%% This creates the List of Figures %%%%%%%%%%%
+\listoffigures
+
+%%%%%%%%% This creates the List of Tables %%%%%%%%%%%
+\listoftables
+
+
+
+%%%%%%%%% Abstract goes here %%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{chapter}{Abstract}
+\abstract
+The aim of this thesis is to explore the various aspects of the predictive maintenance technique known as \emph{Condition Monitoring} of electrical machines and to develop a review of the different hitherto proposed methods, especially that are based on the analysis of stator current for the diagnosis of rotor failures of induction motor. Firstly, the thesis focuses on the emerging methods of \emph{Wavelet transform} for current analysis as compared to the classical methods of \emph{Fourier transform} and tries to develop some familiarisation with these methods. Next it discusses the development and application of computer programs developed for signal analysis implementing the \emph{decimation-in-frequency} algorithm for fast Fourier transform (FFT) and concept of filter banks for discrete wavelet transform (DWT) using Daubechies wavelets for the diagnosis of broken rotor bars in induction motors. Finally the results obtained from the execution of the programs are presented and analysed.
+
+
+
+
+%%%%%%%%%%% Main Document starts %%%%%%%%%%%%%%%
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+\section{Importance of Condition Monitoring}
+Maintenance has a significant role to keep a system healthy so as to obtain safe and smooth operation efficiently and cost-effectively. Normally three maintenance practices are adopted for any equipment or plant viz.~(i) Breakdown maintenance, where machines are repaired only after their failure, (ii) Preventive maintenance, where, in order to reduce the chances of unplanned outages, machines are serviced at a regular interval and (iii) Predictive maintenance or \emph{Condition Monitoring}, where a comprehensive programme of data collection and analysis provide early detection of a problem and identify the need for maintenance based on the condition of the monitored equipment, allowing maintenance to be performed in a planned and systematic manner before an equipment fails. It is, therefore, obvious that Breakdown maintenance is a crude method as well as expensive, whereas the Preventive maintenance is a regular method and reduces chances of breakdown. But the best maintenance strategy involves Predictive maintenance or Condition Monitoring where overall operational cost and plant shutdown time can be minimised. Condition Monitoring is a value addition to a total plant maintenance programme. It can reduce the number of unexpected failure by detecting the progress of failure beforehand and provide a more reliable scheduling tool for routine preventive maintenance programme, thus help achieving economic incentive \cite{Penman},\cite{rps1}. 
+
+The benefits expected from condition monitoring includes --
+\begin{enumerate}
+\item Minimisation of machinery breakdowns or failures
+\item Lower maintenance cost
+\item Planned and anticipated maintenance
+\item Less repair down time
+\item Longer machine life
+\item Increase in production
+\item Reduction in small parts inventory
+\item Increased plant availability
+\item Increased overall profitability
+\item Greater safety and environmental protection
+\item Increased product quality and reduced waste
+\item Better customer relations
+\item Opportunity to specify and design better plant in future
+\item Substantial energy saving
+\item Verification of condition of new equipment
+\item Checking of repair
+\end{enumerate}
+
+It is, usually, suggested that the condition monitoring of an electrical equipment will yield benefits if a reliable monitoring system exists. This monitoring system can provide sufficient warning for a typical failure, causing a drastic reduction of repair cost. The net benefit will be positive, if the cost of the monitoring system is less than the likely saving in the cost of repairs following faults or defects.
+
+Thus the importance and benefits of condition monitoring technique have made the power engineers interested in employing this technique in addition to the traditional protective measures. Moreover, phenomenal advancements in the field of computational techniques and instrumentation have shown new hope for condition monitoring.
+
+\section{Different monitoring techniques}
+The effectiveness of condition monitoring greatly depends on the proper choice of monitoring parameters and techniques. Some important monitoring techniques \cite{Penman},\cite{rps1} of electrical machinery are discussed in what follows.
+
+\subsection*{Mechanical techniques}
+\paragraph{Vibration monitoring:} All rotating machinery including motors possess vibration of certain level. When the vibration of a machine increases beyond acceptable level, it results in increase of wear on the machine and lead to its failure. The simplest method of fault detection by vibration measurement technique is to monitor the overall RMS level of vibrating frequency. But in the early stage of the damage, the overall RMS level of signal may not correctly indicate the defect. The frequency spectrum of the vibration signals need to be studied for detection \cite{rps6},\cite{rps14}.
+
+\paragraph{Speed fluctuation:} Perturbations in load and defects within the rotor circuit of a motor may cause speed fluctuation, which can directly be used as an indicator of rotor damage.
+
+\subsection*{Electrical techniques}
+Electrical signals like voltage, current, instantaneous power, and their spectral components, axial flux, air-gap torque can be successfully utilised for detecting potential failure of electrical machines. The stator current waveform of an induction motor can be analysed to spot an existing or the beginning of a failure. This technique is known as \emph{Motor Current Signature Analysis (MCSA)} and it can perform the same detection of any incipient fault as the other monitoring techniques without accessing the rotating parts \cite{57}.
+
+\subsection*{Chemical techniques}
+Chemical degradation of various chemical substances like insulating materials, transformer oil, lubricating oil, etc.~due to heat and other electrical stresses helps to detect the failures in electrical machines \cite{rps6}.
+
+\subsection*{Thermal techniques}
+Excessive temperature rise due to supply or loading faults leads to the majority of the electrical machine failures. Hence the measurement of temperature has an important role in the condition monitoring of electrical machines \cite{rps6}.
+
+\section{Condition Monitoring of Induction Motor}
+Induction motors are being used extensively for different industrial applications since several decades. These applications range from intensive care units, defence applications to applications in power stations. Induction machines are called the workhorses of industry due to their widespread use in manufacturing. The heavy reliance of industry on these machines in critical applications makes catastrophic motor failures very expensive. Therefore, safety, reliability,  efficiency and performance are of major concerns of motor application. Hence issue of preventive and condition based maintenance, on-line monitoring, fault detection and diagnosis are of increasing importance.
+
+\subsection{Induction Motor faults}
+\subsubsection*{Stator faults}
+Induction motor stator faults are mainly due to inter-turn winding faults caused by insulation breakdown, and it was showed in a survey that 37\% of significant forced outages were found to have been caused by stator-windings \cite{40}.
+
+Stator current signature analysis is now a popular tool to find out stator-winding faults \cite{53},\cite{55} with the advantage of cheap cost, easy operation and multifunction. 
+
+Fault conditions in induction motors cause the magnetic field in the air-gap of the machine to be nonuniform. This results in harmonics in the stator current which can be signatures of several faults \cite{56}. Beside the capability to detect turn-to-turn insulation faults, it can detect broken rotor bars, rotor eccentricity as well as mechanical faults on bearings \cite{57}-\cite{59}.
+
+\subsubsection*{Rotor faults} 
+Induction motor rotor faults are mainly broken rotor bars as a result of pulsating load or direct on-line starting. It leads to torque pulsation, speed fluctuation, vibration, and changes of the frequency component in the supply current and axial fields, combined with acoustic noise, overheating and arcing in the rotor and damaged rotor laminations. The most popular method for rotor fault detection is rotor current signature analysis as mentioned above. Other possible methods include vibration and air-gap flux monitoring.
+
+\subsubsection*{Bearing faults}
+Rolling element bearings are overwhelmingly used in induction motors and motor reliability studies show that bearing problems account for over 40\% of all machine failures \cite{59}. Incipient bearing faults are detected through vibration and stator current monitoring method, and stator current monitoring has the advantage of ``noninvasion'' (requiring no sensors accessing to the rotating part of the motors).
+
+\subsubsection*{Air-Gap eccentricities}
+Air-gap eccentricity must be kept to an acceptable level. There are two types of air-gap eccentricities, static and dynamic. With static eccentricity the minimum air-gap position is fixed in space, while for the dynamic, the centre of the rotor and the rotational centre do not coincide, so that the minimum air gap rotates \cite{rps6}. Unacceptable levels of them will occur after the motor has been running for a number of years. The air-gap eccentricity can be detected by using the stator core vibration and the stator current monitoring \cite{rps6}. 
+
+\subsection{Different monitoring methods for Induction Motor}
+Vibration, thermal, and acoustic analyses are some of the commonly used methods, for predictive maintenance, to monitor the health of the machine to prevent motor failures from causing expensive shut-downs. Vibration and thermal monitoring require additional sensors or transducers to be fitted on the machines. While some large motors may already come with vibration and thermal transducers, it is not economically or physically feasible to provide the same for smaller machines.
+
+The occurrence of a mechanical fault results in an unbalance in the motor windings and/or eccentricity of air-gap, which lead to a change in the air-gap space harmonics distribution. The anomaly exhibits itself in the harmonics spectrum of the stator current \cite{00897122-1}. Therefore by checking the existence of specific harmonics spectrum, detection of mechanical faults is possible. This idea, called MCSA, is based on the on-line monitoring and processing of the stator currents using fast Fourier transform (FFT), to detect typical spectrum lines, which arise in faulty systems \cite{00897122-6}. However, empirical diagnostic is more complicated owing to the following reasons --
+
+\begin{enumerate}[(i)]
+\item The stator current spectrum contains not only the components produced by motor faults, but also other components such as characteristic harmonics that exist because of supply voltage distortion, air gap space harmonics, slotting harmonics or load unbalance. 
+\item The signal is always embedded in strong background noise. 
+\item The measurement accuracy of slip and line frequency influences the spectrum line search. 
+\item The diagnostic system subjects to frequent transient and other various kinds of non-stationary interference from both inner and outer side of the motor. 
+\item Several faults may exist at the same time, while for different kinds of faults, the span of the corresponding feature harmonics are different.
+\end{enumerate}
+
+Wavelet transform allows time frequency analysis of signals therefore potentially provides much more information on the processed signal \cite{pswbook}. It uses large scale to analyse low frequency components and small scale to analyse high frequency components, therefore a small short time interference will not influence the overall spectrum. Another advantage is that it achieves a constant relative frequency resolution. For long term varying components, the absolute resolution is high, while for short term varying components, the absolute resolution is low.
+
+\section{Objective} \label{obj}
+Keeping the view points mentioned in the previous section in mind the proposed research work aims to design and develop an on-line monitoring and incipient fault detection scheme of induction motors by assessing the signature of the motor line current. Among various motor faults, proposed investigation will be restricted to \emph{broken rotor bar} faults only. This project will concentrate on advanced signal processing techniques like wavelet analysis, which may greatly increase the ability of automatic diagnosis.
+
+
+
+\chapter{Literature Review}
+Before undertaking the problem a number of research paper published in different national, international journals, books and websites \cite{Penman}-[37] have been reviewed.
+
+\section{Review of general monitoring techniques} \label{lit1}
+The major breakthrough in the field of condition monitoring of rotating electrical machines was reported by Tavner \cite{rps1} in 1986. During the past 20 years, there have been continuing effort at studying and diagnosing faults in ac motor drives. There are a number of existing schemes developed by previous researchers for monitoring the various parts of a three phase induction motor. However, the plethora of fault diagnostics/detection and monitoring investigations can be divided into following categories: 
+
+\subsection*{Model-based approaches}
+The first category includes traditional lumped-parameter modeling and analysis of faulty motor performance and case history study of actual motor with faults in stator, rotor and bearing. Although not the mainstream of motor condition monitoring, they are considered more suitable and favourable for smaller motors and variable-speed drives.
+
+A mathematical model of squirrel cage induction motor was built as a reference model in \cite{70}, then the deviations between the output of a measurement model and the reference model can be observed to detect and locate rotor faults. It showed the advantage of no need for frequency analysis so that it fits for variable-speed drive monitoring.
+
+\subsection*{Thermal monitoring approaches}
+Like mechanical vibration and electrical signal, the measurement of temperature \cite{rps2},\cite{rps3} plays a dominant role in condition monitoring of electrical machines. Thermal monitoring of induction motor using bulk conduction parameter based thermal model, to estimate the temperature rise in different parts of the induction motor have been reported by various researchers \cite{rps3},\cite{rps17}. Observer based thermal modelling of induction motor has been presented in \cite{rps19}. Thermal monitoring of induction motor by means of rotor resistance identification has been studied in \cite{rps28}. A sensor-less temperature estimation in a squirrel cage induction motor has been reported in \cite{rps27}. Still more theories and methodologies are yet to be unveiled in this field.
+
+\subsection*{Signal-processing approaches}
+This category comprises of the investigations that concentrate on the ``on-line'' motor condition monitoring and fault diagnosis using either vibration \cite{rps14} or motor terminal current, voltage, or instantaneous power waveforms \cite{pbc6}. However, most of the recent research has been focused on the practice of current monitoring, especially MCSA, which has showed potential to take the place of the status of vibration monitoring \cite{00873206} because it can provide the same indication without accessing the rotating part of the motor. This technique utilises results of spectral analysis of stator current to identify an existing or incipient fault of induction motor drives. Traditional Fourier transform techniques are used for the purpose of spectral analysis.
+
+\subsection*{Emerging technology approaches}
+Some recent works show the development of various detection and diagnosis techniques for induction motor faults by the help of neural networks, fuzzy logic and AI techniques \cite{pbc2},\cite{pbc4},\cite{pbc5}. Although at present, these applications are limited to only a number of practical implementations, it is believed that these techniques along with advanced signal processing tools like instantaneous power FFT, Park's transformation, bispectrum, high resolution spectral analysis, wavelets \cite{00873206},\cite{00952496}, etc. will have significant role in electrical drives system diagnosis.
+   
+It is reflected from the recent publications that the technique of wavelet packet decomposition is being extensively used for signature analysis of mechanical faults of induction machines \cite{00897122}-\cite{01254628}. Detection of motor bearing damage \cite{01254628},\cite{00929510} and broken rotor bar \cite{00976461} are two major areas of conditional monitoring where wavelet techniques has been applied. 
+
+\section{Review of techniques for detection of broken rotor bars}
+Rotor fault diagnosis has always been a challenging topic for many researchers. It was shown in earlier investigations that due to presence of asymmetry in the rotor winding, certain characteristic frequencies are finally induced in the stator current \cite{stavrou}. Reference \cite{hargis} confirmed those considerations and showed that it was possible to detect the presence of broken rotor bars through the examination of the currents and vibrations spectra. Following these approaches and studying the air-gap field produced by the breakage of the rotor bars it has been established that some of these field components introduces some current components in the stator winding, among which the most relevant are those which are called the twice slip frequency sideband harmonics since their frequencies depend on the slip. Different diagnostic techniques have been developed, as mentioned in \ref{lit1}, to identify these faults, most of which are dependent on detecting those sidebands in the stator current \cite{hargis}. These techniques have focused on the diagnosis of faults during steady-state conditions \cite{kliman}. These techniques are not satisfactorily helpful when they are applied in some cases such as unloaded or light-loaded machines or when frequencies close to those caused by broken bars appear due to different causes like oscillating torque loads, voltage fluctuation or bearing faults. Moreover the accuracy of these techniques depends on loading of the machine and the assumption that machine speed is constant. The method used to detect the twice slip frequency sidebands is mainly MCSA applying FFT. The presence of broken rotor bars is indicated by the difference in amplitude between the fundamental and the left sideband whereas that between the fundamental and the right sideband indicates the severity of the fault \cite{hargis}. These aspects are well documented in \cite{00873206}.
+
+Several new methods based on the study of the start-up transient current rather than the steady-state current, have been developed. Due to the requirement of a mathematical tool which is suitable for study of non-stationary processes, some recent works \cite{zhang}-\cite{antonino} proposed the application of Wavelet Transform. 
+\cite{01210345} presented a method where the start-up transient was used as the medium of diagnosis. The fundamental component was extracted using an algorithm that predicted the instantaneous amplitude and frequency during start-up. The residual current was then analysed using wavelets. This investigation showed some specific changes facilitating the diagnosis of broken bars. 
+
+Another approach showed the utilisation of the deviation of wavelet coefficients in healthy state from faulty state in detecting the broken bars and the number of such bars as well \cite{00976461}.
+A contribution based on wavelet ridge based on the appearances of the harmonic during the start-up was presented in \cite{zhang}.
+
+Another new contribution to the wavelet based methods was the approach presented in \cite{antonino} based on the application of the Discrete Wavelet Transform to the start-up current. The basis of this approach was that if a breakage existed in the machine under investigation, the evolution of the left sideband component associated to the broken rotor bars during the start-up could be reflected in the high level wavelet signals resulting from the analysis of the start-up current.
+
+\section{Scope of work}
+%%%%%%%%% needs revision
+The Fourier analysis is very useful for many applications where the signals are stationary and it is generally used for induction motor fault detection. The Fourier transform is, however, not appropriate to analyse a signal that has a transitory characteristic such as drifts, abrupt changes, and frequency trends. To overcome this problem, it has been adapted to analyse small sections of the signal at a time. This technique is known as short-time Fourier transform (STFT), or windowing technique. But, the fixed size of the window, as it gives limited precision, is the main drawback of the STFT. The wavelet transform was then introduced with the idea of overcoming the difficulties mentioned above. A windowing technique with variable-size region is then used to perform the signal analysis, which can be the stator current \cite{00539845}. With this tool more precise information on both low- and high-frequency signals are achievable.
+
+The advantages of using wavelet techniques for fault monitoring and diagnosis of induction motors is increasing because these techniques help perform stator current signal analysis during transients. The wavelet technique can be used for a localised analysis in the time-frequency or time-scale domain. It is then a powerful tool for condition monitoring and fault diagnosis.
+     
+For detecting broken rotor bars the traditional methods of MCSA with the help of FFT have some limitations because these methods are applicable to steady-state conditions only and are very much dependent upon load to the motor. Moreover, these methods require very high resolution analysis. Proposed project work aims to eliminate all these limitations of present technology by using advanced signal processing tools of wavelet transform and related methods. Successful carrying out of the proposed work may solve those typical problems faced with traditional MCSA techniques in the field of condition monitoring of induction motor.
+
+
+
+\chapter{Acquaintance with Wavelets}
+\section{Introduction}
+Wavelets are a recently developed mathematical tool for signal analysis. Informally, a wavelet is a short-term duration wave. Wavelets are used as a kernel function in an integral transform, much in the same way that sines and cosines are used in Fourier analysis or the Walsh functions in Walsh analysis. 
+
+The development of wavelets can be linked to several separate trains of thought, starting with Haar's work in the early 20th century. Notable contributions to wavelet theory can be attributed to David Marr for his effective algorithm for numerical image processing using wavelets in the early 1980s. In 1980, Grossman and Morlet broadly defined wavelets in the context of quantum physics. Stephane Mallat's exceptional work on digital signal processing in 1985 inspired Y.~Meyer to construct the first nontrivial continuously differentiable wavelets. I.~Daubechies used Mallat's work to construct a set of wavelet orthonormal basis functions that have become the foundation of almost every modern wavelet application \cite{amara}.
+
+Signal analysts already have at their disposal an impressive arsenal of tools. Perhaps the most well known of these is Fourier analysis, which breaks down a signal into constituent sinusoids of different frequencies. 
+
+For a continuous function of period $T$, the Fourier series is given by
+\begin{equation}
+f(x) = a_{0} + \sum_{n=1}^{\infty} \left( a_{n} \cos n\omega_{0}t + b_{n} \sin n\omega_{0}t \right)
+\end{equation}
+where the Fourier coefficients are calculated by,
+\begin{eqnarray*}
+a_{0} & = & \frac{1}{T} \int_{0}^{T} f(t)\,dt \\
+a_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \cos n\omega_{0}t\,dt \\
+b_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \sin n\omega_{0}t\,dt
+\end{eqnarray*}
+
+Another way to think of Fourier analysis is as a mathematical technique for transforming our view of the signal from time-based to frequency-based. Fourier transform is an extension to Fourier's idea to non-periodic functions (or waves). For many signals, Fourier analysis is extremely useful because the signal's frequency content is of great importance. So why other techniques, like wavelet analysis, are needed?
+         
+Fourier analysis has a serious drawback. In transforming to the frequency domain, time information is lost. When looking at a Fourier transform of a signal, it is impossible to tell when a particular event took place. If the signal properties do not change much over time -- that is, if it is what is called a stationary signal -- this drawback isn't very important. However, most interesting signals contain numerous nonstationary or transitory characteristics: \emph{drift}, \emph{trends}, \emph{abrupt changes}, and \emph{beginnings and ends of events}. These characteristics are often the most important part of the signal, and Fourier analysis is not suited in detecting them. 
+
+In an effort to correct this deficiency, Dennis Gabor (1946) adapted the Fourier transform to analyse only a small section of the signal at a time -- a technique called windowing the signal. Gabor's adaptation, called the Short-Time Fourier Transform (STFT), maps a signal into a two-dimensional function of time and frequency. The STFT represents a sort of compromise between the time- and frequency-based views of a signal. It provides some information about both when and at what frequencies a signal event occurs. However, this information can only be obtained with limited precision, and that precision is determined by the size of the window.
+
+While the STFT compromise between time and frequency information can be useful, the drawback is that once a particular size for the time window is chosen, that window is the same for all frequencies. Many signals require a more flexible approach -- one where the window size can be varied to determine more accurately either time or frequency.
+
+Wavelet analysis represents the next logical step: a windowing technique with variable-sized regions. Wavelet analysis allows the use of long time intervals where more precise low-frequency information is required, and shorter regions where high-frequency information is looked for. Wavelet algorithms process data at different scales or resolutions. The result in wavelet analysis is to see both the forest and the trees, so to speak \cite{amara}.
+
+A wavelet is a waveform of effectively limited duration that has an average value of zero. Comparing wavelets with sine waves, which are the basis of Fourier analysis, it  can be appreciated that sinusoids do not have limited duration -- they extend from minus to plus infinity. And where sinusoids are smooth and predictable, wavelets tend to be irregular and asymmetric. Fourier analysis consists of breaking up a signal into sine waves of various frequencies. Similarly, wavelet analysis is the breaking up of a signal into shifted and scaled versions of the original (or \emph{mother}) wavelet. So signals with sharp changes might be better analysed with an irregular wavelet than with a smooth sinusoid, just as some foods are better handled with a fork than a spoon. It also makes sense that local features can be described better with wavelets that have local extent \cite{pswbook},\cite{waveletug}.
+
+Therefore, to summarise the procedure of wavelet analysis may run like this -- a wavelet prototype function, called an analysing wavelet or mother wavelet is adopted and then temporal analysis is performed with a contracted, high-frequency version of the prototype wavelet, while frequency analysis is performed with a dilated, low-frequency version of the same wavelet. Thus the original signal or function can be represented in terms of a wavelet expansion (using coefficients in a linear combination of the wavelet functions). Data operations can be performed using just the corresponding wavelet coefficients.
+
+The problem of cutting a signal can be solved by a fully scalable modulated window that is shifted along the signal and for every position the spectrum is calculated. This process is repeated many times with a slightly shorter (or longer) window for every new cycle and in the end the result will be a collection of time-frequency representations of the signal, all with different resolutions. Because of this collection of representations a multiresolution analysis is possible.
+
+\section{Wavelet analysis techniques}
+\subsection{Continuous Wavelet Transform}
+Mathematically, the process of Fourier analysis is represented by the Fourier transform:
+\begin{equation} \label{ft}
+F(\omega) = \int_{-\infty}^{+\infty} f(t)\,e^{-j\omega t}\,dt
+\end{equation}
+which is the sum over all time of the signal $f(t)$ multiplied by a complex exponential. The results of the transform are the Fourier coefficients $F(\omega)$, which when multiplied by a sinusoid of frequency $\omega$ yield the constituent sinusoidal components of the original signal.
+
+Similarly, the continuous wavelet transform (CWT) is defined as the sum over all time of the signal multiplied by scaled, shifted versions of the wavelet function $\psi$ \cite{daub}
+\begin{equation} \label{cwt}
+L_{\psi}f(a,b) = \int f(t)\psi^{\ast}_{a,b}(t)\,dt
+\end{equation}
+$f(t)$ is decomposed into a set of basis functions $\psi_{a,b}(t)$, called wavelets generated from a single basic wavelet $\psi(t)$, the so-called \emph{mother wavelet}, by scaling and translation:
+\begin{displaymath}
+\psi_{a,b}(t) = \frac{1}{\sqrt{|a|}} \, \psi \left( \frac{t - b}{a} \right)
+\end{displaymath}
+$a$ is the \emph{scale factor}, $b$ is the translation factor and the factor $|a|^{-1/2}$ is for energy normalisation across the different scales.
+
+\begin{figure}[h] 
+\centering
+\includegraphics[scale=0.8]{mw}
+\caption{Some popular \emph{mother wavelets}: (a) Haar, (b) Daubechies 2, (c) Morlet and (d) Mexican hat} \label{fig.1}
+\end{figure} 
+
+A wavelet $\psi(t)$ is simply a function of time $t$ that obeys a basic rule, known as the \emph{wavelet admissibility condition}:
+\begin{equation}
+C_{\psi} = \int_{0}^{\infty} \frac{|\Psi(\omega)|}{|\omega|}\,d\omega < \infty
+\end{equation}
+where $\Psi(\omega)$ is the Fourier transform. This condition ensures that $\Psi(\omega)$ goes to zero quickly as $\omega \rightarrow 0$. In fact, to guarantee that $C_{\psi} < \infty$, we must impose $\Psi(0) = 0$ which is equivalent to
+\begin{equation}
+\int_{-\infty}^{+\infty} \psi(t)\,dt = 0 
+\end{equation}
+
+A secondary condition imposed on wavelet function is unit energy \cite{bopardikar}, i.e.
+\begin{equation}
+\int_{-\infty}^{+\infty} |\psi(t)|^{2}\,dt = 1 
+\end{equation}
+
+\subsection{Discrete Wavelet Transform}
+Since the continuous wavelet transformation is achieved  by dilating and translating the mother wavelet continuously over the field of real numbers, it generates substantial redundant information. Therefore, instead of continuous dilation and translation, the mother wavelet may be dilated and translated discretely by careful selection of the terms $a$ and $b$. It turns out, rather remarkably, that if scales and positions based on powers of two -- so-called \emph{dyadic} scales and positions are chosen -- then the analysis will be much more efficient and just as accurate. Such an analysis is obtained from the discrete wavelet transform (DWT) \cite{daub}.
+
+Although this may be derived without referring to CWT, it can be considered as a discretization of the CWT through sampling specific wavelet coefficients. A \emph{critical sampling} of the CWT expressed by (\ref{cwt}) is obtained by selecting $a=2^{-j}$ and $b=k2^{-j}$, where $j$ and $k$ are integers representing  the set of discrete translations and discrete dilations. Upon this substitution the right hand side of (\ref{cwt}) becomes
+\begin{displaymath}
+\int f(t)\,2^{j/2}\,\psi(2^{j}t - k)\,dt
+\end{displaymath}
+which is a function of $j$ and $k$. A critical sampling defines the resolution of the DWT in both time and frequency. The term is used to denote the minimum number of coefficients sampled from CWT to ensure that all the information present in the original function is retained by the wavelet coefficients. The time-frequency (scale) plane of the DWT is shown in fig. \ref{t-f} by the above-mentioned discretization parameters. 
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{|cccccccccccccccc}
+$a$ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+$\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ & $\bullet$ \\
+$\bullet$ &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ &  & $\bullet$ & & $\bullet$ &  & $\bullet$ & & $\bullet$ &  \\
+$\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  & $\bullet$ &  &  &  \\
+$\bullet$ &  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  &  \\
+$\bullet$ &  &  &  &  &  &  &  & $\bullet$ &  &  &  &  &  &  &  \\
+$\bullet$ &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\hline
+\multicolumn{15}{c}{} &$b$
+\end{tabular}
+\caption{Critical sampling of the time-frequency (scale) plane}\label{t-f}
+\end{figure}
+
+In CWT, wavelet coefficients  for every (a,b) combination is found whereas in DWT, wavelet coefficients are found only at very few points denoted by the dots and the wavelets that follow these values are given by
+\begin{displaymath}
+\psi_{j,k}(t) = 2^{j/2}\,\psi(2^{j}t - k)
+\end{displaymath}
+
+These wavelets for all integers $j$ and $k$ produce an orthogonal basis. Here it should be noted that $\psi_{0,0}(t) = \psi(t)$ which is the mother wavelet \cite{bopardikar}.
+
+This scheme is called \emph{wavelet decomposition} or \emph{analysis} and it can be efficiently implemented using filters. The original signal, $\mathbf{f}$, passes through two complementary filters and emerges as two signals termed as \emph{Approximations}  and \emph{Details} in wavelet analysis \cite{walker}. The approximations are the high-scale, low-frequency components of the signal. The details are the low-scale, high-frequency components. But such filtering action on a real digital signal would yield twice as much data as the original signal. For this reason, another way that includes \emph{downsampling} is used to perform the decomposition that can retain the same information. It produces two subsignals $\mathbf{a}$ and $\mathbf{d}$ with number of data almost half of the original signal containing DWT coefficients. These subsignals are called \emph{trend} and \emph{fluctuation} respectively.
+\begin{figure}[h]
+\centering
+\includegraphics[]{filter01}
+\caption{Wavelet decomposition via filtering and downsampling} \label{filter01}
+\end{figure}
+
+This decomposition process can be iterated, with successive approximations being decomposed in turn, so that one signal is broken down into many lower resolution components.
+
+This process called \emph{reconstruction}, or \emph{synthesis} is used to assemble the DWT coefficients (trend and fluctuation) back into the original signal without loss of information. The mathematical manipulation that effects synthesis is called the \emph{inverse discrete wavelet transform} (IDWT). Where wavelet analysis involves filtering and downsampling, the wavelet reconstruction process consists of \emph{upsampling} and filtering. 
+\begin{figure}[h]
+\centering
+\includegraphics[]{filter02}
+\caption{Wavelet reconstruction via upsampling and filtering} \label{filter02}
+\end{figure}
+
+It is seen from fig. \ref{filter02} also possible to reconstruct the approximations and details themselves from their coefficient vectors . The reconstructed details and approximations are true constituents of the original signal. In fact, 
+the original signal is found when they are combined like --
+\begin{displaymath}
+\mathbf{A}^{1} + \mathbf{D}^{1} = \mathbf{f}
+\end{displaymath}
+
+The coefficient vectors $\mathbf{a}$ and $\mathbf{d}$ cannot directly be combined to reproduce the signal. It is necessary to reconstruct the approximations and details before combining them. This technique can be extended to the components of a multilevel analysis.
+\begin{figure}[h]
+\centering
+\includegraphics[]{filter03}
+\caption{Wavelet reconstruction: multiple level} \label{filter03}
+\end{figure}
+
+\subsection{Wavelet Packet Transform} 
+The wavelet transform is actually a subset of a far more versatile transform, the wavelet packet transform. Wavelet packets are particular linear combinations of wavelets. They form bases which retain many of the orthogonality, smoothness, and localisation properties of their parent wavelets. The coefficients in the linear combinations are computed by a recursive algorithm making each newly computed sequence of wavelet packet coefficients the root of its own analysis tree. In wavelet analysis, a signal is split into an approximation and a detail. The approximation is then itself split into a second-level approximation and detail, and the process is repeated. In wavelet packet analysis, the details as well as the approximations can be split.
+
+
+
+\chapter{Scheme of Work}
+
+\begin{figure}[h]
+\centering
+\begin{picture}(300,320)(0,0)
+\input{psw}
+\end{picture}
+\caption{Scheme of work} \label{psw}
+\end{figure}
+
+The schematic representation of the work done is shown in Fig.~\ref{psw}. These scheme consists of two major parts, namely (i) simulation of different induction motor faults and (ii) signal processing. That is the flow of the work goes like this: first the fault to be studied is reproduced or simulated with the proper choice of monitoring parameter like stator current, vibration, temperature, etc. For the present work the monitoring technique is MCSA and therefore the signal required to be monitored is the stator current. The generated data corresponding to that faults are collected and stored. The collected data or signals are then processed with appropriate signal processing algorithm such as fast Fourier transform (FFT) or Wavelet transform (WT) so that the specific feature associated with the fault can be extracted. And finally depending upon these features the proper diagnostic strategy may be adopted. 
+
+\section{Simulation of induction motor faults}
+For this part of the work the components used are -- 
+\begin{itemize}
+\item Machinery Fault Simulator (MFS), it is a tool for simulating various types of induction motor faults. The detailed technical specification of MFS is given in \ref{MFS}. It is initially fitted with a healthy motor,
+\item Motor with broken rotor bars of same specification,
+\item Computer with four channel Data Acquisition system (DAQ),
+\item Current probe for capturing current signal from motor,
+\item Vibra Quest Pro software for interfacing with the data acquisition system, storage of signal and initial analysis.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=120mm]{setup01g}
+\caption{Experimental setup} \label{setup01g}
+\end{figure}
+
+\section{Signal processing and analysis}
+After the signal processing of the line current the results are further analysed and thus diagnosis of any motor fault is possible from the post-processing of the result. Therefore, a great importance lays upon the signal processing part of the scheme. Since it is signal processing of discrete data, the primary and most popular tool available for digital signal processing is the discrete Fourier Transform or usually abbreviated DFT. To be more precise, the foundation of the digital signal processing is the fast Fourier transform, or FFT, which is an algorithm for computing the DFT with reduced execution time. 
+
+In the previous chapters, however, the advantages of using wavelet transform has been established. But the importance of the traditional Fourier analysis cannot be overlooked because it helps immensely in understanding the principles of signal processing, both analog and digital. The motor current is expected to contain a number of signals having different frequencies and there is quite a possibility that the signals other than the fundamental one might be present for only a certain period of time, especially in case of transient analysis. Therefore, the signal processing block of the scheme is to be so designed that it may be able to find the frequency as well as the duration of existence of the excess signals. The discrete Fourier transform tool, mainly FFT, is very much effective in determining the frequency content or spectra of a digital signal correctly. Wavelets, on the other hand, prove themselves very effective in order to determine the exact time instant of the occurrence of any change in the frequency of a signal.
+
+The signal processing part of the scheme, therefore, has been designed to incorporate two categories of analysis, steady-state and transient. The following tools has been used for them respectively,
+\begin{enumerate}[(i)]
+\item Fast Fourier transform (FFT)
+\item Discrete wavelet transform (DWT)
+\end{enumerate}
+
+Keeping this in mind computer programs for digital signal processing implementing the above-mentioned techniques have been developed. These programs are meant to perform signal processing operations, namely FFT and discrete wavelet transform (DWT), on the digital data obtained from the DAQ. The basic principles of the tools and the technique of implementing them on computer programs will be discussed in the following sections.
+
+\section{Fast Fourier Transform (FFT)}
+\subsection{Basic theory and algorithm} \label{fftbas}
+Fourier transform converts an analog signal $x(t)$ for $-\infty < t < +\infty$ into a second signal $X(f)$ for $-\infty < f < +\infty$ as follows from (\ref{ft}):
+\begin{equation}
+X(f) = \int_{-\infty}^{+\infty} x(t)\,e^{-j2\pi ft}\,dt
+\end{equation}
+The signal $X(f)$, which is complex valued, is called the \emph{Fourier transform} of $x(t)$.
+
+Practical signal processing methods are applied to a sequence of discrete samples of $x(t)$. For example, an interval from 0 to $T$ can be divided into $N$ equispaced subintervals with widths of $\Delta t = T/N$. The subscript $n$ is employed to designate the discrete times at which samples are taken. Thus, $x(n)$ designates a value of the continuous function $x(t)$ taken at $t_{n}$. It should be noted that the data points are specified at $n=0,1,2,\ldots,N-1$. Hence, the Discrete Fourier Transform (DFT) of a signal $x$ may be defined as:
+\begin{equation} \label{dft}
+X(k) = \sum^{N-1}_{n=0} x(n)\,e^{-j2\pi n k/N}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+where $x(n)$ denotes the input signal at time (sample) $n$, and $X(k)$ denotes the $k^{\mathrm{th}}$ spectral sample.
+
+Therefore, the inverse Discrete Fourier Transform or IDFT may be written as:
+\begin{equation}
+x(n) = \frac{1}{N} \sum^{N-1}_{n=0} X(k)\,e^{j2\pi n k/N}, \quad n=0,1,2,\ldots,N-1
+\end{equation}
+
+The DFT and IDFT are very easy to implement in a computer algorithm. But unfortunately, the DFT can be relatively expensive to compute. It can be noted from (\ref{dft}) that the algorithm requires $N^{2}$ complex multiplications, which is not at all economical for data samples of even moderate size. 
+
+The fast Fourier transform (FFT) is an efficient but fast implementation of the discrete Fourier transform (DFT). It utilises the results of previous computations to reduce the number of operations. When $N$ is a power of 2, the computational complexity drops from ${\mathcal O}(N^2)$ (for the DFT) down to ${\mathcal O}(N\log_{2} N)$ for the FFT by the exploitation of the periodicity and symmetry of the trigonometric functions. The FFT was evidently first described by Gauss in 1805 and rediscovered by J.W. Cooley and J.W. Tukey in 1965, when they outlined an algorithm called \emph{Cooley-Tuckey algorithm} for calculating the FFT. Today, there are host of other approaches that are offshoots of this method. \cite{schilling}
+
+The basic idea behind each of these algorithms is that a DFT of length $N$ is decomposed, or ``decimated'' into successive smaller DFTs. There are two basic varieties of FFT, one based on \emph{decimation-in-time}, and the other on \emph{decimation-in-frequency}. The Cooley-Tuckey algorithm is a member of what are called decimation-in-time techniques. There is an alternative approach called the \emph{Sande-Tuckey algorithm}, which is a member of decimation-in-frequency techniques. \cite{chapra},\cite{nric}
+
+The technique of decimation-in-frequency has been adopted for the development of the FFT program. The algorithm can be appreciated from the following discussion.
+
+The expression for DFT can be rewritten from (\ref{dft}) as:
+\begin{equation} \label{dft2}
+X(k) = \sum_{n=0}^{N-1} x(n) W_{N}^{kn}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+where 
+\begin{equation} \label{wn}
+W_{N} \stackrel{\triangle}{=} e^{-j2\pi/N}
+\end{equation}
+
+The scalar $W_{N}$ satisfies $W_{N}^{N}=1$, so $W_{N}$ can be thought as the $N^{\mathrm{th}}$ root of unity.
+
+Now, if it supposed that $N$ is an integral power of 2, i.e. $N=2^{M}$ where $M$ is an integer, the sum in (\ref{dft2}) can be broken into two parts as follows: 
+\begin{equation} \label{dft3}
+X(k) = \sum_{n=0}^{(N/2) - 1} x(n) W_{N}^{kn} + \sum_{n=N/2}^{N-1} x(n) W_{N}^{kn}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+
+The second sum in (\ref{dft3}) can be rewritten using the change of variable $m=n+N/2$, so that the range of the second sum is consistent with the first, 
+\begin{eqnarray} 
+X(k) & = & \sum_{n=0}^{(N/2) - 1} x(n) W_{N}^{kn} + \sum_{m=0}^{(N/2)-1} x(m+N/2) W_{N}^{k(m+N/2)} \nonumber \\
+\textrm{or,}\quad X(k) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) + x(n+N/2) W_{N}^{kN/2} \right] W_{N}^{kn} \label{dft4}
+\end{eqnarray}
+
+It is recognised from (\ref{wn}) that $W_{N}^{N/2} = e^{-j\pi}$. Applying Euler's identity it follows that $W_{N}^{kN/2} = (-1)^{k}$. Using this observation the following simplification is obtained from (\ref{dft4}),
+
+\begin{equation} \label{dft5}
+X(k) = \sum_{n=0}^{(N/2) - 1} \left[ x(n) + (-1)^{k} x(n+N/2) \right] W_{N}^{kn}
+\end{equation}
+
+Therefore, the next step in this algorithm is to separate (\ref{dft5}) according to the even and odd values of $k$, i.e., 
+\begin{eqnarray}
+X(2k) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) + x(n+N/2) \right] W_{N}^{2kn} \label{even}\\
+X(2k+1) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) - x(n+N/2) \right] W_{N}^{2kn} W_{N}^{n} \label{odd}
+\end{eqnarray}
+
+Next, two new sequences of length $N/2$ is defined as follows:
+\begin{eqnarray}
+a(n) & = & x(n) + x(n+N/2) \nonumber \\
+b(n) & = & \left[ x(n) - x(n+N/2) \right] W_{N}^{n} \nonumber
+\end{eqnarray}
+
+These sequences are substituted in (\ref{even}) and (\ref{odd}), respectively and since from (\ref{wn}) $W_{N}^{2kn} = W_{N/2}^{kn}$, (\ref{even}) and (\ref{odd}) are rewritten as
+\begin{eqnarray}
+X(2k) & = & \sum_{n=0}^{(N/2) - 1} a(n) W_{N/2}^{kn} \label{even2} \\
+X(2k+1) & = & \sum_{n=0}^{(N/2) - 1} b(n) W_{N/2}^{kn} \label{odd2}
+\end{eqnarray}
+
+Comparing these with (\ref{dft2}), it is seen that the even and odd pairs of $X(k)$ can be computed separately, using DFTs of length $N/2$ and hence a 50\% savings in computational efforts can be achieved: $2(N/2)^2=N^{2}/{2}$. This decomposition can be applied recursively until $N/2$ two-point DFTs as below are arrived at. 
+\begin{eqnarray}
+X(0) & = & x(0) + x(1) \\
+X(1) & = & x(0) - x(1)
+\end{eqnarray}
+
+Thus the total number of calculations for the entire computation becomes ${\mathcal O}(N\log_{2} N)$. For example, for $N=1024$ it requires approximately 1,048,576 floating point operations using DFT, while the number for FFT is only 5,120. \cite{schilling} A signal flow graph that summarises the computations involved in finding an eight-point DFT using the decimation-in-frequency FFT techniques is shown in Fig.~\ref{dif}. Here signals are added at the nodes and multiplied by the scalars present on the paths. \cite{chapra}
+
+\begin{figure}[h]
+\centering
+\begin{picture}(370,265)(0,0)
+\input{dif}
+\end{picture}
+\caption{Flow graph of the decimation-in-frequency decomposition of an eight-point DFT} \label{dif}
+\end{figure}
+
+One difficulty with the FFT that can be observed from Fig.~\ref{dif} is that the order of the computed points gets \emph{scrambled} with each iteration. Comparing the binary representations of the original DFT ordering with the FFT ordering, it is observed that the original DFT order can be recovered by a simple \emph{bit reversal} process. That is the Fourier coefficients can be unscrambled by reversing the bits of the indices as depicted in Table \ref{bit}. This process practically leads to the utilisation of the swap operation to get the reordering of the array elements. \cite{chapra},\cite{nric}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Scrambled order & Scrambled order & Bit-reversed order & Final result \\
+(decimal) & (binary) & (binary) & (decimal) \\
+\hline
+X(0) & X(000) & X(000) & X(0) \\
+X(4) & X(100) & X(001) & X(1) \\
+X(2) & X(010) & X(010) & X(2) \\
+X(6) & X(110) & X(011) & X(3) \\
+X(1) & X(001) & X(100) & X(4) \\
+X(5) & X(101) & X(101) & X(5) \\
+X(3) & X(011) & X(110) & X(6) \\
+X(7) & X(111) & X(111) & X(7) \\
+\hline
+\end{tabular}
+\caption{The bit-reversal process involved in ordering of data after FFT algorithm} \label{bit}
+\end{table}
+
+\subsection{Computer program development, application and analysis}
+The program for computing the FFT of any discrete data has been developed in C programming language using GNU C Compiler (GCC) under GNU/Linux environment applying the algorithm discussed above. The program has three major parts consisting of three functions \emph{main}, \emph{fft} and \emph{bitrev}. As the names imply \emph{main} is the main interface to the user, it collects data from input file, calls appropriate functions and finally displays results. Functions \emph{fft} is for computing the FFT and it essentially implements the computations depicted in Fig.~\ref{dif} to find Fourier coefficients. After the execution of the function \emph{fft} the function \emph{bitrev} is used to obtain the result in an orderly manner from the scrambled condition applying the bit-reversal technique as shown in Table \ref{bit}. 
+
+
+
+\section{Discrete Wavelet Transform (DWT)}
+In the signal processing part of the proposed scheme the programs are needed to work extensively with \emph{discrete} or \emph{sampled} signals. The CWT algorithm as given in a simplified form in (\ref{cwt}) can be applied to a sampled signal in the form $\mathbf{f} = (f_{0},f_{1},f_{2},\ldots,f_{N-1})$, where $N$ is a positive even integer which is referred to as the \emph{length} of $\mathbf{f}$, for the scale factors $s_{1},\ldots,s_{M}$. But the resulting signal, in such transform, is ``larger'' than the original signal. A DWT linked to the corresponding CWT can be performed on a discretely sampled signal after a continuous-time signal $f(t)$ is constructed from it using a ``scaling function'' defined uniquely for the wavelet used. Furthermore, the notion of continuous-time signals may be done away with and the DWT may be formulated in purely discrete manner, i.e., for sequences of numbers \cite{daub},\cite{stark}.
+
+\subsection{Haar transform} \label{ht}
+The Haar transform decomposes a discrete signal into two subsignals of half its length. One subsignal is a running average or \emph{trend} and the other subsignal is a running difference or \emph{fluctuation}. The \emph{first trend} subsignal, $\mathbf{a}^{1} = (a_{0},a_{1},\ldots,a_{N/2-1})$, for the signal $\mathbf{f}$ is computed by taking the running average such that 
+\begin{equation} \label{am}
+a_{m} = \frac{f_{2m}+f_{2m+1}}{\sqrt{2}}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+
+For example, the following discretely sampled signal of length 8 is considered \cite{walker}:
+\begin{displaymath}
+\mathbf{f} = (4,6,10,12,8,6,5,5)
+\end{displaymath}
+then its first trend subsignal can be calculated as indicated below:
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+ &   & 5 & & & & 11 & & & & 7 & & & & 5 &   \\
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{a}^{1}$: & & $5\sqrt{2}$ & & & & $11\sqrt{2}$ & & & & $7\sqrt{2}$ & & & & $5\sqrt{2}$ &   
+\end{tabular}
+\end{center}
+The multiplication by $\sqrt{2}$ is necessary in order to ensure that the Haar transform preserves the energy of a signal.
+
+The \emph{first fluctuation} subsignal for the signal $\mathbf{f}$, which is denoted by $\mathbf{d}^{1} = (d_{0},d_{1},\ldots,d_{N/2-1})$, for the signal $\mathbf{f}$ is computed by taking a running difference in the following way.
+\begin{equation} \label{dm}
+d_{m} = \frac{f_{2m} - f_{2m+1}}{\sqrt{2}}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+ &   & $-1$ & & & & $-1$ & & & & $1$ & & & & $0$ &   \\
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{d}^{1}$: & & $-\sqrt{2}$ & & & & $-\sqrt{2}$ & & & & $\sqrt{2}$ & & & & $0$ &   
+\end{tabular}
+\end{center}
+
+\subsubsection*{First level Haar transform}
+The first level Haar transform is the mapping $\mathbf{H}_{1}$ from a discrete signal $\mathbf{f}$ to its first trend $\mathbf{a}^{1}$ and first fluctuation $\mathbf{d}^{1}$ defined by
+\begin{equation} \label{map}
+\mathbf{f} \stackrel{\mathbf{H}_{1}}{\longmapsto} \left(\mathbf{a}^{1} \mid \mathbf{d}^{1}\right)
+\end{equation}
+
+The inverse of mapping $\mathbf{H}_{1}$ transforms signal $(\mathbf{a}^{1} \mid \mathbf{d}^{1})$ back to signal $\mathbf{f}$, via the following formula and the diagram:
+\begin{equation} \label{invmap}
+\mathbf{f} = \left(\frac{a_{0}+d_{0}}{\sqrt{2}},\frac{a_{0}-d_{0}}{\sqrt{2}},\ldots,\frac{a_{N/2-1}+d_{N/2-1}}{\sqrt{2}},\frac{a_{N/2-1} - d_{N/2-1}}{\sqrt{2}}\right)
+\end{equation}
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & & $5\sqrt{2}$ & & & & $11\sqrt{2}$ & & & & $7\sqrt{2}$ & & & & $5\sqrt{2}$ &   \\
+$\mathbf{d}^{1}$: & & $-\sqrt{2}$ & & & & $-\sqrt{2}$ & & & & $\sqrt{2}$ & & & & $0$ &   \\
+ &   & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ &  \\
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 
+\end{tabular}
+\end{center}
+
+\subsubsection*{Haar transform of multiple levels}
+Multiple level Haar transforms are easy to perform by simply repeating the process of 1-level transform. For example, the second level of a Haar transform is performed by computing a second level trend $\mathbf{a}^{2}$ and a second level fluctuation $\mathbf{d}^{2}$ for the first trend $\mathbf{a}^{1}$ \emph{only} as depicted in the following diagram:
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & $5\sqrt{2}$ & & $11\sqrt{2}$ & & $7\sqrt{2}$ & & $5\sqrt{2}$   \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+$\mathbf{a}^{2}$: & & $16$ & & & & $12$ &    
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & $5\sqrt{2}$ & & $11\sqrt{2}$ & & $7\sqrt{2}$ & & $5\sqrt{2}$   \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+$\mathbf{d}^{2}$: & & $-6$ & & & & $2$ &    
+\end{tabular}
+\end{center}
+
+\subsubsection{Haar wavelets}
+These are the simplest wavelets. 
+
+Comparing the procedure discussed in the above with the theory of filtering with downsampling it is evident that the computation of $\mathbf{a}^{1}$ may be written as 
+\begin{equation}
+\mathbf{a}^{1} = H \,\mathbf{f}
+\end{equation}
+The sequence $\mathbf{a}^{1}$ is obtained from $\mathbf{f}$ by a two-step procedure: first a digital filter with coefficients
+\begin{displaymath}
+h_{0}=\frac{1}{\sqrt{2}}, \quad h_{1}=\frac{1}{\sqrt{2}}
+\end{displaymath}
+is applied, subsequently the signal is downsampled, i.e., only every second sequence element is kept. This procedure is denoted by $H$. The filter coefficients are also called \emph{scaling numbers}. Here the length of the signal is divided by two.
+
+Similarly computation of $\mathbf{d}^{1}$ may be written as
+\begin{equation}
+\mathbf{d}^{1} = G \,\mathbf{f}
+\end{equation}
+Again $G$ denotes filtering followed by downsampling, but here the corresponding filter coefficients are 
+\begin{displaymath}
+g_{0}=\frac{1}{\sqrt{2}}, \quad g_{1}=\frac{-1}{\sqrt{2}}
+\end{displaymath}
+These filter coefficients are also called \emph{wavelet numbers}.
+
+Now, it is possible to recover the original sequence by applying dual filters denoted by $H'$ and $G'$ where the procedure involves upsampling followed by filtering. Thus the first approximation signal $\mathbf{A}^{1}$ is obtained by 
+\begin{equation}
+\mathbf{A}^{1} = H'\,\mathbf{a}^{1}
+\end{equation}
+where the coefficients are $h_{0}=\frac{1}{\sqrt{2}}, h_{1}=\frac{1}{\sqrt{2}}$.
+
+Analogously, first detail signal $\mathbf{D}^{1}$ may be computed from
+ \begin{equation}
+\mathbf{D}^{1} = G'\,\mathbf{d}^{1}
+\end{equation}
+where the coefficients are $g_{0}=\frac{1}{\sqrt{2}}, g_{1}=\frac{-1}{\sqrt{2}}$.
+
+
+\subsubsection{Multiresolution analysis}
+\emph{Multiresolution analysis (MRA)} means the complete synthesis of discrete signal at the finest resolution by beginning with a very low resolution signal and successively adding on details to create higher resolution. \cite{walker}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{dec01}
+\caption{Wavelet decomposition of multiple levels} \label{dec01}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm]{rec01}
+\caption{Wavelet reconstruction of multiple levels} \label{rec01}
+\end{figure}
+
+Continuing with the signal $\mathbf{f}$ from \ref{ht}, which has its first trend subsignal 
+\begin{displaymath}
+\mathbf{a}^{1}=(5\sqrt{2},11\sqrt{2},7\sqrt{2},5\sqrt{2})
+\end{displaymath}
+and first fluctuation subsignal 
+\begin{displaymath}
+\mathbf{d}^{1}=(-\sqrt{2},-\sqrt{2},\sqrt{2},0)
+\end{displaymath}
+applying the scheme depicted in fig.~\ref{rec01} the averaged or approximation signal comes as
+\begin{equation}
+\mathbf{A}^{1} = (5,5,11,11,7,7,5,5)
+\end{equation}
+and similarly it yields the first detail signal
+\begin{equation}
+\mathbf{D}^{1} = (-1,1,-1,1,1,-1,0,0)
+\end{equation}
+
+This illustrates the basic idea of MRA. The signal $\mathbf{f}$ is expressed as a sum of a lower resolution, or averaged, signal $(5,5,11,11,7,7,5,5)$ added with a signal $(-1,1,-1,1,1,-1,0,0)$ made up of fluctuations or details. This idea can be extended to further levels, as many levels as the number of times that the signal length can be divided by 2. Hence the second level of MRA of a signal $\mathbf{f}$ involves expressing it as
+\begin{equation}
+\mathbf{f} = \mathbf{A}^{2} + \mathbf{D}^{2} + \mathbf{D}^{1}
+\end{equation}
+where $\mathbf{A}^{2}$ and $\mathbf{D}^{2}$ are the second averaged and second detail signals respectively, which satisfy that
+\begin{equation}
+\mathbf{A}^{1} = \mathbf{A}^{2} + \mathbf{D}^{2}
+\end{equation}
+
+\subsection{Daubechies transform} 
+The only difference between Haar and Daubechies transforms consists in how the respective scaling signals and wavelets are defined. There are many Daubechies transforms. The advent of them becomes significant due to the concept of what is called ``vanishing moments'' of a wavelet.
+
+The Haar wavelet has only one vanishing moment. For signal analysis purpose it is desired to have as many vanishing moments as possible because it is important for detecting and localising signal changes. The problem of having small number of vanishing moments has been solved by Ingrid Daubechies by constructing a \emph{family} of scaling functions and wavelets usually called the ``family of Daubechies wavelets'' and each member is labelled by a natural number $n=1,2,3,\ldots$. For a given $n$ the scaling functions and wavelets are denoted with the term ``dbn'' each with $2n$ non-zero values and the remarkable thing is that dbn wavelets have $n$ vanishing moments \cite{stark}.
+
+\subsubsection{Daubechies wavelets}
+The simplest member of the family of Daubechies wavelets is db1. The corresponding scaling signals and wavelets are given by the Haar scaling signals and Haar wavelets, respectively.
+
+Apart from $n=1$ the discussion will be confined to $n=2$,i.e. the db2 wavelet transform. For $n=2$, first let the \emph{scaling numbers} be defined by
+\begin{equation}
+h_{0}=\frac{1+\sqrt{3}}{4\sqrt{2}}, \quad h_{1}=\frac{3+\sqrt{3}}{4\sqrt{2}}, \quad h_{2}=\frac{3-\sqrt{3}}{4\sqrt{2}}, \quad h_{3}=\frac{1-\sqrt{3}}{4\sqrt{2}}
+\end{equation}
+
+Highpass coefficients or wavelet numbers are obtained by reversing tap order and changing the sign at the alternate positions. Because these are orthogonal wavelets, the analysis and reconstruction coefficients are the same.
+
+The \emph{wavelet numbers} are, therefore, given by,
+\begin{equation}
+g_{0}=\frac{1-\sqrt{3}}{4\sqrt{2}}, \quad g_{1}=\frac{\sqrt{3}-3}{4\sqrt{2}}, \quad g_{2}=\frac{3+\sqrt{3}}{4\sqrt{2}}, \quad g_{3}=\frac{-1-\sqrt{3}}{4\sqrt{2}}
+\end{equation}
+
+From the scaling signals and wavelets for db2 it should be noted that the scaling signals and the wavelets are all translations by two time-units with a \emph{wrap-around} for the last vector.
+
+The idea of MRA is also equally applicable with the db2 wavelets. \cite{walker}
+
+\subsection{Computer program development, application and analysis}
+The program for computing the DWT of any discrete data has been developed in C programming language with GCC under GNU/Linux environment applying the theory discussed above. The program, has been designed to determine the trend and fluctuation subsignals from a given discrete signal by decomposition and also to reconstruct the averaged and detail signals from them. The program is able to perform multi resolution analysis up to any level and uses Daubechies wavelet transforms. Since the program accommodates the dbn family of wavelets, a generalised approach has been adopted to select the required Daubechies wavelet. The Haar transform, therefore, can be performed by selecting db1.
+
+There are three major parts of the program consisting of three functions \emph{main}, \emph{dwt} and \emph{recon}. And there is a number of functions defined in the file `select.c' for selecting appropriate scaling function and wavelet. Function \emph{main} receives data from input file, calls function \emph{dwt} for computing the decomposed subsignals and \emph{recon} for reconstructing the averaged and detail signals from the subsignals. The function \emph{dwt} essentially implements the computations described in fig.~\ref{dec01} and  to find the fluctuation and trend subsignals, respectively using appropriate scaling signals and wavelets provided by the file `select.c' depending upon the desired type of Daubechies wavelet.
+
+
+The source codes are furnished in \ref{pscdwt}.
+
+The programs have been tested by executing on various data with different attributes mainly to examine the effectiveness of the DWT algorithm implemented in the programs in correctly decomposing a discrete signal into its trend and fluctuation subsignals as well as in reconstructing the averaged and detail signals from those subsignals. The results has been cross-checked with those obtained from the ``Wavelet Toolbox'' available in \textsc{Matlab} and they are satisfactorily in accord with each other.
+
+
+\chapter{Detection of Broken Rotor Bar}
+\section{Introduction}
+Broken rotor bars can be a serious problem to induction motor due to arduous operations. Though these do not initially cause a motor to fail, there can be serious secondary effects such as broken parts of the bar hitting the end winding or stator core of a high voltage motor at a high velocity. Or the broken bar can lift in the slot and cause damage to the stator core and winding. Thus serious mechanical damage to the insulation may follow, resulting in a costly repair and lost production \cite{t32pg145}. Broken rotor bars cause torque and speed oscillations at twice slip speed and subsequent forces and vibration are produced that can lead to mechanical degradation of bearings and other mechanical parts.
+
+These faults can be caused by
+\begin{itemize}
+\item DOL starting duty cycles for which the rotor cage winding was not designed to withstand -- this causes high thermal and mechanical stresses. 
+\item Pulsating mechanical loads such as reciprocating compressors or coal crushers etc.~can subject to high mechanical stresses.
+\item Imperfections in the manufacturing process of the rotor cage.
+\end{itemize}
+
+\section{Detection through MCSA}
+It is well known that if a balanced three-phase voltage is applied to the stator winding of a three-phase induction motor, it produces a rotating magnetic field of constant amplitude in the air-gap. Its speed is called \emph{synchronous speed} (\unit[$N_{s}$]{rpm}) and it is the relative velocity between the constant amplitude rotating field and the stationary stator winding. The frequency $f_{1}$ of the applied voltage is related with synchronous speed as per (\ref{ns})
+\begin{equation}
+N_{s} = \unit[\frac{120f_{1}}{P}]{rpm} \label{ns}
+\end{equation}
+where $P$ is the number of stator poles.
+
+Since the rotor rotates at a speed \unit[$N_{r}$]{rpm} less than the synchronous speed in the same direction of the rotating magnetic field, the relative speed between rotating magnetic field and the rotor is \unit[$(N_{s} - N_{r})$]{rpm}. This is called the \emph{slip speed} whereas the term \emph{slip}, usually denoted by $s$ is defined as
+\begin{eqnarray*}
+s &=& \frac{N_{s}-N_{r}}{N_{s}}=\frac{\textrm{Synchronous speed}-\textrm{Rotor speed}}{\textrm{Synchronous speed}} \\
+\textrm{or,} \quad N_{r} &=& (1-s)N_{s}
+\end{eqnarray*}
+
+Both fields are locked together to give a steady torque production by the induction motor. The frequency of induced or generated emf the rotor coil is $f_{2}=sf_{1}$, which is called the \emph{slip frequency}.
+
+The rotor currents in cage winding produce an effective three-phase magnetic filed, which has the same number of poles as the stator field but it is rotating at slip frequency ($f_{2}=sf_{1}$) with respect to the rotating rotor. 
+
+When the cage winding is symmetrical, there is only a forward rotating field at slip frequency with respect to the rotor. If rotor asymmetry occurs, then there will be a resultant backward rotating field at slip frequency with respect to the forward rotating rotor, for instance with broken rotor bars there is an additional rotating magnetic field produced, which rotates backwards at slip speed, i.e. $(N_{s} - N_{r}) = sN_{s}$ with respect to the rotor.
+Now let $N_{b}$ be the speed of backward rotating field produced by the rotor due to broken rotor bars.
+
+Hence,
+\begin{eqnarray}
+N_{b} & = &N_{r} - sN_{s}  \nonumber \\
+ &=& N_{s}(1-s) - sN_{s}  \nonumber \\
+ &=& N_{s} - 2sN_{s}  
+\end{eqnarray}
+
+Therefore the stationary stator winding now sees a rotating field at speed $N_{b} = N_{s} - 2sN_{s}$. The result of this is that, with respect to the stationary stator winding, this backward rotating field at slip frequency with respect to the rotor induces a voltage and current in the stator winding at
+\begin{equation}
+f_{sb}=\unit[f_{1}(1-2s)]{Hz}
+\end{equation}
+
+This is referred to as a twice slip frequency sideband due to broken rotor bars. There is a therefore a cyclic variation of current that causes a torque pulsation at twice slip frequency ($2sf_{1}$) and a corresponding speed oscillation that is also a function of the drive inertia. This speed oscillation can reduce the magnitude of the $f_{1}(1-2s)$ sideband, but an upper sideband current component at $f_{1}(1+2s)$ is induced in the stator winding due to the rotor oscillation. This upper sideband is also enhanced by the third time harmonic flux. Broken rotor bars therefore result in current components being induced in the stator winding at frequencies given by:
+
+\begin{equation}
+f_{sb}=\unit[f_{1}(1\pm2s)]{Hz} \label{sb}
+\end{equation}
+This gives $\pm2sf_{1}$ sidebands around the supply frequency component $f_{1}$.These are the classical twice slip frequency sidebands due to broken rotor bars.
+
+\section{Simulation procedure}
+Motor current signature analysis (MCSA) is the on-line monitoring and analysis of current to assess the operational health of an induction motor drive system. The method involves the collection of current signal from one phase of the induction motor in the MFS. The squirrel cage induction motor installed on MFS is a 2 pole machine. The specifications are given in \ref{motorspec}. The collection is done for both the healthy motor and the faulted motor with three rotor bars broken under the same running conditions. The software Vibra Quest Pro is used for controlling the DAQ for data collection. The process of collection of current signal has been divided into two major types, namely (i) collection of stator current under steady-state condition and (ii) collection of stator current under transient condition.
+ 
+\subsection{Steady-state operations} \label{sso}
+
+During the steady-state operation for each test the power supply line frequency is fixed at a particular frequency (in the present case they are 30, 40 and \unit[50]{Hz}) by the motor controller. A tachometer detects the rotor speed and the speed is also recorded for each test. From the line frequency and the rotor speed data, the per unit slip data can be obtained. The load of the motor is changed in steps to investigate the effect of load on current signatures. There is a torque loader connected to the gearbox output shaft. 
+
+The steady-state data is utilised for determining current amplitude spectrum with the help of the developed FFT program and also with the DWT program. To meet the required conditions mentioned in \ref{fftreq} the DAQ setup is configured so that the total number of data recorded be an integral power of 2. Since the sideband frequencies depend on the value of slip, the frequency resolution of the DAQ is set at \unit[0.015625]{Hz/line} so that slip as low as 1\% can be taken care of \cite{t32pg145}. 
+
+The total procedure runs like this --
+
+\begin{enumerate}
+\item The current probe is connected with the DAQ system by clamping it to anyone of the phase wire.
+\item The Vibra Quest data acquisition setup is configured accordingly for the current probe and the required resolution of signal.
+\item The gearbox brake torque is set to ``0''. \label{begin1}
+\item After powering the MFS on, the motor speed is increased to \unit[30]{Hz}. \label{start1}
+\item The current signal is recorded after the speed has reached a steady value and the tachometer reading is also recorded.
+\item After data recording is over the MFS is stopped. \label{stop1}
+\item The same operation is done keeping frequency fixed at \unit[40]{Hz} and \unit[50]{Hz} respectively by repeating steps \ref{start1}-\ref{stop1} in each case. \label{finish1}
+\item Next the gearbox brake torque is set to ``4''.
+\item Steps \ref{start1}-\ref{finish1} are repeated. \label{over1}
+\item The good motor is removed from MFS and the motor with three broken bars is installed on it.
+\item Steps \ref{begin1}-\ref{over1} are repeated.
+\item The test is over.
+\end{enumerate}
+
+All the data are stored and prepared for use with the developed program.
+
+\subsection{Transient operations}
+Since FFT is not very effective in analysing transient signals. The collection of current signal is intended for analysis of the same with the developed DWT program. Vibra Quest does not provide any special option for transient study. Therefore the transient condition was realised in two ways -- (i) starting of machine and (ii) changing of motor speed. For these cases the frequency resolution of the DAQ is kept at \unit[0.5]{Hz/line} but the recording time is set to a reasonable value so that the complete start-up is over and steady-state is reached before the end of data recording. The operations are carried out under different loading conditions with the help of the gearbox brake.
+
+\subsubsection{Starting of motor}
+After the current probe is connected with the DAQ system and configuring Vibra Quest the collection procedure may be described as below -- 
+
+\begin{enumerate}
+\item The gearbox brake torque is set to ``0''. \label{begin2}
+\item After powering the MFS on, the motor speed is increased to \unit[30]{Hz}. \label{start2}
+\item Keeping the speed setting at its present position, the MFS is stopped. 
+\item Now the recording of signal is started and while the process is on the motor is started.
+\item The motor picks up to the speed corresponding to \unit[30]{Hz} frequency set earlier.
+\item The recording is stopped after the speed has reached a steady value.
+\item After data recording is over the MFS is stopped. \label{stop2}
+\item The same operation is done keeping frequency fixed at \unit[40]{Hz} and \unit[50]{Hz} respectively by repeating steps \ref{start2}-\ref{stop2} in each case. \label{finish2}
+\item Next the gearbox brake torque is set to ``4''.
+\item Steps \ref{start2}-\ref{finish2} are repeated. \label{over2}
+\item The good motor is removed from MFS and the motor with three broken bars is installed on it.
+\item Steps \ref{begin2}-\ref{over2} are repeated.
+\item The test is over.
+\end{enumerate}
+
+In this manner the current signal at the starting of the motors are obtained. They are stored, processed and prepared for analysis with DWT.
+
+\subsubsection{Changing of speed of motor}
+During this operation for each test the power supply line frequency is not fixed at a particular frequency rather quickly changed by the motor controller. The load of the motor is changed in steps to investigate the effect of load on current signatures.
+
+\begin{enumerate}
+\item The gearbox brake torque is set to ``0''. \label{begin3}
+\item After powering the MFS on, the motor speed is increased to \unit[30]{Hz}. \label{start3}
+\item The recording of current signal is started after the speed has reached a steady value.
+\item With recording in progress the speed of the motor is increased by quickly increasing the line frequency by an approximate amount of \unit[10]{Hz} from the motor controller.
+\item Data recording is stopped after the machine has reached a new steady speed.
+\item After recording is over MFS is stopped. \label{stop3}
+\item The same operation is done keeping initial frequency at \unit[40]{Hz} and \unit[50]{Hz} respectively and subsequently increased by about \unit[10]{Hz} by repeating steps \ref{start3}-\ref{stop3} in each case. \label{finish3}
+\item Next the gearbox brake torque is set to ``4''.
+\item Steps \ref{start3}-\ref{finish3} are repeated. \label{over3}
+\item The good motor is removed from MFS and the motor with three broken bars is installed on it.
+\item Steps \ref{begin3}-\ref{over3} are repeated.
+\item The test is over.
+\end{enumerate}
+
+The current during the change of speed for both the healthy and faulted motors are obtained through the foregoing process. These are stored, processed and prepared for analysis.
+
+
+
+\chapter{Results and Analysis} \label{results}
+The collection of data from the MFS for healthy as well as faulted conditions may be called the simulation part of the work. The data collected from the simulation are divided into two broad sets, one for the healthy motor and the other for the motor with broken rotor bars. Each of these sets comprises the stator current data collected from the respective motor with the gearbox brake set at positions ``0'' and ``4'' on a scale of $0-5$. The specification of the gearbox torque setting is provided in \ref{mechspec}. The loading to the motors will be referred to as `gearbox brake position' or `gearbox torque' throughout the document. For each loading there are three categories of data, steady-state, start-up and change of speed. The steady-state and start-up current data are marked by the line frequency during the test and for change of speed the data are marked by the initial frequency during the test.
+
+\section{Analysis of steady-state current}
+The stator current at steady-state collected following the required norms mentioned in \ref{sso} are initially analysed with the Data Analysis utility of Vibra Quest. It can show amplitude vs frequency spectrum of the recorded data. Since the twice slip frequency sideband components that are indicative of rotor faults can be as low as 0.1\% of the main supply frequency component, normal linear scale amplitude spectrum cannot show any of them. The scale of the magnitude axis, therefore, is changed to dB for detecting those small variations caused by the fault. The resulting values of the frequency components and the plots are observed and recorded for future reference. The steady-state data are then analysed by the developed FFT program. Since the output of this program is not in dB scale, they have to be further processed to get the values in dB by computing $20\log_{10}$ of each value. The frequency scale is further adjusted so that the values form a meaningful frequency axis. The final data are plotted with the help of `gnuplot' program under GNU/Linux environment and the values are noted. These values are compared with those obtained from Vibra Quest and they are found identical. The current amplitude spectra for both healthy and faulted motor at different supply frequencies with gearbox brake positions at ``0'' and ``4'' respectively are presented in the following subsections with the frequency and amplitude values of the sideband components. The slip is calculated from the recorded tachometer readings and twice slip frequency sidebands are calculated using (\ref{sb}). These components are also looked for on the plots.
+
+The steady-state data are also analysed with DWT for any identification. The wavelet transform is a method best suited for time-varying and non-stationary signal analysis and no noticeable indication from the analysis with levels up to 12 and wavelets up to Daubechies 8 (db8) was found that can discriminate a faulted motor from a healthy one. The resulting plots are not presented in this context.
+
+\clearpage
+\subsection{Current amplitude spectrum at gearbox brake position ``0''}
+Fig. \ref{hb030ss} shows the stator current amplitude spectrum at supply frequency \unit[30]{Hz} of the two motor with gearbox brake torque kept at position ``0''. The plots are drawn at the close neighbourhood of the \unit[30]{Hz} frequency.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb030ss
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h030}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b030}}
+\caption{Current spectrum at \unit[30]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar  with gearbox brake torque ``0''} \label{hb030ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	& 1803.75 & rpm & & \\			 
+Rotor speed, $N_{r}$	& 1744	& rpm& & \\		
+Slip, s	& \multicolumn{4}{l}{0.033125} \\			
+Frequencies & Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)& \multicolumn{2}{c}{30.062500}	& 84.388367 &  \\ 
+Left sideband (Hz) & 28.070833 & 28.04688 & 33.914567 & 50.473800 \\
+Right sideband (Hz)& 32.054167 & 32.06250 & 29.163752 & 55.224616 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb030ss} for healthy motor} \label{h030sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	& 1803.75 & rpm & & \\			 
+Rotor speed, $N_{r}$ & 1742	& rpm& & \\		
+Slip, s	& \multicolumn{4}{l}{0.034234} \\			
+Frequencies & Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)& \multicolumn{2}{c}{30.062500}	&83.884955 &  \\ 
+Left sideband (Hz) & 28.004167 &28.00000  & 35.172544 & 48.712411 \\
+Right sideband (Hz)& 32.120833 & 32.12500 & 35.108233 & 48.776721 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb030ss} for motor with broken rotor bars}\label{b030sst}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb040ss
+Fig. \ref{hb040ss} shows the stator current amplitude spectrum at supply frequency \unit[40]{Hz} of the two motor with gearbox brake torque kept at position ``0''. The plots are drawn at the close neighbourhood of the \unit[40]{Hz} frequency.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h040}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b040}}
+\caption{Current spectrum at \unit[40]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar with gearbox brake torque ``0''} \label{hb040ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	& 2401.875& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2340	& rpm& & \\		
+Slip, s			  	& \multicolumn{4}{l}{0.025761} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{40.03125}	& 80.927318	&  \\ 
+Left sideband (Hz) 		& 37.96875 & 37.96875 & 35.540558 & 45.386759 \\
+Right sideband (Hz)		& 42.09375 & 42.09375 & 35.126881 & 45.800437 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb040ss} for healthy motor}\label{h040sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	&  2403.75		& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2341		& rpm& & \\		
+Slip, s			  	& \multicolumn{4}{l}{0.026105} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{40.0625}	&82.395045 	&  \\ 
+Left sideband (Hz) 		& 37.970833 & 37.96875  & 36.109602 & 46.285442 \\
+Right sideband (Hz)		& 42.154166 & 42.15625 & 37.7083563 & 44.686689 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb040ss} for motor with broken rotor bars} \label{b040sst}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb050ss
+Fig. \ref{hb050ss} shows the stator current amplitude spectrum at supply frequency \unit[50]{Hz} of the two motor with gearbox brake torque kept at position ``0''. The plots are drawn at the close neighbourhood of the \unit[50]{Hz} frequency.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h050}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b050}}
+\caption{Current spectrum at \unit[50]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar with gearbox brake torque ``0''} \label{hb050ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	& 3001.875& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2941	& rpm& & \\		
+Slip, s			  	& \multicolumn{4}{l}{0.020278} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{50.03125}	& 82.532278	&  \\ 
+Left sideband (Hz) 		& 48.002083 & 47.9375 & 53.075524 & 29.456754 \\
+Right sideband (Hz)		& 52.060416 & 52.1875 & 33.600034 & 48.932243 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb050ss} for healthy motor} \label{h050sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``0'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	& 3002.8125	& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2938	& rpm& & \\		
+Slip, s			  	& \multicolumn{4}{l}{0.021583} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{50.046875}	& 80.728837	&  \\ 
+Left sideband (Hz) 		& 47.886458 & 47.890625 & 35.340121 & 45.388715\\
+Right sideband (Hz)		& 52.207291 & 52.1875 &   38.898048 & 41.830787 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb050ss} for motor with broken rotor bars} \label{b050sst}
+\end{table}
+
+\clearpage
+\subsection{Current amplitude spectrum at gearbox brake position ``4''}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb430ss
+Fig. \ref{hb430ss} shows the stator current amplitude spectrum at supply frequency \unit[30]{Hz} of the two motor with gearbox brake torque kept at position ``4''. The plots are drawn at the close neighbourhood of the \unit[30]{Hz} frequency.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h430}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b430}}
+\caption{Current spectrum at \unit[30]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar  with gearbox brake torque ``4''} \label{hb430ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	& 1802.8125& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 1725	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.043161} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{30.046875}	& 83.344796 &  \\ 
+Left sideband (Hz) 		& 27.453125 & 27.453125 & 35.041129 & 48.303666 \\
+Right sideband (Hz)		& 32.640625 & 32.671875 & 32.029754 & 51.315041 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb430ss} for healthy motor} \label{h430sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	& 1803.75	& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 1725	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.043659} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{30.0625}& 84.619004 &  \\ 
+Left sideband (Hz) 		& 27.4375 & 27.421875 & 30.944131 & 53.674872 \\
+Right sideband (Hz)		& 32.6875 & 32.703125 & 33.872390 & 50.746613 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb430ss} for motor with broken rotor bars} \label{b430sst}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb440ss
+Fig. \ref{hb440ss} shows the stator current amplitude spectrum at supply frequency \unit[40]{Hz} of the two motor with gearbox brake torque kept at position ``4''. The plots are drawn at the close neighbourhood of the \unit[40]{Hz} frequency.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h440}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b440}}
+\caption{Current spectrum at \unit[40]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar with gearbox brake torque ``4''} \label{hb440ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	&2400.9375 & rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2323	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.032461} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{40.015625}	& 82.238144 &  \\ 
+Left sideband (Hz) 		& 37.417708 & 37.390625 & 34.313047 & 47.925097\\
+Right sideband (Hz)		& 42.613541 & 42.609375 & 33.128606 & 49.109538 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb440ss} for healthy motor} \label{h440sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	& 2400.9375	& rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2319	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.034127} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{40.015625 }& 82.430233 &  \\ 
+Left sideband (Hz) 		& 37.284375 & 37.28125 & 36.465630 & 45.964603 \\
+Right sideband (Hz)		&  42.746875 & 42.75 &   37.978058 & 44.452175
+\end{tabular}
+\caption{Values from Fig.~\ref{hb440ss} for motor with broken rotor bars} \label{b440sst}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% hb450ss
+Fig. \ref{hb450ss} shows the stator current amplitude spectrum at supply frequency \unit[50]{Hz} of the two motor with gearbox brake torque kept at position ``4''. The plots are drawn at the close neighbourhood of the \unit[50]{Hz} frequency.
+
+\begin{figure}[htbp]
+\centering
+\subfigure[]{\includegraphics[width=77mm]{h450}}
+%\hspace{1mm}
+\subfigure[]{\includegraphics[width=77mm]{b450}}
+\caption{Current spectrum at \unit[50]{Hz} of a (a) healthy motor and (b) motor with broken rotor bar with gearbox brake torque ``4''} \label{hb450ss}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Healthy} \\ 
+Synchronous speed, $N_{s}$	&3001.875  & rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2923	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.026275} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{50.03125}	& 83.679053 &  \\ 
+Left sideband (Hz) 		& 47.402083 & 47.359375 & 33.452724 & 50.226329 \\
+Right sideband (Hz)		& 52.660416 & 52.6875 &   32.119577 & 51.559476
+\end{tabular}
+\caption{Values from Fig.~\ref{hb450ss} for healthy motor} \label{h450sst}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lllll}
+Brake position	& ``4'' & & & \\			
+Motor &	\multicolumn{4}{l}{Broken rotor	bar} \\ 
+Synchronous speed, $N_{s}$	& 3001.875 & rpm & & \\			
+Rotor speed, $N_{r}$ 	  	& 2929	& rpm& & \\		
+Slip, s			  	&  \multicolumn{4}{l}{0.024276} \\			
+Frequencies 		  	& Calculated & Obtained & Amplitude (dB) & Difference (dB) \\
+Fundamental (Hz)		& \multicolumn{2}{c}{50.03125}	& 85.134664	&  \\ 
+Left sideband (Hz) 		& 47.602083 & 47.28125 & 36.988617 & 48.1460472 \\
+Right sideband (Hz)		& 52.460416 & 52.78125 & 37.357356 & 47.7773082 
+\end{tabular}
+\caption{Values from Fig.~\ref{hb450ss} for motor with broken rotor bars} \label{b450sst}
+\end{table}
+
+\clearpage
+It is observed from the figures \ref{hb030ss}-\ref{hb450ss} that sideband components are present at twice slip frequencies calculated using the values of slip and actual supply frequency which is slightly different from the value set by the controller in both types of motor but they are much more prominent in case of broken rotor bar. It is also observed that in the case of \unit[30]{Hz} shape of the left sideband is quite different from that of the right sideband whereas in the case of \unit[50]{Hz} the left sideband component is accompanied by another component of very large amplitude with frequency around \unit[48]{Hz} in case of brake position ``0'' and around \unit[49]{Hz} in case of brake position ``4''. For these reasons if the magnitude of the right sideband is considered it can be seen from the values from the tables \ref{h030sst}-\ref{b450sst} that the difference between this component and the fundamental component is less in case of faulted rotor than that in a healthy rotor. It is understood that the effectiveness of the method of current signature analysis with FFT is dependent upon the load on the motor because the slip is changed with the load and the identification of the sideband components is easier in case of high loading. This effect of loading can be seen from figures \ref{hb050ss}-\ref{hb450ss} with supply frequency \unit[50]{Hz}.
+
+It has been found that twice slip frequency sidebands may occur due to other reasons like torque oscillations, voltage oscillations, and other rotor faults \cite{antonino}. Since there are sidebands albeit of very low magnitude in the healthy motor it may be due to torque or voltage oscillation during experiment. And the excess component observed in the \unit[50]{Hz} case is noteworthy and not clearly understood. There is a speculation that some change in frequency might have occurred due to the controller action and become visible due to very high resolution of analysis. 
+
+%%%%%%%%%%%%%%%%%%%%%% DWT RESULTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analysis of stator current at start-up with DWT}
+The stator current signal recorded at the time of starting of both the motors is decomposed using the developed DWT program using Daubechies wavelets. The convention described in \cite{stark} and \cite{waveletug} to describe the family of Daubechies wavelets has been followed in the development of programs as well as in this thesis. In this convention a Daubechies wavelet which has `n' vanishing moments is described as `dbn' and the number of corresponding filter coefficients used to implement the DWT algorithm is `2n'. In this style of expressing the well-known Haar wavelet is same as `db1' wavelet with 2 coefficients. The filter coefficients for db wavelets given in \cite{daub} by I.~Daubechies up to n=10 are used in the developed programs. The current data has been analysed using db wavelets for vanishing moments up to 8 and found that the higher the value of n the easier is to get smaller details from the signal. The Daubechies 8 (db8) wavelet have been used for all the DWT operations. The signal is decomposed to a certain level and then reconstructed to find the Approximation and Detail signals. By examining the Detail (D) signals up to first eight levels of DWT it has been found that no specific distinction could be made between a healthy motor and the motor with broken rotor bars. Some differences are found in the wavelet coefficients when levels 9 and 10 are examined. The current signal at starting of motor, its Approximation signal of level 10 ($\textrm{A}_{10}$), and Detail signals of levels 9 and 10 ($\textrm{D}_{10}$ and $\textrm{D}_{9}$) for both the motors are presented next. 
+
+\clearpage
+\subsection{DWT of stator current at start-up with gearbox brake position ``0''}
+
+Fig. \ref{hb030st} shows the stator current during staring of the motors at supply frequency \unit[30]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h030st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b030st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0'' and steady-state frequency \unit[30]{Hz}} \label{hb030st}
+\end{figure}
+
+\clearpage
+
+Fig. \ref{hb040st} shows the stator current during staring of the motors at supply frequency \unit[40]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h040st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b040st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0'' and steady-state frequency \unit[40]{Hz}} \label{hb040st}
+\end{figure}
+
+\clearpage
+
+Fig. \ref{hb050st} shows the stator current during staring of the motors at supply frequency \unit[50]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h050st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b050st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0'' and steady-state frequency \unit[50]{Hz}} \label{hb050st}
+\end{figure}
+
+\clearpage
+\subsection{DWT of stator current at start-up with gearbox brake position ``4''}
+
+Fig. \ref{hb430st} shows the stator current during staring of the motors at supply frequency \unit[30]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h430st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b430st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4'' and steady-state frequency \unit[30]{Hz}} \label{hb430st}
+\end{figure}
+
+\clearpage
+Fig. \ref{hb440st} shows the stator current during staring of the motors at supply frequency \unit[40]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h440st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b440st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4'' and steady-state frequency \unit[40]{Hz}} \label{hb440st}
+\end{figure}
+
+\clearpage
+Fig. \ref{hb450st} shows the stator current during staring of the motors at supply frequency \unit[50]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h450st}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b450st}}
+\caption{DWT reconstruction (levels 9 and 10) of start-up current of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4'' and steady-state frequency \unit[50]{Hz}} \label{hb450st}
+\end{figure}
+
+\clearpage
+After examination of figures \ref{hb030st}-\ref{hb450st} it is observed that the reconstructed Detail signals of level 9 and 10 show some differences between the healthy and the faulted motors run with same operating conditions. 
+
+Before the examination of the signals at the instant of starting one thing is noted that there are some sharp changes at the very instant of starting of recording of the current signals. These changes are, however, not distinct up to the level 8 of decomposition. These may be due to introduction of some low-frequency signals at the time-instant when the recording is started by the DAQ. This feature is not considered in the analysis of the waveforms.
+
+First the reconstructed Detail signal of level 9 is considered and observed that there is a change in the magnitudes of the coefficients in the vicinity of the time-instant when the motors are started. It is also noted that the magnitudes are low in the case of the motor with broken rotor bar as compared to the case of healthy motor in all the cases of start-up with gearbox position ``0'' or ``4'' except the case shown in fig.~\ref{hb450st} where the shapes of the waveforms are almost identical. 
+
+On examining the Detail signals of level 10 it is found that in all the cases after the starting transient is over and steady-state is attained by the stator current this level is almost free of any variations or ``ups and downs'' in case of healthy motor whereas there are ``ups and downs'' present though of very small amplitude in case of faulted motor. In case there are variations in both the motors the instants of such variations are more in case of the faulted motor.
+
+\clearpage
+\section{Analysis of current during change of speed with DWT}
+\subsection{DWT of stator current during change of speed with gearbox brake position ``0''}
+Fig. \ref{hb030sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[30]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h030sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b030sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[30]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0''} \label{hb030sc}
+\end{figure}
+
+\clearpage
+Fig. \ref{hb040sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[40]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h040sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b040sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[40]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0''} \label{hb040sc}
+\end{figure}
+
+\clearpage
+Fig. \ref{hb050sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[50]{Hz} with gearbox brake torque kept at position ``0'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h050sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b050sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[50]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``0''} \label{hb050sc}
+\end{figure}
+
+\clearpage
+\subsection{DWT of stator current during change of speed with gearbox brake position ``4''}
+
+Fig.~\ref{hb430sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[30]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h430sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b430sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[30]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4''} \label{hb430sc}
+\end{figure}
+
+\clearpage
+Fig.~\ref{hb440sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[40]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h440sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b440sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[40]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4''} \label{hb440sc}
+\end{figure}
+
+\clearpage
+Fig.~\ref{hb450sc} shows the stator current during change of speed of the motors at initial supply frequency \unit[50]{Hz} with gearbox brake torque kept at position ``4'' its DWT Approximation and Detail of level 9 and 10 using Daubechies 8 (db8) wavelet.
+
+\begin{figure}[h]
+\centering
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{h450sc}}
+\subfigure[]{\includegraphics[width=77mm,height=150mm]{b450sc}}
+\caption{DWT reconstruction (levels 9 and 10) of current during speed change from \unit[50]{Hz} of a (a) healthy motor (b) motor with broken rotor bars, with gearbox brake torque ``4''} \label{hb450sc}
+\end{figure}
+
+\clearpage
+Figures \ref{hb030sc}-\ref{hb450sc} show some differences between the healthy and the faulted signals run with almost same operating conditions. Here one thing is to be kept in mind that the change of speed was done manually by changing the setting of the motor speed controller. Although every possible measure has been taken to ensure that the action of changing the speed of the motor be performed in the same manner in all the tests, still the possibility of slight difference in them which may cause any unwanted disturbance cannot be ignored. 
+
+Here also it is noted that there are some sharp changes at the very instant of starting of recording of the current signals and these changes also are not distinct up to the level 8 of decomposition. This feature is not considered in the analysis of the waveforms.
+
+The reconstructed Detail signal of level 9 is examined and observed that there is no distinctive feature which can discriminate the two different motors. 
+
+On examining the Detail signals of level 10 it is found that in all the cases after the transient due to change of speed is over and steady-state is attained by the stator current this level is almost free of any variations or ``ups and downs'' in case of healthy motor whereas there are ``ups and downs'' present though of very small amplitude in case of faulted motor. In case there are variations in both the motors the instants of such variations are more in case of the faulted motor. This observation is almost same as that in the case of starting action.
+
+\chapter{Conclusion}
+\section{Conclusion from present work}
+Condition monitoring has become a very important technology in the field of electrical equipment maintenance, and has attracted more and more attention worldwide. The potential functions of failure prediction, defection identification, and life estimation bring a series of advantage for utility companies: reducing maintenance cost, lengthening equipment's life, enhancing safety of operators, minimising accident and the severity of destruction, as well as improving power quality. Due to these benefits condition monitoring is now a topic of immense interest to power system engineers as well as researchers.
+
+Research in recent years show that advanced signal processing techniques are of huge prospect in developing novel condition monitoring systems. Keeping this in mind computer programs for signal processing using FFT and DWT algorithm has been developed. And using these programs analysis of stator current has been done for a healthy motor and a motor with broken rotor bars of identical specification with the help of the Machinery Fault Simulator (MFS) tool developed by Spectra Quest, Inc., USA. 
+
+The results obtained from the application of fast Fourier transform (FFT) on the steady-state current signals establish the features of traditional methods of motor current signature analysis (MCSA) where presence of broken rotor bar can be identified by the presence of prominent frequency components known as `twice slip frequency sidebands' in the current amplitude spectrum with respect to frequency. They also establish the difficulties associated with this method like --
+\begin{enumerate}[(i)]
+\item This technique is applicable only to steady-state signals.
+\item It greatly depends on the load to the machine and components due to fault are very difficult to identify in no-load or lightly loaded conditions. 
+\item A very high resolution of frequency scale is needed for correct identification of very close frequency components.
+\item A very large time is required for sampling and recording by the data acquisition system due to high resolution.
+\item Linear scale for current amplitude is not capable of showing the fault components and so dB scale is required.
+\end{enumerate} 
+
+The results obtained from the application of discrete wavelet transform (DWT) on the stator current shows some features which definitely can be used to diagnose the faults due to broke rotor bars in a motor. These techniques have the capability of analysing transient signals. From the results presented and discussed in chapter \ref{results} it is found that the high-level Detail signals (i.e., very low frequency components) of stator current contain sustained variations in amplitude after some quick change as starting or change of speed. The analysis of starting current also shows the difference in amplitudes of Detail signal at the close neighbourhood of the instant of starting, which is almost distinctive of an abnormal condition. There are certain advantages of these modern techniques which are prevalent in the foregoing tests.
+\begin{enumerate}[(i)]
+\item The capability of analysing signals during transient conditions.
+\item Very high resolution for the recorded data is not required since the method is itself capable of  analysing with increasing resolution. 
+\item The time required for sampling and recording is very short.
+\item Multiple frequency ranges can be selected by selecting appropriate level.
+\item The results are almost same in different loading conditions. So the method is not greatly dependent on loading.
+\end{enumerate}
+
+In the present study the advanced signal processing techniques like DWT along with traditional technique of FFT have been used to develop a diagnosis scheme for broken rotor bars in induction motor and the results obtained is hoped to set up a base of condition monitoring technique of induction motor which will be simple, fast and will overcome the limitations of the traditional techniques.
+
+\section{Future Scope}
+The developed programs have been used to study stator currents from the motors offline. They are, however, aimed for online study of different monitoring parameters in addition to stator current with desired method of analysis and level of accuracy. The programs may be further developed in order to enhance reliability, compatibility and versatility, e.g. the incorporation of other popular wavelets such as Morlet, Coiflet, Mexican hat etc.
+
+Although the results from DWT show some difference which can be used to discriminate a faulted machine from a healthy one, they are still not rigidly established so that they can be called as unique features associated with broken rotor bars. There is, therefore, a great scope of work to establish a definite identification scheme based on the DWT results which can identify the amount as well as the severity of different faults in induction motors. This is only possible after studying all the possible motor faults thoroughly. A very simple way for the diagnosis or condition monitoring of induction motor will be possible with the application of DWT for analysing the stator current. 
+
+The non-electrical quantities like speed, vibration are used in mechanical techniques of condition monitoring. Since these mechanical parameters show sudden changes during abnormal condition, another promising scope for condition monitoring is to analyse such parameters with the help of DWT because it is very efficient in analysing sharp changes.
+
+
+\appendix
+\chapter{Apparatus Used}
+
+\section{The Machinery Fault Simulator} \label{MFS}
+The Machinery Fault Simulator by Spectra Quest, Inc. is a tool for studying signatures of common machinery faults without compromising factory production or profits. The system fits on a desktop and weighs about \unit[130]{pounds}. Various faults depending on the situation to be analysed can be introduced either individually or jointly in a totally controlled environment.
+
+\subsection{Visual description}
+\vfill
+\begin{figure}[hb] 
+\centering
+\includegraphics[width=153mm]{mfs_top}
+\caption{Top view of MFS} \label{mfs_top}
+\end{figure} 
+
+\clearpage
+
+\begin{figure}[t] 
+\centering
+\includegraphics[width=150mm]{mfs_front}
+\caption{Front view of MFS} \label{mfs_front}
+\end{figure} 
+
+\begin{figure}[b] 
+\centering
+\includegraphics[width=150mm]{mfs_side}
+\caption{Side view of MFS} \label{mfs_side}
+\end{figure} 
+
+\clearpage
+Figures \ref{mfs_top}, \ref{mfs_front} and \ref{mfs_side} show the major components of the simulator that are listed below:\\ 
+
+\begin{tabular}{rl}
+1. & Variable speed motor controller with ON/OFF switch and speed control \\
+2. & Motor\\
+3. & Coupling \\
+4. & Shaft \\
+5. & Horizontally split bracket bearing housing with removable cap (2)\\
+6. & Rotor disk with tapped holes for introducing unbalance (2)\\
+7. & Clamping collar for locking rotor to shaft (2)\\
+8. & Jacking screws for introducing misalignment (2 Axial, 4 Horizontal, 4 vertical) \\
+9. & Bearings (2)\\
+10. & Small double groove V-belt sheave\\
+11. & Large double groove V-belt sheave\\
+12. & Double V-belt\\
+13. & Belt idler lever\\
+14. & Belt idler roller\\
+15. & Belt idler turn-buckle for varying belt tension\\
+16. & Right angle gearbox with accessible bevel\\
+17. & Magnetic brake - manually adjustable from \unit[0.5-10]{lb-in}; $5/8''$ bore \\
+18. & Rubber isolation feet (6)\\
+19. & Base\\
+20. & Rotor platform \\
+21. & Safety interlock switch\\
+22. & Crank wheel, $5/8''$ bore\\
+23. & Power/Motor wiring access box\\
+24. & Magnetic brake bracket\\
+25. & Gearbox platform\\
+26. & Gearbox shim\\
+27. & Gearbox platform rails\\
+28. & Gearbox platform jack bolts\\
+29. & Base stiffener\\
+30. & Reciprocating Assembly\\
+31. & Bearing Spacer \\
+32. & Spring Support \\
+33. & Linear Bearing\\
+34. & Retainer\\
+35. & Reciprocating Shaft\\
+36. & Reciprocating Shaft Collar \\
+37. & Spring\\
+38. & Reciprocating Lever\\
+39. & Connecting Rod Assembly
+\end{tabular}
+
+\subsection{Standard specifications}
+\subsubsection{Electrical}
+\begin{tabular}{ll}
+Motor: &  $\nicefrac{1}{2}$, 1, 3 HP Marathon Electric Three Phase AC Motor\\
+Controller:& Delta VFD-S Inverter or equivalent\\
+Max. motor RPM:& 10,000 (short duration)\\
+Range:& \unit[0 to 10,000]{rpm} variable\\
+Voltage:& Drive input \unit[120 or 230]{V} AC, single phase, \unit[50/60]{Hz}\\
+\end{tabular}
+
+\subsubsection{Mechanical} \label{mechspec}
+\begin{tabular}{ll}
+Shaft Diameter: &  $5/8''$ diameter, steel\\
+Bearings: &  Two each, sealed rolling element with shaft centring feature\\
+Bearing Housings: &  Two each, aluminium horizontally split bracket for \\
+	& simple and easy changes, tapped to accept transducer mount Bearing \\
+	& Housing\\
+Rotor Base: & Completely movable using Jack Bolts for easy misalignment in \\
+ & all three planes\\
+Vertical Shims: &  Standard Industrial, ``A'' size\\
+Axial Loading: &  Jack bolts\\
+Rotors: & Standard: 2 aluminium, $6''$ diameter with 36 threaded holes at \\
+	& $10^{\circ}$ intervals for introducing unbalance\\
+Sheaves: &  Two double groove ``V'' belt with one set screw mounting and one \\
+       & bush/key mounting\\
+Belt: &  Standard industrial ``V'' Belt\\
+Tensioner: & Positive displacement lever with turn-buckle plus adjustable \\
+	& gearbox platform\\
+Gearbox: &  Accessible three-way straight cut bevel with 1.5:1 ratio\\
+Magnetic Brake: & Manually adjustable, \unit[0.5-10]{lb-in} \\
+	 & (introduces load on gearbox)\\
+Recip. Mech: & Strokes: $1.0''$, $1.5''$, $2.0''$ \\
+	& Resistance Force: Three coiled adjustable springs\\
+Mounting base and & \\
+general structure: &  Aluminium\\
+Foundation: &  Vibration isolators plus stiffeners\\
+Safety Cover: &  Lockable clear, impact resistant hinged plastic cover with \\
+       & motor interlock switch to shut down motor when cover is raised\\
+\end{tabular}
+
+\subsubsection{Physical}
+\begin{tabular}{ll}
+Operating weight: &  Approximately \unit[130]{lbs.}\\
+Size: &  $L = 36''$, $W = 20''$, $H = 21''$ (including safety cover)\\
+Shipping Container: &  Reusable plywood 
+\end{tabular}
+
+\subsubsection{Bearing fault frequencies for MFS components}
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+Component      & Mfg.& Brg.& \# of & R.E.& Pitch & FTF & BPFO & BPFI & BSF \\
+               &     & No. & R.E.& Dia.&  Dia. &     &      &      &      \\
+\hline
+Rotor Brgs $5/8''$ & MB  & ER-& 8 & 0.3125& 1.319& 0.382& 3.052&4.948&1.992\\ 
+ &  & 10K&  & & & & & &  \\ 
+Rotor Brgs $1''$ &MB &ER- &9 &0.3125 &1.548 &0.399 &3.592& 5.408& 2.376 \\ 
+ & &16K & & & & & & & \\ 
+Motor Brgs &NSK & 6203 &8 &0.266 &1.142 &0.3835 &3.066& 4.932& 2.03 \\
+G'Box Brgs &TIM-&LM- &14 &0.214 &1.13 &0.406& 5.688& 8.312& 5.082 \\
+	 &KEN & 11749 &  &  &  & & & & \\
+Idler Brg &MC-& CYR-& 33 &0.1258& 1.3261& 0.453& 14.935& 18.065& 5.223 \\
+          &GILL & 2 1/2 &  &  &  &  &  & &  \\
+\hline
+\end{tabular}\\
+
+The Timken LM11749 contact angle is 9.08 degrees.\\
+The CYR $2\nicefrac{1}{2}$ element defect frequency is 10.446
+
+\subsubsection{AC motor data (Marathon)} \label{motorspec}
+\begin{tabular}{llr}
+Hz & 60 & 50 \\
+HP & 1/2 & 1/3 \\
+RPM  & 3450  & 2850   \\
+Volt & 208-230/460 & 190/380 \\
+FLA & 2.1-2.2/1.1 & 2.0/1.0 \\
+SF & 1.15 & 1.15 
+\end{tabular}\\
+
+\begin{tabular}{|c|c|c|}
+\hline
+Horsepower & Number of Rotor Bars & Number of Stator Slots \\
+\hline
+1/2 & 34 & 24 \\
+1 & 34 & 24 \\
+3 & 34 & 24 \\
+\hline
+\end{tabular}
+
+\subsubsection{AC inverter (Delta VFD-S)}
+\begin{tabular}{ll}
+Input & 1 Ph \unit[9.7]{A}/3 Ph \unit[5.1]{A} \unit[200-240]{V} \unit[50/60]{Hz}\\
+Output & 3 Ph \unit[0-240]{V} \unit[4.2]{A} \unit[1.6]{KVA} \unit[1]{HP}\\
+Frequency range & \unit[1-400]{Hz}\\
+Enclosure & Type 1
+\end{tabular}
+
+\subsubsection{Gearbox data}
+\textsl{Current}\\
+
+\begin{tabular}{ll}
+Ratio: & 1.5:1 \\
+Gearbox Model: & Hub City M2\\
+Pitch Angle Gear: & $56^{\circ} 19'$\\
+Pitch Angle Pinion: & $33^{\circ} 41'$\\
+Pressure Angle for Gear and Pinion: & $20^{\circ}$ \\
+Material: & Forged steel\\
+Backlash tolerance: & \unit[0.001-0.005]{inches}\\
+Pitch diameter pinion: & \unit[1.125]{inches}\\
+Pitch diameter gear: & \unit[1.6875]{inches} \\
+Number teeth pinion: & 18 \\
+Number teeth gear: & 27 \\
+Pinion bearing: & SKF ball S7K (1 bearing)\\
+Gear bearing: & SKF ball DG 16A (3 bearings)
+\end{tabular} \\
+
+\textsl{Old style} \\
+
+\begin{tabular}{ll}
+Ratio: & 1.5:1\\
+Gearbox Model: & Curtis\\
+Input pinion: & 20 teeth\\
+Output shaft gears: & 30 teeth\\
+Gear style: & bevel spur\\
+Bearing type: & Timken cone LM11749; Timken cup LM11710\\
+Bearing config.: & two assemblies on pinion with one assembly at \\
+	& each end of output shaft
+\end{tabular}
+
+\section{Current Probe}
+\subsection*{Model} PR 30ACV
+
+\subsection*{Electrical Characteristics}
+\begin{tabular}{ll}
+Current Range $I_{N}$ : &  \unit[30]{$\textrm{A}_{RMS}$} \\
+Measuring Range : &  \unit[0.5]{A} to \unit[80]{$\textrm{A}_{RMS}$} \\
+Output Sensitivity : &  \unit[100]{mV/A} \\
+Load Impedance : &  $\geq$ \unit[100]{K$\Omega$} \\
+Conductor Position Sensitivity : &  0.5\% \@\unit[50]{Hz} \\
+Error due to adjacent conductor : &  $\geq$ \unit[15]{mA/A}\@\unit[50]{Hz} \\
+Phase Shift at \unit[2]{kHz}\@\unit[10]{A}: & $2^{\circ}$ \\
+Frequency Range : &  \unit[30]{Hz} to \unit[10]{kHz} (\unit[-3]{dB}) \\
+Temperature Coefficient : &  0.01\%/$^{\circ}$C \\
+Working Voltage (see Safety Standards section) : &  \unit[600]{V} $\textrm{AC}_{RMS}$ or DC
+\end{tabular}
+
+\subsection*{Accuracy}
+\begin{tabular}{lcccc}
+Primary Current & \unit[0.5 to 5]{A} & \unit[5 to 10]{A} & \unit[10 to 30]{A} & \unit[30 to 80]{A} \\
+Accuracy (of rdg) & 2\%+\unit[25]{mV} & 2\%+\unit[5]{mV} & 1\%+\unit[5]{mV} & 1\%+\unit[5]{mV} \\
+Phase Error & Not specified & $5^{\circ}$ & $4^{\circ}$ & $3^{\circ}$
+\end{tabular}
+
+\section{Data Acquisition System}
+\subsection*{NI PCI 4474} 
+\begin{tabular}{ll}
+Number of channels & 4, simultaneously sampled \\
+Input configuration & Pseudodifferential \\
+Input coupling & AC or DC, software-selectable \\
+A/D Converter (ADC) resolution & 24 bits \\
+ADC type & Delta-sigma 
+\end{tabular}
+
+\chapter{Program Source Codes and Usage}
+\section{Fast Fourier Transform} 
+\subsection{Program Source Code} \label{pscfft}
+\paragraph{Header File:} \textit{fft/fft.h}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{ffth}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/main.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{fftmain}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/fft.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{fftc}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/bitrev.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{bitrev}
+\end{lgrind}
+}
+\clearpage
+
+\subsection{Important Notes on Usage} 
+
+The following issues are important in order to use the program properly --
+
+\subsubsection{Input file}
+\begin{itemize}
+\item The input file must be an ASCII text file.
+\item The filename must not contain any extension, i.e. it must be a single word without any dots.
+\item It must contain one and only one column with a single value in each line.
+\item The program obtains the number of samples (N) from the file itself by counting the number of lines in the file. Hence, it must not contain any blank line at the beginning, at the end or anywhere in between.
+\item The total number of lines denote the number of samples in one second (N) for the discrete data to be analysed
+\item The number N must be an integral power of 2, this is an essential condition to be fulfilled for the implementation of the fast Fourier transform (FFT)algorithm. The result may be incorrect if N is not an integral power of 2.  
+\end{itemize}
+
+\subsubsection{Output file}
+
+The output files are created in the working directory by the successful execution of the program. 
+
+If the name of the input file is `data' (say), then the output files will be named `data.fft' and 'data.fft.abs', which contain the Fourier transformed data in rectangular and polar forms respectively.
+
+\subsubsection{Execution}
+
+The program consists of 3 parts separated in three files `main.c', `fft.c' and 'bitrev.c'. The directory `fft' contains these three files and a header file `fft.h' by default. The user has to keep the input data file in this directory. Considering `data' to be the input file the following steps are to be followed to execute (``run'') the program - 
+	
+\begin{enumerate}[(i)]
+\item First compile the codes with
+\begin{verbatim}
+$ gcc -lm main.c fft.c bitrev.c
+\end{verbatim}
+
+\item On successful compilation, run the executable file with the name of the input file as an argument 
+
+\begin{verbatim}
+$ ./a.out data
+\end{verbatim}
+
+\item On successful execution two new files will be created in the present directory namely `data.fft' and `data.fft.abs'
+\end{enumerate}
+
+\subsubsection{Analysis of the result}
+	
+The result in the output file `data.fft' is written in two columns with number of lines same as that of the input file where the first column contains the real part and the second column contains the imaginary part of the Fourier transformed data.
+
+The result in the output file `data.fft.abs' is written in three columns with number of lines same as that of the input file. The first column is the serial number staring from 0, the second column contains the magnitude and the third column contains the argument the Fourier transformed data. This has been done to facilitate the plotting of the amplitude and phase spectra of the input signal directly from the contents of this file.
+
+\subsubsection{Plotting}
+
+The data written in the output file `data.fft.abs' can be viewed in the graphical form with the help of any software with plotting facility. GNU/Linux has got a very fine plotting program called `gnuplot'. A sample command to plot the amplitude spectrum from the above-mentioned file is shown below 
+
+\begin{verbatim}
+gnuplot> plot "data.fft.abs" using 1:2 with lines
+\end{verbatim}
+
+The source codes are presented in \ref{pscfft}. The developed programs have been tested by executing on various data with different attributes and the results obtained thereof have been found satisfactory.
+
+
+\section{Discrete Wavelet Transform}
+\subsection{Program source code} \label{pscdwt}
+\paragraph{Header File:} \textit{dwt/dwt.h}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwth}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/main.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwtmain}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/dwt.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwtc}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/recon.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{recon}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/select.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{select}
+\end{lgrind}
+}
+
+\subsection{Important Notes on Usage} 
+
+The important points for proper use of the program are described next --
+
+\subsubsection{Input file} \label{fftreq}
+\begin{itemize}
+\item The input file must be an ASCII text file.
+\item The filename must not contain any extension, i.e. it must be a single word without any dots.
+\item It must contain one and only one column with a single value in each line.
+\item The program obtains the number of samples (N) from the file itself by counting the number of lines in the file. Hence, it must not contain any blank line at the beginning, at the end or anywhere in between.
+\item The total number of lines denote the number of samples in one second (N) for the discrete data to be analysed
+\item The number N must be an integral power of 2, this is an essential condition to be fulfilled for the implementation of the DWT algorithm. The result may be incorrect if N is not an integral power of 2.  
+\end{itemize}
+
+\subsubsection{Execution}
+
+The program consists of four parts separated in four files `main.c', `dwt.c', `recon.c' and 'select.c'. The directory `dwt' contains these four files and a header file `dwt.h' by default. The user has to keep the input data file in this directory. Considering `data' to be the input file the following steps are to be followed to execute (``run'') the program - 
+	
+\begin{enumerate}[(i)]
+\item First compile the codes with
+\begin{verbatim}
+$ gcc -lm main.c dwt.c recon.c select.c
+\end{verbatim}
+
+\item On successful compilation, run the executable file with the number n of dbn and desired level as argument, e.g. if analysis is to be done using db2 wavelet for level 4 then the command is to be 
+
+\begin{verbatim}
+$ ./a.out data 2 4
+\end{verbatim}
+
+\item On successful execution two new files will be created in the present directory namely `trfl' and `data4'
+\end{enumerate}
+
+\subsubsection{Output file}
+
+The result in the output file `trfl' is written in two columns where the first column contains the trend part and the second column contains the fluctuation part of the signal for the specified level.
+
+The result in the output file `data4' is written in two columns. The first column is the averaged signal and the second column contains the detail signals after reconstruction from the subsignals of that level. The plotting of the signals can be done directly from the contents of this file.
+
+\subsubsection{Plotting}
+
+The data written in the output file `data4' can be viewed in the graphical form with the help of any software with plotting facility. There is one note of caution that the file also contain some descriptive lines in the beginning, which start with the character \#. This has been used because these lines are considered as comment lines in `gnuplot'. A sample command to plot the averaged signal from the above-mentioned file --
+
+\begin{verbatim}
+gnuplot> plot "data4" using 1 with lines
+\end{verbatim}
+
+\clearpage
+
+%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{IEEEabrv,newbib}
+\bibliographystyle{IEEEtran}
+
+
+%%%%%%%%%%%%%% END %%%%%%%%%%%%%%%%%
+\end{document}
+

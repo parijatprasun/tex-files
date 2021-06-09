@@ -1,0 +1,209 @@
+\documentclass[conference]{IEEEtran}
+% some very useful LaTeX packages include:
+\usepackage{cite}      % Written by Donald Arseneau
+%\usepackage{graphicx}  % Written by David Carlisle and Sebastian Rahtz
+\usepackage[pdftex]{graphicx}
+%\usepackage{psfrag}    % Written by Craig Barratt, Michael C. Grant,
+\usepackage{subfigure} % Written by Steven Douglas Cochran
+\usepackage{url}       % Written by Donald Arseneau
+%\usepackage{stfloats}  % Written by Sigitas Tolusis
+%\usepackage{amsmath}   % From the American Mathematical Society
+%\interdisplaylinepenalty=2500
+%\usepackage{array}
+%\usepackage[hypertex]{hyperref}
+%\usepackage[pdftex,hypertexnames=false]{hyperref}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor IEEEtran}
+
+\begin{document}
+
+% paper title
+\title{Application of Wavelet Transform in Condition Monitoring of Induction Motor}
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+\authorblockN{Parijat Prasun Pal}
+\authorblockA{}
+\and
+\authorblockN{Dr.~P.~Chattopadhyay}
+\authorblockA{}
+\and
+\authorblockN{Dr.~G.~Bandyopadhyay}
+\authorblockA{}
+}
+
+% avoiding spaces at the end of the author lines is not a problem with
+% conference papers because we don't use \thanks or \IEEEmembership
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\authorblockN{Michael Shell\authorrefmark{1},
+%Homer Simpson\authorrefmark{2},
+%James Kirk\authorrefmark{3}, 
+%Montgomery Scott\authorrefmark{3} and
+%Eldon Tyrell\authorrefmark{4}}
+%\authorblockA{\authorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: mshell@ece.gatech.edu}
+%\authorblockA{\authorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\authorblockA{\authorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\authorblockA{\authorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+% use only for invited papers
+%\specialpapernotice{(Invited Paper)}
+
+% make the title area
+\maketitle
+
+\begin{abstract}
+The aim of this paper is to explore the various aspects of the predictive maintenance technique known as Condition Monitoring of electrical machines. Firstly, the thesis focuses on the emerging methods of Wavelet transform for current analysis as compared to the classical methods of Fourier transform. Next it discusses the development and application of computer programs developed for signal analysis implementing the decimation-in-frequency algorithm for fast Fourier transform (FFT) and concept of filter banks for discrete wavelet transform (DWT) using Daubechies wavelets for the diagnosis of broken rotor bars in induction motors. Finally the results obtained from the execution of the programs are presented and analysed.
+
+\textit{Keywords--} Condition Monitoring, Fast Fourier transform, Discrete Wavelet transform
+\end{abstract}
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+%
+% for peerreview papers, inserts a page break and creates the second title.
+% Will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+% no \PARstart
+Condition monitoring is a maintenance practice where a comprehensive program of data collection and analysis provide early detection of a problem and identify the need for maintenance based on the condition of the monitored equipment. Thus it allows maintenance to be performed in a planned and systematic manner before an equipment fails. Depending upon the monitoring parameters some important monitoring techniques are (i) mechanical, where vibration and speed are monitored, (ii) chemical, (iii) thermal, and (iv) electrical \cite{Penman}. Among the various techniques Motor Current Signature Analysis (MCSA) is one such technique that is being widely used for the detection of different motor faults \cite{00897122-6}. 
+
+Since induction motors are extensively used in various industries, the condition based maintenance, on-line monitoring, fault detection and diagnosis of these motors are of utmost importance in order to avoid catastrophic failures. The faults that commonly occur in induction motors are stator winding faults generally caused by insulation breakdown, broken rotor bars due to pulsating loads or direct online starting, bearing problems, and air-gap eccentricities \cite{rps6}. MCSA are effectively used in detection of these faults due to that fact that the harmonic components of stator current are directly related to the unique rotating flux components caused by these faults \cite{t32pg145}. Moreover it offers the facilities like remote operation and non-invasion compared to the traditional and most common technique of vibration analysis.
+
+The analysis of the motor current for determining the harmonic components is essentially done with the help of fast Fourier Transform (FFT). But FFT is, however, not appropriate to analyse signals that has a transitory characteristic. The advantages of using Wavelet techniques for fault monitoring and diagnosis of induction motors are increasing because these techniques help perform stator current signal analysis during transients. The wavelet technique can be used for a localised analysis in the time-frequency or time-scale domain \cite{amara}. 
+
+Keeping these view points in mind the investigation aims to design and develop an on-line monitoring and incipient fault detection scheme of induction motors by assessing the signature of the motor line current. Among various motor faults, proposed investigation will be restricted to \emph{broken rotor bar} faults only. For detecting broken rotor bars the traditional methods of MCSA with the help of FFT \cite{00873206} have some limitations because these methods are applicable to steady-state conditions only and are very much dependent upon load to the motor \cite{antonino}. Moreover, these methods require very high resolution analysis . Proposed work aims to eliminate these limitations of present technology by using advanced signal processing tools of wavelet transform and related methods, which may increase the ability of automatic diagnosis.
+
+\section{Proposed Method}
+
+The scheme of the woke consists of two major parts, namely (i) simulation of different induction motor faults and (ii) signal processing. That is the flow of the work goes like this: first the fault to be studied is reproduced or simulated with the proper choice of monitoring parameter like stator current, vibration, temperature, etc. For the present work the monitoring technique is MCSA and therefore the signal required to be monitored is the stator current. The generated data corresponding to that faults are collected and stored. The collected data or signals are then processed with appropriate signal processing algorithm such as fast Fourier transform (FFT) or Wavelet transform (WT) so that the specific feature associated with the fault can be extracted. And finally depending upon these features the proper diagnostic strategy may be adopted. 
+
+For the simulation part of the work the components used are -- (i) Machinery Fault Simulator (MFS), a tool for simulating various types of induction motor faults initially fitted with a healthy motor. (ii) Motor with broken rotor bars of same specification, (iii) Computer with four channel Data Acquisition system (DAQ), (iv) Current probe for capturing current signal from motor, (iv) Vibra Quest Pro software for interfacing with the data acquisition system, storage of signal and initial analysis.
+
+The signal processing part of the scheme, has been designed to incorporate two categories of analysis, steady-state and transient. The methods used for them are (i) Fast Fourier transform (FFT), (ii) Discrete wavelet transform (DWT). Keeping this in mind computer programs for digital signal processing implementing the above-mentioned techniques have been developed. These programs are meant to perform signal processing operations, namely FFT and discrete wavelet transform (DWT), on the digital data obtained from the DAQ.
+
+\section{Testing and Results}
+The data collected from the simulation are divided into two broad sets, one for the healthy motor and the other for the motor with broken rotor bars. Each of these sets comprises the stator current data collected from the respective motor with the gearbox brake set at positions ``0'' and ``4'' on a scale of $0$-$5$.
+
+%\subsection{Subsection Heading Here}
+%Subsection text here.
+
+%\subsubsection{Subsubsection Heading Here}
+%Subsubsection text here.
+
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class option
+% should be used if it is desired that the figures are to be displayed while
+% in draft mode.
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex
+%\caption{Simulation Results}
+%\label{fig_sim}
+%\end{figure}
+
+% An example of a double column floating figure using two subfigures.
+%(The subfigure.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfigure command, the
+% \label for the overall fgure must come after \caption.
+% \hfil must be used as a separator to get equal spacing
+%
+%\begin{figure*}
+%\centerline{\subfigure[Case I]{\includegraphics[width=2.5in]{subfigcase1}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex
+%\label{fig_first_case}}
+%\hfil
+%\subfigure[Case II]{\includegraphics[width=2.5in]{subfigcase2}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex
+%\label{fig_second_case}}}
+%\caption{Simulation results}
+%\label{fig_sim}
+%\end{figure*}
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+%\caption{An Example of a Table}
+%\label{table_example}
+%\begin{center}
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
+
+\section{Conclusion}
+The conclusion goes here.
+
+% conference papers do not normally have an appendix
+
+% use section* for acknowledgement
+\section*{Acknowledgment}
+% optional entry into table of contents (if used)
+%\addcontentsline{toc}{section}{Acknowledgment}
+The authors would like to thank...
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+% NOTE: BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% standard IEEE bibliography style from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/bibtex
+
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{IEEEabrv,newbib}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to {\LaTeX}}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%\end{thebibliography}
+
+
+% that's all folks
+\end{document}
+

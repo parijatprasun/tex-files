@@ -1,0 +1,382 @@
+%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\title{\underline{\large{Application of Wavelet Transform in Condition Monitoring of Induction Motor}}}
+\date{}
+\author{}
+
+%%%%%%%%%%%% Page Formatting %%%%%%%%%%%%
+%\setlength{\parindent}{0pt}
+\setlength{\footskip}{0.45in}
+\setlength{\textheight}{10in}
+\setlength{\hoffset}{-0.9in}
+%\setlength{\voffset}{-1.1in}
+\setlength{\voffset}{-1in}
+\setlength{\topmargin}{0.35in}
+\setlength{\headheight}{0in}
+\setlength{\textwidth}{6.2in}
+\setlength{\marginparsep}{1in}
+\setlength{\marginparwidth}{1in}
+\setlength{\oddsidemargin}{1.1in}
+%\setlength{\evensidemargin}{1in}
+
+\flushbottom
+\frenchspacing
+%%%%%%%%%%% Picture files %%%%%%%%%%%%%%%
+%\includeonly{fig1,fig4,fig6,fig12,fig13,fig14,fig16,fig17,fig17a,fig18}
+
+%%%%%%%%%%%% Packages Used %%%%%%%%%%%%%%
+\usepackage{units}
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage{enumerate}
+%\usepackage{eepic}
+%\usepackage{charter}
+
+%%%%%%%%%% BEGINNING %%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%% This creates the cover page %%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+{\huge \textbf{Application of Wavelet Transform in}}\\
+\vspace{3.5pt}
+{\huge \textbf{Condition Monitoring of Induction Motor}}\\
+\vspace{0.5in}
+{\LARGE \textsc{Parijat Prasun Pal}}\\
+\vspace{3.5pt}
+{\Large \textsc{Roll No.} \texttt{160406005}}\\
+\vspace{3pt}
+{\Large \textsc{Registration No.} \texttt{160406005} \textsc{of} \texttt{2004-2005}}\\
+\vspace{0.5in}
+{\large \textit{Under the Guidance of}}\\
+\vspace{5pt}
+{\Large \textbf{Dr.~G.~Bandyopadhyay}}\\
+\vspace{3pt}
+{\large and}\\
+\vspace{3pt}
+{\Large \textbf{Dr.~P.~Chattopadhyay}}\\
+\vspace{0.75in}
+{\Large A Term Paper}\\
+\vspace{3pt}
+\Large{submitted in partial fulfilment of}\\
+\vspace{3pt}
+\Large{the requirements for the degree of}\\
+\vspace{4.5pt}
+{\Large \textbf{Master of Engineering (Electrical Engineering)}}\\
+\vspace{3.5pt}
+{\Large Specialization:~\textit{Power Systems}}\\
+\vspace{0.5in}
+\includegraphics[scale=0.8]{besulogo}\\
+\vspace{0.5in}
+{\Large \textsf{Department of Electrical Engineering}}\\
+\vspace{3.5pt}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\Large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\Large West Bengal, India}\\
+\vfill
+{\Large \textbf{July, 2005}} 
+\end{center}
+\end{titlepage}
+
+%%%%%%%%% This makes the next page only with the line in \title{} %%%%%%%%%
+%\maketitle
+
+\thispagestyle{empty}
+\vspace*{0.25in}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{0.75in}
+\begin{center}
+{\Large \textbf{Forward}}
+\end{center}
+
+\noindent We hereby forward the term paper entitled ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' submitted by Parijat Prasun Pal (Registration No. 160406005 of 2004-2005) under our guidance and supervision in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialization: \emph{Power Systems}) from this university.
+
+\vspace{0.85in}
+\begin{flushleft}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay) & & (Dr.~P.~Chattopadhyay)\\
+{\footnotesize Department of Electrical Engineering,} & & {\footnotesize Department of Electrical Engineering,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur} & & {\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103} & & {\footnotesize Howrah -- 711 103}
+\end{tabular}
+
+\vspace{1.0in}
+\noindent \textbf{Countersigned by}
+
+\vspace{0.8in}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay)& & (Dr.~D.~Ghosh)\\
+{\footnotesize Professor and Head,}& & {\footnotesize Dean,}\\
+{\footnotesize Department of Electrical Engineering,}& &{\footnotesize Faculty of Engineering,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur}& &{\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103}& &{\footnotesize Howrah -- 711 103}
+\end{tabular}
+\end{flushleft}
+\clearpage
+
+\thispagestyle{empty}
+\vspace*{2.5in}
+\begin{center}
+{\Large \textbf{Acknowledgement}}
+\end{center}
+
+\noindent I am extremely grateful to my professors and guides Dr.~G.~Bandyopadyay, Professor and Head, and Dr.~P.~Chattopadhyay of the Department of Electrical Engineering, Bengal Engineering and Science University, Shibpur, without whose untiring effort and valuable advices it would have been an uphill task for me to proceed with my term paper. I am also greatly indebted to Dr.~P.~Syam for his critical examination and helpful suggestions for the improvement of my work in every possible respect. A very special thanks to Dr.~J.~Pal for his indispensable guidelines on document preparation and tremendous enthusiasm which made it possible to present this term paper. Moreover the Central Library with its almost exhaustive collection of books have also been a great help to me in the course of pursuing my work. Lastly one should never forget to pay his thanks to all the staff of the Department of Electrical Engineering for their continuous support in every way including the provision of computer and internet facilities.
+
+\vspace{1in}
+\hspace*{3.5in} Parijat Prasun Pal\\
+\clearpage
+
+%%%%%%%%% This creates the Table of Contents %%%%%%%%%%%
+\tableofcontents
+\clearpage
+
+%%%%%%%%%%% Main Document starts %%%%%%%%%%%%%%%
+\section{Introduction}
+\subsection{Importance of Condition Monitoring}
+Maintenance has a significant role to keep a system healthy so as to obtain safe and smooth operation efficiently and cost-effectively. Normally three maintenance practices are adopted for any equipment or plant viz.~(i) Breakdown maintenance, where machines are repaired only after their failure, (ii) Preventive maintenance, where, in order to reduce the chances of unplanned outages, machines are serviced at a regular interval and (iii) Predictive maintenance or Condition Monitoring, where a comprehensive programme of data collection and analysis provide early detection of a problem and identify the need for maintenance based on the condition of the monitored equipment, allowing maintenance to be performed in a planned and systematic manner before an equipment fails. It is, therefore, obvious that Breakdown maintenance is a crude method as well as expensive, whereas the Preventive maintenance is a regular method and reduces chances of breakdown. But the best maintenance strategy involves Predictive maintenance or Condition Monitoring where overall operational cost and plant shutdown time can be minimised. Condition Monitoring is a value addition to a total plant maintenance programme. It can reduce the number of unexpected failure by detecting the progress of failure beforehand and provide a more reliable scheduling tool for routine preventive maintenance programme, thus help achieving economic incentive. \cite{Penman},\cite{rps1} 
+
+The benefits expected from condition monitoring includes: 
+\begin{enumerate}
+\item Minimisation of machinery breakdowns or failures
+\item Lower maintenance cost
+\item Planned and anticipated maintenance
+\item Less repair down time
+\item Longer machine life
+\item Increase in production
+\item Reduction in small parts inventory
+\item Increased plant availability
+\item Increased overall profitability
+\item Greater safety and environmental protection
+\item Increased product quality and reduced waste
+\item Better customer relations
+\item Opportunity to specify and design better plant in future
+\item Substantial energy saving
+\item Verification of condition of new equipment
+\item Checking of repair
+\end{enumerate}
+
+It is, usually, suggested that the condition monitoring of an electrical equipment will yield benefits if a reliable monitoring system exists. This monitoring system can provide sufficient warning for a typical failure, causing a drastic reduction of repair cost. The net benefit will be positive, if the cost of the monitoring system is less than the likely saving in the cost of repairs following faults or defects.
+
+Thus the importance and benefits of condition monitoring technique have made the power engineers interested in employing this technique in addition to the traditional protective measures. Moreover, phenomenal advancements in the field of computational techniques and instrumentation have shown new hope for condition monitoring.
+
+\subsection{Different Monitoring Techniques}
+The effectiveness of condition monitoring greatly depends on the proper choice of monitoring parameters and techniques. Some important monitoring techniques \cite{Penman},\cite{rps1} of electrical machinery are discussed in what follows.
+
+\subsubsection{Mechanical Techniques}
+\paragraph{Vibration Monitoring:} All rotating machinery including motors possess vibration of certain level. When the vibration of a machine increases beyond acceptable level, it results in increase of wear on the machine and lead to its failure. The simplest method of fault detection by vibration measurement technique is to monitor the overall RMS level of vibrating frequency. But in the early stage of the damage, the overall RMS level of signal may not correctly indicate the defect. The frequency spectrum of the vibration signals need to be studied for detection. \cite{rps6},\cite{rps14}
+
+\paragraph{Speed Fluctuation:} Perturbations in load and defects within the rotor circuit of a motor may cause speed fluctuation, which can directly be used as an indicator of rotor damage.
+
+\subsubsection{Electrical Techniques}
+Electrical signals like voltage, current, instantaneous power, and their spectral components, axial flux, air-gap torque can be successfully utilised for detecting potential failure of electrical machines. The stator current waveform of an induction motor can be analysed to spot an existing or the beginning of a failure. This technique is known as Motor Current Signature Analysis (MCSA) and it can perform the same detection of any incipient fault as the other monitoring techniques without accessing the rotating parts. \cite{57}
+
+\subsubsection{Chemical Techniques}
+Chemical degradation of various chemical substances like insulating materials, transformer oil, lubricating oil, etc.~due to heat and other electrical stresses helps to detect the failures in electrical machines. \cite{rps6}
+
+\subsubsection{Thermal Techniques}
+Excessive temperature rise due to supply or loading faults leads to the majority of the electrical machine failures. Hence the measurement of temperature has an important role in the condition monitoring of electrical machines. \cite{rps6}
+
+\section{Condition Monitoring of Induction Motor}
+Induction motors are being used extensively for different industrial applications since several decades. These applications range from intensive care units, defense applications to applications in power stations. Induction machines are called the workhorses of industry due to their widespread use in manufacturing. The heavy reliance of industry on these machines in critical applications makes catastrophic motor failures very expensive. Therefore, safety, reliability,  efficiency and performance are of major concerns of motor application. Hence issue of preventive and condition based maintenance, on-line monitoring, fault detection and diagnosis are of increasing importance.
+
+\subsection{Induction Motor Faults}
+\subsubsection{Stator Faults}
+Induction motor stator faults are mainly due to inter-turn winding faults caused by insulation breakdown, and it was showed in a survey that 37\% of significant forced outages were found to have been caused by stator-windings. \cite{40}
+
+Stator current signature analysis is now a popular tool to find out stator-winding faults \cite{53},\cite{55} with the advantage of cheap cost, easy operation and multifunction. 
+%Fault conditions in induction motors cause the magnetic field in the air-gap of the machine to be nonuniform. This results in harmonics in the stator current which can be signatures of several faults \cite{56}. Beside the capability to detect turn-to-turn insulation faults, it can detect broken rotor bars, rotor eccentricity as well as mechanical faults on bearings \cite{57}-\cite{59}.
+
+\subsubsection{Rotor Faults} 
+Induction motor rotor faults are mainly broken rotor bars as a result of pulsating load or direct on-line starting. It leads to torque pulsation, speed fluctuation, vibration, changes of the frequency component in the supply current and axial fields, combined with acoustic noise, overheating and arcing in the rotor and damaged rotor laminations. The most popular method for rotor fault detection is rotor current signature analysis as mentioned above. Other possible methods include vibration and air-gap monitoring.
+
+\subsubsection{Bearing Faults}
+Rolling element bearings are overwhelmingly used in induction motors and motor reliability studies show that bearing problems account for over 40\% of all machine failures \cite{59}. Incipient bearing faults are detected through vibration and stator current monitoring method, and stator current monitoring has the advantage of noninvasion (requiring no sensors accessing to the rotating part of the motors).
+
+\subsubsection{Air-Gap Eccentricities}
+Air-gap eccentricity must be kept to an acceptable level. There are two types of air-gap eccentricities, static and dynamic. With static eccentricity the minimum air-gap position is fixed in space, while for the dynamic, the center of the rotor and the rotational center do not coincide, so that the minimum air gap rotates \cite{rps6}. Unacceptable levels of them will occur after the motor has been running for a number of years. The air-gap eccentricity can be detected by using the stator core vibration and the stator current monitoring \cite{rps6}. 
+
+\subsection{Different Monitoring Methods for Induction Motor}
+Vibration, thermal, and acoustic analyses are some of the commonly used methods, for predictive maintenance, to monitor the health of the machine to prevent motor failures from causing expensive shut-downs. Vibration and thermal monitoring require additional sensors or transducers to be fitted on the machines. While some large motors may already come with vibration and thermal transducers, it is not economically or physically feasible to provide the same for smaller machines.
+
+The occurrence of a mechanical fault results in an unbalance in the motor windings and/or eccentricity of air-gap, which lead to a change in the air-gap space harmonics distribution. The anomaly exhibits itself in the harmonics spectrum of the stator current \cite{00897122-1}. Therefore by checking the existence of specific harmonics spectrum, detection of mechanical faults is possible. This idea, called MCSA, is based on the on-line monitoring and processing of the stator currents using Fast Fourier Transform (FFT), to detect typical spectrum lines, which arise in faulty systems \cite{00897122-6}. However, empirical diagnostic is more complicated owing to the following reasons --
+
+\begin{enumerate}[(i)]
+\item The stator current spectrum contains not only the components produced by motor faults, but also other components such as characteristic harmonics that exist because of supply voltage distortion, air gap space harmonics, slotting harmonics or load unbalance. 
+\item The signal is always embedded in strong background noise. 
+\item The measurement accuracy of slip and line frequency influences the spectrum line search. 
+\item The diagnostic system subjects to frequent transient and other various kinds of non-stationary interference from both inner and outer side of the motor. 
+\item Several faults may exist at the same time, while for different kinds of faults, the span of the corresponding feature harmonics are different.
+\end{enumerate}
+
+Wavelet transform allows time frequency analysis of signals therefore potentially provide much more information on the processed signal \cite{book}. It uses large scale to analyze low frequency components and small scale to analyze high frequency components, therefore a small short time interference will not influence the overall spectrum. Another advantage is that it achieves a constant relative frequency resolution. For long term varying components, the absolute resolution is high, while for short term varying components, the absolute resolution is low.
+
+\section{Objective}
+Keeping the view points mentioned in the previous section in mind the proposed research work aims to design and develop an on-line monitoring and incipient fault detection scheme of induction motors by assessing the signature of the motor line current. Among various motor faults, proposed investigation will be restricted to possible rotor faults only. This project will concentrate on advanced signal processing techniques like wavelet analysis, which will greatly increase the ability  of automatic diagnosis.
+
+\section{Literature Survey}
+Before undertaking the problem a number of research paper published in different national, international journals and websites \cite{Penman}-\cite{amara} have been reviewed.
+
+The major breakthrough in the field of condition monitoring of rotating electrical machines was reported by Tavner \cite{rps1} in 1986. During the past 20 years, there have been continuing effort at studying and diagnosing faults in ac motor drives. There are a number of existing schemes developed by previous researchers for monitoring the various parts of a three phase induction motor. However, the plethora of fault diagnostics/detection and monitoring investigations can be divided into following categories: 
+
+\subsection{Model-Based Approaches}
+The first category includes traditional lumped-parameter modeling and analysis of faulty motor performance and case history study of actual motor with faults in stator, rotor and bearing. Although not the mainstream of motor condition monitoring, they are considered more suitable and favorable for smaller motors and variable-speed drives.
+
+A mathematical model of squirrel cage induction motor was built as a reference model in \cite{70}, then the deviations between the output of a measurement model and the reference model can be observed to detect and locate rotor faults. It showed the advantage of no need for frequency analysis so that it fits for variable-speed drive monitoring.
+
+\subsection{Thermal Monitoring Approaches}
+Like mechanical vibration and electrical signal, the measurement of temperature \cite{rps2},\cite{rps3} plays a dominant role in condition monitoring of electrical machines. Thermal monitoring of induction motor using bulk conduction parameter based thermal model, to estimate the temperature rise in different parts of the induction motor have been reported by various researchers \cite{rps3},\cite{rps17}. Observer based thermal modeling of induction motor has been presented in \cite{rps19}. Thermal monitoring of induction motor by means of rotor resistance identification has been studied in \cite{rps28}. A sensor-less temperature estimation in a squirrel cage induction motor has been reported in \cite{rps27}. Still more theories and methodologies are yet to be unveiled in this field.
+
+\subsection{Signal-Processing Approaches}
+This category comprises of the investigations that concentrate on the ``on-line'' motor condition monitoring and fault diagnosis using either vibration \cite{rps14} or motor terminal current, voltage, or instantaneous power waveforms \cite{pbc6}. However, most of the recent research has been focused on the practice of current monitoring, especially MCSA, which has showed potential to take the place of the status of vibration monitoring \cite{00873206} because it can provide the same indication without accessing the rotating part of the motor. This technique utilizes results of spectral analysis of stator current to identify an existing or incipient fault of induction motor drives. Traditional Fourier Transform techniques are used for the purpose of spectral analysis.
+
+\subsection{Emerging Technology Approaches}
+Some recent works show the development of various detection and diagnosis techniques for induction motor faults by the help of neural networks, fuzzy logic and AI techniques \cite{pbc2},\cite{pbc4},\cite{pbc5}. Although at present, these applications are limited to only a number of practical implementations, it is believed that these techniques along with advanced signal processing tools like instantaneous power FFT, Park's transformation, bispectrum, high resolution spectral analysis, wavelets \cite{00873206},\cite{00952496}, etc. will have significant role in electrical drives system diagnosis.
+   
+It is reflected from the recent publications that the technique of wavelet packet decomposition is being extensively used for signature analysis of mechanical faults of induction machines \cite{00897122}-\cite{01254628}. Detection of motor bearing damage \cite{01254628},\cite{00929510} and broken rotor bar \cite{00976461} are two major areas of conditional monitoring where wavelet techniques has been applied. 
+
+\section{Scope of Work}
+The Fourier analysis is very useful for many applications where the signals are stationary and it is generally used for induction motor fault detection. The Fourier transform is, however, not appropriate to analyze a signal that has a transitory characteristic such as drifts, abrupt changes, and frequency trends. To overcome this problem, it has been adapted to analyze small sections of the signal at a time. This technique is known as short-time Fourier transform (STFT), or windowing technique. But, the fixed size of the window, as it gives limited precision, is the main drawback of the STFT. The wavelet transform was then introduced with the idea of overcoming the difficulties mentioned above. A windowing technique with variable-size region is then used to perform the signal analysis, which can be the stator current \cite{00539845}. With this tool more precise information on both low- and high-frequency signals are achievable.
+
+The advantages of using wavelet techniques for fault monitoring and diagnosis of induction motors is increasing because these techniques help perform stator current signal analysis during transients. The wavelet technique can be used for a localized analysis in the time-frequency or time-scale domain. It is then a powerful tool for condition monitoring and fault diagnosis.
+     
+Proposed project work aims to eliminate all these limitations of present technology by using advanced signal processing tools of wavelet transform and related methods. Successful carrying out of the proposed work may solve many problems in the field of condition monitoring of induction motor.
+
+\section{Acquaintance with Wavelets}
+\subsection{The Inception of the Concept}
+Wavelets are a recently developed mathematical tool for signal analysis. Informally, a wavelet is a short-term duration wave. Wavelets are used as a kernel function in an integral transform, much in the same way that sines and cosines are used in Fourier analysis or the Walsh functions in Walsh analysis. 
+
+The development of wavelets can be linked to several separate trains of thought, starting with Haar's work in the early 20th century. Notable contributions to wavelet theory can be attributed to Goupillaud, Grossman and Morlet's formulation of what is now known as the CWT (1982), Jan Olov-Strömberg's early work on discrete wavelets (1983), Daubechies' orthogonal wavelets with compact support (1988), Mallat's multiresolution framework (1989), Delprat's time-frequency interpretation of the CWT (1991), Newland's Harmonic wavelet transform and many others since. \cite{wiki}
+
+\subsection{The Need for Wavelets}
+Signal analysts already have at their disposal an impressive arsenal of tools. Perhaps the most well known of these is Fourier analysis, which breaks down a signal into constituent sinusoids of different frequencies. 
+
+For a continuous function of period $T$, the Fourier series is given by --
+\begin{displaymath}
+f(x) = a_{0} + \sum_{n=1}^{\infty} \left( a_{n} \cos n\omega_{0}t + b_{n} \sin n\omega_{0}t \right)
+\end{displaymath}
+where the Fourier coefficients are calculated by,
+\begin{eqnarray*}
+a_{0} & = & \frac{1}{T} \int_{0}^{T} f(t)\,dt \\
+a_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \cos n\omega_{0}t\,dt \\
+b_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \sin n\omega_{0}t\,dt
+\end{eqnarray*}
+
+Another way to think of Fourier analysis is as a mathematical technique for transforming our view of the signal from time-based to frequency-based. Fourier transform is an extension to Fourier's idea to non-periodic functions (or waves). For many signals, Fourier analysis is extremely useful because the signal's frequency content is of great importance. So why other techniques, like wavelet analysis, are needed?
+         
+Fourier analysis has a serious drawback. In transforming to the frequency domain, time information is lost. When looking at a Fourier transform of a signal, it is impossible to tell when a particular event took place. If the signal properties do not change much over time -- that is, if it is what is called a stationary signal -- this drawback isn't very important. However, most interesting signals contain numerous nonstationary or transitory characteristics: drift, trends, abrupt changes, and beginnings and ends of events. These characteristics are often the most important part of the signal, and Fourier analysis is not suited to detecting them. 
+
+In an effort to correct this deficiency, Dennis Gabor (1946) adapted the Fourier transform to analyze only a small section of the signal at a time -- a technique called windowing the signal. Gabor's adaptation, called the Short-Time Fourier Transform (STFT), maps a signal into a two-dimensional function of time and frequency. The STFT represents a sort of compromise between the time- and frequency-based views of a signal. It provides some information about both when and at what frequencies a signal event occurs. However, this information can only be obtained with limited precision, and that precision is determined by the size of the window.
+
+While the STFT compromise between time and frequency information can be useful, the drawback is that once a particular size for the time window is chosen, that window is the same for all frequencies. Many signals require a more flexible approach -- one where the window size can be varied to determine more accurately either time or frequency.
+
+Wavelet analysis represents the next logical step: a windowing technique with variable-sized regions. Wavelet analysis allows the use of long time intervals where more precise low-frequency information is required, and shorter regions where high-frequency information is looked for. Wavelet algorithms process data at different scales or resolutions. The result in wavelet analysis is to see both the forest and the trees, so to speak \cite{amara}.
+
+\subsection{Idea behind Wavelets}
+A wavelet is a waveform of effectively limited duration that has an average value of zero. Comparing wavelets with sine waves, which are the basis of Fourier analysis, it  can be appreciated that sinusoids do not have limited duration -- they extend from minus to plus infinity. And where sinusoids are smooth and predictable, wavelets tend to be irregular and asymmetric. Fourier analysis consists of breaking up a signal into sine waves of various frequencies. Similarly, wavelet analysis is the breaking up of a signal into shifted and scaled versions of the original (or \emph{mother}) wavelet. So signals with sharp changes might be better analyzed with an irregular wavelet than with a smooth sinusoid, just as some foods are better handled with a fork than a spoon. It also makes sense that local features can be described better with wavelets that have local extent.
+
+Therefore, to summarize the procedure of wavelet analysis may run like this -- a wavelet prototype function, called an analyzing wavelet or mother wavelet is adopted and then temporal analysis is performed with a contracted, high-frequency version of the prototype wavelet, while frequency analysis is performed with a dilated, low-frequency version of the same wavelet. Thus the original signal or function can be represented in terms of a wavelet expansion (using coefficients in a linear combination of the wavelet functions). Data operations can be performed using just the corresponding wavelet coefficients.
+
+The problem of cutting a signal can be solved by a fully scalable modulated window that is shifted along the signal and for every position the spectrum is calculated. This process is repeated many times with a slightly shorter (or longer) window for every new cycle and in the end the result will be a collection of time-frequency representations of the signal, all with different resolutions. Because of this collection of representations a multiresolution analysis is possible.
+
+\subsection{Wavelet Analysis Techniques}
+\subsubsection{Continuous Wavelet Transform}
+Mathematically, the process of Fourier analysis is represented by the Fourier transform:
+\begin{displaymath}
+F(j\omega) = \int_{-\infty}^{+\infty} f(t)e^{-j\omega t}\,dt
+\end{displaymath}
+which is the sum over all time of the signal $f(t)$ multiplied by a complex exponential. The results of the transform are the Fourier coefficients $F(j\omega)$, which when multiplied by a sinusoid of frequency $\omega$ yield the constituent sinusoidal components of the original signal.
+
+Similarly, the continuous wavelet transform (CWT) is defined as the sum over all time of the signal multiplied by scaled, shifted versions of the wavelet function $\psi$:
+\begin{displaymath}
+W(s,\tau) = \int f(t)\psi^{\ast}_{s,\tau}(t)\,dt
+\end{displaymath}
+$f(t)$ is decomposed into a set of basis functions $\psi_{s,\tau}(t)$, called wavelets generated from a single basic wavelet $\psi(t)$, the so-called \emph{mother wavelet}, by scaling and translation:
+\begin{displaymath}
+\psi_{s,\tau}(t) = \frac{1}{\sqrt{|s|}} \psi \left( \frac{t- \tau}{s} \right)
+\end{displaymath}
+$s$ is the scale factor, $\tau$ is the translation factor and the factor $|s|^{\nicefrac{-1}{2}}$ is for energy normalization across the different scales.
+
+\begin{figure}[h] 
+\centering
+\includegraphics[scale=0.75]{mw}
+\caption{Some popular \emph{mother wavelets}: (a) Haar, (b) Daubechies 2, (c) Morlet and (d) Mexican hat} \label{fig.1}
+\end{figure} 
+
+\subsubsection{Discrete Wavelet Transform}
+Since the continuous wavelet transformation is achieved  by dilating and translating the mother wavelet continuously over the field of real numbers, it generates substantial redundant information. Therefore, instead of continuous dilation and translation, the mother wavelet may be dilated and translated discretely by careful selection of the terms $s$ and $\tau$. It turns out, rather remarkably, that if scales and positions based on powers of two -- so-called \emph{dyadic} scales and positions are chosen -- then the analysis will be much more efficient and just as accurate. Such an analysis is obtained from the discrete wavelet transform (DWT).
+
+\subsubsection{Wavelet Packet Transform} 
+The wavelet transform is actually a subset of a far more versatile transform, the wavelet packet transform. Wavelet packets are particular linear combinations of wavelets.' They form bases which retain many of the orthogonality, smoothness, and localization properties of their parent wavelets. The coefficients in the linear combinations are computed by a recursive algorithm making each newly computed sequence of wavelet packet coefficients the root of its own analysis tree.
+
+\section{Conclusion}
+Condition monitoring has become a very important technology in the field of electrical equipment maintenance, and has attracted more and more attention worldwide. The potential functions of failure prediction, defection identification, and life estimation bring a series of advantage for utility companies: reducing maintenance cost, lengthening equipment's life, enhancing safety of operators, minimizing accident and the severity of destruction, as well as improving power quality. Due to these benefits condition monitoring is now a topic of immense interest to power system engineers as well as researchers.
+
+Research in recent years show that advanced signal processing techniques are of huge prospect in developing novel condition monitoring systems. Keeping this in mind the project ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' has been undertaken. In this semester a literature survey and concerned studies have been done for the preparation of the background required for the work and the actual work will be carried out in the next two semesters.
+	 
+\clearpage
+%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%
+\begin{thebibliography}{99}
+\bibitem{Penman} J.~Penman, M.N.~Dey, A.J.~Tait and W.E.~Bryan, ``Condition Monitoring of Electrical Devices'', \emph{IEE Proc.}, \textbf{133}, Part B, no.~3, 1986, pp.~164-180.
+\bibitem{rps1} P.J.~Tavner, B.G.~Gaydon and D.M.~Word, ``Monitoring Generators and Large Motors'', \emph{IEE Proc.}, \textbf{133}, Part B, no.~3, 1986, pp.~181-189.
+\bibitem{rps6} P.J.~Tavner and J.~Penman, \emph{Condition Monitoring of Electrical Machines}: Research Studies Press, Ltd., 1987.
+\bibitem{rps14} F.~Nour and J.F.~Watson, ``the monitoring and analysis of transient vibration signals as a means of detecting faults in three phase induction motors'', \emph{Proc. of 28th University Power Engineering Conference}, Stafford, UK, \textbf{1}, 21-23 September, 1993, pp.~178-181.
+\bibitem{57} R.R.~Schoen, B.K.~Lin and T.G.~Habetler \emph{et al.}, ``An unsupervised, on-line system for induction motor fault detection using stator current monitoring'', \emph{IEEE Trans. Ind. Applicat.}, \textbf{31}, no.~6, Nov./Dec.~1995, pp.~1274-1279.
+%\bibitem{Thorson} O.V.~Thorsen and M.~Dalva, ``Methods of condition monitoring and fault diagnosis for induction motors'', \emph{ETEP}, \textbf{8}, no.~5, Sept./Oct.~1998.
+\bibitem{40} G.C.~Stone and J.~Kapler, ``Stator winding monitoring'', \emph{IEEE Ind. Applicat. Mag.}, \textbf{4}, no.~5, Sept./Oct.~1998, pp.~15-20, 
+\bibitem{53} H.~Calis and P.J.~Unsworth, ``Fault diagnosis in induction motors by motor current signal analysis'', in \emph{1999 IEEE Int. Sym. Diagnostics for Electrical Machines, Power Electronics and Drives}, Piscataway, NJ, pp.~237-241.
+%\bibitem{54} M.~Arkan and P.J.~Unsworth, ``Stator fault diagnosis in induction motors using power decomposition'', in \emph{Conf. Rec. 1999 IEEE Industry Applicat. Conf., IEEE, Part \textbf{3}, Piscataway, NJ, 1999, pp.~1908-1912.
+\bibitem{55} M.Y.~Chow, P.M.~Mangum, and S.O.~Yee, ``A neural network approach to real-time condition monitoring of induction motors'', \emph{IEEE Trans. Ind. Electron.}, \textbf{38}, Dec.~1991, pp.~448-453.
+\bibitem{56} R.R.~Schoen and T.G.~Habetler, ``Evaluation and implementation of a system to eliminate arbitrary load effects in current-based monitoring of induction machines'', \emph{IEEE Trans. Ind. Applicat.}, \textbf{33}, Nov./Dec.~1997, pp.~1571-1577.
+\bibitem{58} M.E.H.~Benbouzid, M.Vieira and C.~Theys, ``Induction motors -- faults detection and localization using stator current advanced signal processing techniques'', \emph{IEEE Trans. Power Electron.}, \textbf{14}, Jan.~1999, pp.14-22\bibitem{59} R.R.~Schoen, T.G.~Habetler and F.~Kamran \emph{et al.}, ``Motor bearing damage detection using stator current monitoring'', \emph{IEEE Trans. Ind. Applicat.}, \textbf{31}, Nov./Dec.~1995, pp.~1280-1286.
+\bibitem{00897122-1} H.~Toliyat, T.~Lipo, ``Transient analysis of cage induction machines under stator, rotor bar and end ring faults'', \emph{IEEE Trans. on Energy Conversion}, \textbf{1O}, no.~4, 1995, pp.~241-247.
+\bibitem{00897122-6} G.~Kliman and R.~Koegl, ``Noninvasive detection of broken bars in operating induction motors'', \emph{IEEE Trans. on Energy Conversion}, \textbf{3}, no.~4, 1988, pp.~874-879.
+\bibitem{book} K.P.~Soman and K.I.~Ramachandran, \emph{Insight into Wavelets: From Theory to Practice}, Prentice-Hall of India, 2004.
+\bibitem{pbc6} V.G.~Manohar and P.~Kumar, ``Comprehensive Predictive Maintenance of Electrical Motors in Indian Nuclear Plants'', \emph{An International Journal of Nuclear Power -- Vol.~17, No. 1-3 (2003)}, pp.~39-44.
+\bibitem{70} R.~Wieser, C.~Kral and F.~Pirker, ``On-line rotor cage monitoring of inverter-fed induction machines by means of an improved method'', \emph{IEEE Trans. Power Electron.}, \textbf{14}, 1999, pp.~858-865.
+
+\bibitem{rps2} J.W.~Griffith, R.M.~McCoy and D.K.~Sharma, ``Induction motor squirrel-cage rotor winding thermal analysis'', \emph{IEEE Trans. on Energy Conversion}, \textbf{1}, no.~3, 1986, pp.~22-25.
+\bibitem{rps3} P.H.~Mellor and D.R.~Turner, ``Real time prediction of temperatures in an induction motor using a microprocessor'', \emph{Electric Machines and Power Systems}, \textbf{15}, 1988, pp.~333-352.
+\bibitem{rps17} M.~Chertkov and A.~Shenkman, ``Determination of heat state of normal load induction motors by a no-load test run'', \emph{Electric Machines and Power Systems}, \textbf{21}, 1993, pp.~355-369.
+\bibitem{rps19} H.~Nestler and Ph.K.~Sattler, ``On-line estimation of temperatures in electrical machine by an observer'', \emph{Electric Machines and Power Systems}, \textbf{21}, 1993, pp.~39-50.
+\bibitem{rps28} R.~Beguenane and M.E.H~Benbouzid, ``Induction thermal monitoring by means of rotor resistance identification'', \emph{IEEE Trans. on Energy Conversion}, \textbf{14}, no.~3, 1999, pp.~566-570.
+\bibitem{rps27} Z.~Lazarevic and R.~Radosaljevic, ``A novel approach for temperature estimation in squirrel cage induction motor without sensors'', \emph{IEEE Trans. on Instrumentation and Measurement}, \textbf{48}, no.~3, 1999, pp.~753-757.
+
+\bibitem{00873206} M.E.H.~Benbouzid, ``A Review of Induction Motors Signature Analysis as a Medium for Faults Detection'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{47}, no.~5, October 2000, pp.~984-993.
+\bibitem{pbc2} F.~Flippetti, G.~Franceschini, C.~Tassoni and P.~Vas, ``Recent Developments of Induction Motor Drives Fault Diagnosis using AI Techniques'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{47}, no.~5, October 2000, pp.~994-1004.
+\bibitem{pbc4} B.~Li, M.~Chow, Y.~Tipsuwan and J.C.~Hung, ``Neural-Network-Based Motor Rolling bearing fault Diagnosis'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{47}, no.~5, October 2000, pp.~1060-1069.
+\bibitem{pbc5} D.~Fuessel and R.~Isermann, ``Hierarchical Motor Diagnosis Utilizing structural Knowledge and a Self-learning Neuro-Fuzzy Scheme'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{47}, no.~5, October 2000, pp.~1070-1077.
+\bibitem{00952496} S.M.A.~Cruz and A.J.M.~Cardoso, ``Stator Winding Fault Diagnosis in Three-Phase Synchronous and Asynchronous Motors, by the Extended Park's Vector Approach'', \emph{IEEE Transactions on Industry Applications}, \textbf{37}, no.~5, September/October 2001, pp.~1227-1233.
+\bibitem{00897122} Z.~Ye and B.~Wu, ``Induction Motor Mechanical Fault Simulation and Stator Current Signature Analysis'', \emph{International Conference on Power System Technology, 2000}, \textbf{2}, 4-7 Dec. 2000, pp.~789-794.
+\bibitem{00912492} Z.~Ye, B.~Wu and A.R.~Sadeghian, ``Signature Analysis of Induction Motor Mechanical Faults by Wavelet Packet Decomposition'', \emph{Sixteenth Annual IEEE Applied Power Electronics Conference and Exposition, 2001}, \textbf{2}, 4-8 March 2001, pp.~1022-1029.
+\bibitem{01254628} Z.~Ye, B.~Wu and A.~Sadeghian, ``Current Signature Analysis of Induction Motor Mechanical Faults by Wavelet Packet Decomposition'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{50}, no.~6, December 2003, pp.~1217-1228.
+\bibitem{00929510} L.~Eren and M.J.~Devaney, ``Motor Bearing Damage Detection Via Wavelet Analysis of the Starting Current Transient'', \emph{IEEE Instrumentation and Measurement Technology Conference}, Budapest, Hungary, May 21-23, 2001, pp.~1797-1800.
+\bibitem{00976461} K.~Abbaszadeh, J.~Milimonfared, M.~Haji and H.A.~Toliyat, ``Broken Bar Detection in Induction Motor via Wavelet Transformation'', \emph{IECON'01: The 27th Annual Conference of the IEEE Industrial Electronics Society}, pp.~95-99.
+%\bibitem{01210345} H.~Douglas, P.~Pillay and A.~Ziarani, ``Detection of Broken Rotor Bars in Induction Motors Using Wavelet Analysis'', \emph{}, pp.~923-928.
+\bibitem{00539845} A.W.~Galli, G.T.~Heydt, P.F.~Ribeiro, ``Exploring the Power of Wavelet Analysis'', \emph{IEEE Computer Applications in Power}, pp.~37-41.
+\bibitem{wiki} Article: Wavelet, \url{http://en.wikipedia.org/wiki/Wavelet}
+
+%\bibitem{01159890} Y.~Han and Y.H.~Song, ``Condition Monitoring Techniques for Electrical Equipment -- A Literature Survey'', \emph{IEEE Transactions on Power Delivery}, \textbf{18}, no.~1, January 2003, pp.~4-13.
+%\bibitem{00055383} P.J.~Tavner, ``Condition Monitoring -- The Way Ahead for Large Electrical Machines'', \emph{Fourth International Conference on Electrical Machines and Drives, 13-15 Sep 1989}, pp.~159-162.
+
+%\bibitem{00771380} Guy P.~Nason, ``A Little Introduction to Wavelets'', \emph{IEE Colloquium on Applied Statistical Pattern Recognition (Ref. No. 1999/063)}, 20 April 1999, pp.~1/1-1/6.
+%\bibitem{00739190} T.K.~Sarkar and C.~Su, ``A Tutorial on Wavelets from an Electrical Engineering Perspective, Part 2: The Continuous Case'', \emph{IEEE Antennas and Propagation Magazine}, \textbf{40}, no.~6, December 1998, pp.~36-49.
+
+%\bibitem{pbc3} K.A.~Laporo, M.L.~Adams, W.~Lin, M.F.~Abdel-Magied and N.~Afshari, ``Fault Detection and Diagnosis of Rotating Machinery'', \emph{IEEE Transactions on Industrial Electronics}, \textbf{47}, no.~5, October 2000, pp.~1005-1014.
+
+\bibitem{amara} A.~Graps, ``An Introduction to Wavelets'', \emph{IEEE Computational Science and Engineering}, \textbf{2}, Issue 2, Summer 1995, pp.~50-61
+
+%\bibitem{beyond} ``Wavelets: Seeing the Forest and the Trees'', \url{http://www.beyonddiscovery.org}
+
+\end{thebibliography}
+  
+%%%%%%%%%%%%%% END %%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,614 @@
+\documentclass[9pt]{beamer}
+\mode<presentation>{
+\usetheme{Rochester}
+%\usetheme{Luebeck}
+%\useinnertheme{rectangles}
+%\useoutertheme{shadow}
+%\usecolortheme{sidebartab}
+%\usecolortheme{seahorse}
+%\usecolortheme{lily}
+\usecolortheme{rose}
+%\usecolortheme{orchid}
+}
+
+%\setbeamercolor{frametitle}{bg=red!80!black}
+
+\title[]{Application of Wavelet Transform in Condition Monitoring of Induction Motor}
+\author[]{Parijat Prasun Pal\\{\footnotesize \emph{Student, M.E. -- Final Year}}}
+
+%\author{\alert{Under the Guidance of}\\
+%Dr. G. Bandyopadhyay\\
+%\alert{and}\\
+%Dr. P. Chattopadhyay\\
+%}
+
+%\titlegraphic{\includegraphics[width=12mm]{besulogo}}
+\institute{
+	\begin{columns}
+	\column{0.33\textwidth}
+	\begin{flushright}
+	\includegraphics[height=12mm]{besulogo}
+	\end{flushright}
+	\column{0.67\textwidth}
+	\vspace*{5pt}\\
+		Department of Electrical Engineering\\
+		Bengal Engineering and Science University, Shibpur\\
+		Howrah –- 711 103\\
+		West Bengal\\
+		India
+	\end{columns}
+}
+
+\date{2006}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+%%%%%%%%%% SLIDE 2
+\begin{frame}
+\frametitle{Outline}
+\begin{itemize} 
+\item Introduction
+\item Different Monitoring Techniques
+\item Condition Monitoring of Induction Motor
+\item Different Approaches to Condition Monitoring
+\item Objective and Scope of Work
+\item Why Wavelets?
+\item Wavelet Analysis
+\item Proposed Scheme of Work
+\item Fast Fourier Transform (FFT)
+\item Signal Analysis with FFT
+\item Discrete Wavelet Transform (DWT)
+\item Signal Analysis with DWT
+\item Summary and Conclusion
+\item References
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% SLIDE 3
+\begin{frame}
+%\section{Introduction}
+\frametitle{Introduction}
+
+\begin{block}{What is Condition Monitoring?}
+    \begin{itemize} 
+    \item Predictive maintenance
+    \item Early detection of a problem 
+    \item Identification of the need for maintenance based on the condition of the monitored equipment by a comprehensive programme of data collection and analysis
+    \item Allows maintenance to be performed in a planned and systematic manner before an equipment fails.
+    \end{itemize}
+\end{block}
+
+\begin{block}{Advantages of Condition Monitoring}
+    \begin{itemize}
+    \item Minimisation of overall operational cost and plant shutdown time
+    \item Reduction in the number of unexpected failure
+    \item More reliable scheduling tool for routine preventive maintenance programme
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%% SLIDE 4
+\begin{frame}
+%\section{Different Monitoring Techniques}
+\frametitle{Different Monitoring Techniques}
+    \begin{block}{Mechanical Techniques}  
+    \begin{itemize}
+    \item Vibration Monitoring
+    \item Speed Fluctuation
+   \end{itemize} 
+    \end{block}
+    \begin{block}{Electrical Techniques} 
+    \begin{itemize}
+    \item Monitoring of electrical signals like voltage, current, instantaneous power, and their spectral components, axial flux, air-gap torque
+    \item Stator current: \alert{Motor Current Signature Analysis (MCSA)}
+    \end{itemize}
+    \end{block}
+    \begin{block}{Chemical Techniques} 
+    Chemical degradation of various chemical substances
+    \end{block}
+    \begin{block}{Thermal Techniques} 
+    Measurement of temperature
+    \end{block}
+\end{frame}
+
+%%%%%%%%% SLIDE 5
+\begin{frame}
+%\section{Condition Monitoring of Induction Motor}
+\frametitle{Condition Monitoring of Induction Motor}
+
+\begin{block}{Faults and Monitoring Techniques}
+    \begin{itemize}
+    \item \alert{Stator Faults}: Stator current signature analysis
+    \item \alert{Rotor Faults}: Stator current signature analysis, vibration and air-gap monitoring
+    \item \alert{Bearing Faults}: Vibration and stator current monitoring method
+    \item \alert{Air-Gap  Eccentricities}: Stator core vibration and the stator current monitoring
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%% SLIDE 6
+\begin{frame}
+%\section{Different Approaches to Condition Monitoring}
+\frametitle{Different Approaches to Condition Monitoring}
+
+\begin{block}{Different Approaches}
+    \begin{itemize}
+    \item Model-Based Approaches: Traditional lumped-parameter modeling and analysis of faulty motor performance
+    \item Thermal Monitoring Approaches
+    \item Signal-Processing Approaches
+            \begin{itemize}
+            \item Vibration or motor terminal current, voltage, or instantaneous power waveforms.
+            \item Motor Current Signature Analysis: traditional Fourier transform techniques used for spectral analysis
+            \end{itemize}
+    \item Emerging Technology Approaches
+            \begin{itemize}
+            \item Neural networks, fuzzy logic and AI techniques
+            \item Instantaneous power FFT, Park's transformation, bispectrum, high resolution spectral analysis
+            \item \alert{Wavelets}: extensively used for signature analysis
+            \end{itemize}
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%% SLIDE 7
+\begin{frame}
+%\section{Objective and Scope of Work}
+\frametitle{Objective and Scope of Work}
+
+\begin{block}{Objective}
+    \begin{itemize}
+    \item To design and develop an on-line monitoring and incipient fault detection scheme of induction motors by assessing the signature of the motor line current.
+    \item This  project  will concentrate on induction motor faults due to broken rotor bar, bearing faults and eccentric rotor only applying  advanced  signal processing techniques like wavelet analysis.
+    \end{itemize}
+\end{block}
+
+\begin{block}{Scope of Work}
+    \begin{itemize}
+    \item Wavelet transform was introduced with the idea of overcoming the difficulties with the traditional signal-processing tools like Fourier Transform and STFT.
+    \item Proposed project work aims to eliminate all the limitations of present technology by using advanced signal processing tools of wavelet transform and related methods.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%% SLIDE 8
+\begin{frame}
+%\section{Why Wavelets?}
+\frametitle{Why Wavelets?}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{Fourier Analysis}
+    \begin{itemize}
+    \item Very useful where signals are stationary 
+    \item Generally used for induction motor fault detection
+    \item \alert{Drawback}: Not appropriate for signals having a transitory characteristic
+    \end{itemize}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Short-Time Fourier Transform (STFT)} 
+    \begin{itemize}
+    \item Windowing technique to analyse small sections of the signal at a time
+    \item \alert{Drawback}: Fixed size of the window -– limited precision
+    \end{itemize}
+\end{block}
+\end{columns}
+
+\begin{block}{Wavelet Transform}
+    \begin{itemize}
+    \item A windowing technique with variable-size region
+    \item More precise information on both low and high frequencies
+    \item Helps perform stator current signal analysis during transients
+    \item Can be used for a localised analysis in the time-frequency or time-scale domain
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%% SLIDE 9
+\begin{frame}
+%\section{Wavelet Analysis}
+\frametitle{Wavelet Analysis}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{Basic Theory}
+    \begin{itemize}
+    \item To adopt a wavelet prototype function, called an analysing wavelet or \alert{mother wavelet}
+    \item Temporal analysis is performed with a contracted, high-frequency version of the prototype wavelet, 
+    \item Frequency analysis is performed with a dilated, low-frequency version of the same wavelet.
+    \item The original signal or function can be represented in terms of wavelet expansion (using coefficients in a linear combination of the wavelet functions).
+    \end{itemize}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{Some Wavelets}
+\includegraphics[width=\textwidth]{mw}
+(a) Haar, (b) Daubechies, (c) Morlet and (d) Mexican hat
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Wavelet Analysis \hfill{2}}
+\begin{block}{Wavelet Analysis Techniques}
+    \begin{itemize}
+    \item \alert{Continuous Wavelet Transform}: The sum over all time of the signal multiplied by scaled, shifted versions of the wavelet function generated from the so-called mother wavelet
+    \item \alert{Discrete Wavelet Transform}: Mother wavelet is dilated and translated discretely
+    \item \alert{Wavelet Packet Transform}: Particular linear combinations of wavelets
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%% SLIDE 10 
+\begin{frame}
+%\section{Proposed Scheme of Work}
+\frametitle{Proposed Scheme of Work}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{picture}(300,180)(0,0)
+\setlength{\unitlength}{0.5pt}
+{\scriptsize
+\input{psw}
+}
+\end{picture}
+\column{0.5\textwidth}
+\begin{block}{3-phase Induction Motor}
+Machinery Fault Simulator (MFS)
+\end{block}
+\begin{block}{Signal Processing}
+    \begin{itemize}
+    \item Fast Fourier Transform (FFT)
+    \item Discrete Wavelet Transform (DWT)
+    \end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%% SLIDE 11
+\begin{frame}
+%\section{Fast Fourier Transform (FFT)}
+\frametitle{Fast Fourier Transform (FFT)}
+
+\begin{block}{Discrete Fourier Transform (DFT)}
+    \begin{itemize}
+    \item Formula: $\displaystyle{X(k) = \sum_{n=0}^{N-1}x(n)W_{N}^{kn}}$, where $W_{N} \stackrel{\triangle}{=} e^{-j2\pi/N}$
+    \item $N^{2}$ floating-point operations, not economical for even moderate data length
+    \end{itemize}
+\end{block}
+\begin{block}{Fast Fourier Transform (FFT)}
+    \begin{itemize}
+    \item Faster, approximately $N \log_{2} N$ operations
+    \item \alert{Cooley-Tuckey} and other techniques: DFT of length $N$ ``decimated'' into successive smaller DFTs, two varieties -- \alert{decimation-in-time} and \alert{decimation-in-frequency}
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%% SLIDE 12
+\begin{frame}
+\frametitle{Fast Fourier Transform (FFT) \hfill{2}}
+
+\begin{block}{Decimation-in-frequency}
+\begin{picture}(370,160)(0,0)
+\setlength{\unitlength}{0.6pt}
+\input{dif}
+\end{picture}
+\vspace{3pt}\\
+{\footnotesize Flow-graph of the decimation-in-frequency decomposition of an eight-point DFT}
+\end{block}
+\end{frame}
+
+%%%%%%%% SLIDE 13
+\begin{frame}
+%\section{Signal Analysis with FFT}
+\frametitle{Signal Analysis with FFT}
+
+\begin{block}{Sample Signal} 
+\begin{displaymath}
+x(n) = \cos \left(2\pi\frac{200n}{N}\right) +0.5\sin \left( 2\pi\frac{50n}{N} \right)
+\end{displaymath}
+corrupted with zero-mean random noise
+\end{block}
+
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{x}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{ya}
+\end{columns}
+
+\end{frame}
+
+%%%%%%%% SLIDE 14
+\begin{frame}
+%\section{Discrete Wavelet Transform (DWT)}
+\frametitle{Discrete Wavelet Transform (DWT)}
+
+%\subsection{Haar Transform}
+\begin{block}{Haar Transform}
+    \begin{itemize}
+    \item Decomposes a discrete-time signal ($\mathbf{f}$) of length $N$ into two \textbf{sub-signals} of half its length: \\Trend ($\mathbf{a}$) –- running average and Fluctuation ($\mathbf{d}$) -– running difference
+    \begin{displaymath}
+    a_{m} = \frac{f_{2m}+f_{2m+1}}{\sqrt{2}},\quad d_{m} = \frac{f_{2m} - f_{2m+1}}{\sqrt{2}}
+    \end{displaymath}
+    
+    \pause
+    
+    \item Simple Example: $\mathbf{f} = (4,6,10,12,8,6,5,5)$
+{\scriptsize
+\begin{tabular}{rccccccccccccccc}
+  &   &  & & & &  & & & &  & & & &  &   \\ 
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\ 
+\pause
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\ 
+  &   & 5 & & & & 11 & & & & 7 & & & & 5 &   \\ 
+\pause
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{a}^{1}$: & & $5\sqrt{2}$ & & & & $11\sqrt{2}$ & & & & $7\sqrt{2}$ & & & & $5\sqrt{2}$ & \\  
+\pause
+ &  & &  & &  & &  & &  & &  & &  & &  \\ 
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\ 
+\pause
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+ &   & $-1$ & & & & $-1$ & & & & $1$ & & & & $0$ &   \\ 
+\pause
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{d}^{1}$: & & $-\sqrt{2}$ & & & & $-\sqrt{2}$ & & & & $\sqrt{2}$ & & & & $0$ &   
+\end{tabular}
+}
+\pause
+	\item Extended to multiple levels
+	\end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Discrete Wavelet Transform (DWT) \hfill{2}}
+\framesubtitle{Haar Transform}
+\begin{block}{Haar Wavelets ($\mathbf{W}$) and Scaling Functions ($\mathbf{V}$)}
+            \begin{itemize}
+            \item Basis set of elementary signals to express Haar transform as scalar products
+            \item First level: $d_{m} = \mathbf{f} \cdot \mathbf{W}_{m}^{1}, \qquad a_{m} = \mathbf{f} \cdot \mathbf{V}_{m}^{1}$
+            \end{itemize}
+\end{block}
+
+\pause
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{Wavelets}
+{\scriptsize
+\begin{eqnarray*}
+\mathbf{W}_{0}^{1} & = &\left( \frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}},0,0,0,0,\ldots,0 \right) \\
+\mathbf{W}_{1}^{1} & = & \left( 0,0,\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}},0,0,\ldots,0 \right) \\
+	 & \vdots &  \\
+\mathbf{W}_{N/2-1}^{1} & = & \left( 0,0,0,0,\ldots,0,\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}} \right) 
+\end{eqnarray*}
+}
+\end{block}
+
+\pause
+
+\column{0.5\textwidth}
+\begin{block}{Scaling Signals}
+{\scriptsize
+\begin{eqnarray*}
+\mathbf{V}_{0}^{1} & = &\left( \frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}},0,0,0,0,\ldots,0 \right) \\
+\mathbf{V}_{1}^{1} & = & \left( 0,0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}},0,0,\ldots,0 \right) \\
+	 & \vdots & \\
+\mathbf{V}_{N/2-1}^{1} & = & \left( 0,0,0,0,\ldots,0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}} \right) 
+\end{eqnarray*}
+}
+\end{block}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%% Slide
+\begin{frame}
+\frametitle{Discrete Wavelet Transform (DWT) \hfill{3}}
+\framesubtitle{Haar Transform}
+\begin{block}{Reconstruction and Multi-resolution Analysis (MRA)}
+            \begin{itemize}
+            \item First level: $\mathbf{f}=\mathbf{A}^{1}+\mathbf{D}^{1}$
+            \begin{eqnarray*}
+            \mathbf{A}^{1} &=& a_{0}\mathbf{V}_{0}^{1}+a_{1}\mathbf{V}_{1}^{1}+\ldots+a_{N/2-1}\mathbf{V}_{N/2-1}^{1} \\
+                    \mathbf{D}^{1} &=& d_{0}\mathbf{W}_{0}^{1}+d_{1}\mathbf{W}_{1}^{1}+\ldots+d_{N/2-1}\mathbf{W}_{N/2-1}^{1}
+	\end{eqnarray*}
+	    
+	\pause
+	
+    	\item Example:\\
+{\footnotesize
+    \begin{tabular}{rrrrrrrrr}
+	&  &  &  &  &  &  & & \\
+	$\mathbf{f}$: & $4$ & $6$ & $10$ & $12$ & $8$ & $6$ & $5$ & $5$ \\
+	&  &  &  &  &  &  & & \\
+  	\pause
+    	$\mathbf{A}^{1}$: & $5$ & $5$ & $11$ & $11$ & $7$ & $7$ & $5$ & $5$ \\
+    \pause
+    $\mathbf{D}^{1}$: & $-1$ & $1$ & $-1$ & $1$ & $1$ & $-1$ & $0$ & $0$
+    \end{tabular}
+}
+	    \pause
+            \item Multiple levels:
+            \end{itemize}
+\begin{picture}(150,45)(-100,0)
+\setlength{\unitlength}{0.5pt}
+{\scriptsize
+\input{mra}
+}
+\end{picture}
+\end{block}
+\end{frame}
+
+%%%%%%%% SLIDE 12
+\begin{frame}
+\frametitle{Discrete Wavelet Transform (DWT)\hfill{4}}
+
+%\subsection{Daubechies Transform}
+\begin{block}{Daubechies Transform}
+    \begin{itemize}
+    \item \alert{Family} of Daubechies Wavelets (dbn)
+    \item $\mathbf{db1}$ is \textbf{Haar}
+    \item $\mathbf{db2}$
+            \begin{itemize}
+            \item First Level Scaling Numbers:
+            \begin{displaymath}
+            \alpha_{0} = \frac{1+\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{1}=\frac{3+\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{2} = \frac{3-\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{3}=\frac{1-\sqrt{3}}{4\sqrt{2}}
+            \end{displaymath}
+
+            \item First Level Wavelet Numbers:
+            \begin{displaymath}
+            \beta_{0} = \frac{1-\sqrt{3}}{4\sqrt{2}}, \quad \beta_{1}=\frac{\sqrt{3}-3}{4\sqrt{2}}, \quad \beta_{2} = \frac{3+\sqrt{3}}{4\sqrt{2}}, \quad \beta_{3}=\frac{-1-\sqrt{3}}{4\sqrt{2}}
+            \end{displaymath}
+
+	    \end{itemize}
+    \end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Discrete Wavelet Transform (DWT)\hfill{5}}
+\framesubtitle{Daubechies Transform}
+
+\begin{columns}
+\column{0.5\textwidth}
+\begin{block}{\textbf{db2} Scaling Signals}
+{\scriptsize
+\begin{eqnarray*}
+\mathbf{V}_{0}^{1} & = & ( \alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3},0,0,\ldots,0 ) \nonumber \\
+\mathbf{V}_{1}^{1} & = & ( 0,0,\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3},\ldots,0 ) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{V}_{N/2-2}^{1} & = & ( 0,0,\ldots,0,\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3} ) \nonumber \\ 
+\mathbf{V}_{N/2-1}^{1} & = & ( \alpha_{2},\alpha_{3},0,0,\ldots,0,\alpha_{0},\alpha_{1} )  
+\end{eqnarray*}
+}
+\end{block}
+\column{0.5\textwidth}
+\begin{block}{\textbf{db2} Wavelets}
+{\scriptsize
+\begin{eqnarray*}
+\mathbf{W}_{0}^{1} & = & ( \beta_{0},\beta_{1},\beta_{2},\beta_{3},0,0,\ldots,0 ) \nonumber \\
+\mathbf{W}_{1}^{1} & = & ( 0,0,\beta_{0},\beta_{1},\beta_{2},\beta_{3},\ldots,0 ) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{W}_{N/2-2}^{1} & = & ( 0,0,\ldots,0,\beta_{0},\beta_{1},\beta_{2},\beta_{3} ) \nonumber \\ 
+\mathbf{W}_{N/2-1}^{1} & = & ( \beta_{2},\beta_{3},0,0,\ldots,0,\beta_{0},\beta_{1} )  
+\end{eqnarray*}
+}
+\end{block}
+\end{columns}
+\end{frame}
+
+%%%%%%%% SLIDE 13
+\begin{frame}
+%\section{Signal Analysis with DWT}
+\frametitle{Signal Analysis with DWT}
+\framesubtitle{Haar and Daubechies Transforms}
+\begin{block}{Example 1: Trend and fluctuation subsignals (concatenated)}
+Signal: $g(t)=20t^{2}(1-t)^{4}\cos(12\pi t)$ over the interval $[0,1)$. 
+\end{block}
+ 
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{example}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{exampledb}
+\end{columns}
+\end{frame}
+
+%%%%%%%% SLIDE 14
+\begin{frame}
+\frametitle{Signal Analysis with DWT \hfill{2}}
+\framesubtitle{Haar and Daubechies Decomposition}
+
+\begin{block}{Example 2} 
+{\scriptsize Signal: Simple step}
+\end{block}
+%\begin{columns}
+%\column{0.5\textwidth}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{step}
+\end{center}
+%\column{0.5\textwidth}
+%\includegraphics[width=\textwidth]{exampledb}
+%\end{columns}
+\end{frame}
+
+%%%%%%%% SLIDE 15
+\begin{frame}
+\frametitle{Signal Analysis with DWT \hfill{3}}
+\framesubtitle{Haar and Daubechies Decomposition}
+
+\begin{block}{Example 3} 
+{\scriptsize Signal: ``frequency breakdown''}
+\end{block}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{frbd}
+\end{center}
+
+\end{frame}
+
+%%%%%%%% SLIDE 16
+\begin{frame}
+\frametitle{Signal Analysis with DWT \hfill{4}}
+\framesubtitle{Haar and Daubechies Decomposition}
+
+\begin{block}{Example 4}
+{\scriptsize
+    Signal: $x(n)$ formed with $N=1024$ samples \\
+    $x(n)=\sin(2\pi\frac{5n}{N})$ from $n=0$ to $n=307$ and from $n=716$ to $n=1023$ \\
+    $x(n)=1.25\sin(2\pi\frac{15n}{N})$ from $n=308$ to $n=715$
+}
+\end{block}
+
+\begin{center}
+\includegraphics[width=0.75\textwidth]{mysignal}
+\end{center}
+\end{frame}
+
+%%%%%%%% SLIDE 17
+\begin{frame}
+%\section{Summary and Conclusion}
+\frametitle{Summary and Conclusion}
+
+\begin{block}{Condition Monitoring}
+\begin{itemize}
+\item A very important technology in the field of electrical equipment maintenance
+\item Now a topic of immense interest to power system engineers as well as researchers
+
+\item Advanced signal processing techniques are of huge prospect in developing novel condition monitoring systems
+\end{itemize}
+\end{block} 
+\begin{block}{Approaches} Development of computer programs for signal processing using FFT and DWT algorithms \end{block}
+\begin{block}{Future Plan}
+\alert{Machinery Fault Simulator (MFS)} by SpectraQuest, Inc., USA to simulate various motor faults.
+\end{block} 
+\end{frame}
+
+%%%%%%%% SLIDE 18
+\begin{frame}
+%\section{References}
+\frametitle{References}
+
+\begin{itemize} 
+    \item J. Penman, M.N. Dey, A.J. Tait and W.E. Bryan, ``Condition Monitoring of Electrical Devices'', IEE Proc., \textbf{133}, Part B(3):164-180, 1986.
+    \item P.J. Tavner, B.G. Gaydon and D.M. Word, ``Monitoring Generators and Large Motors'', IEE Proc., \textbf{133}, Part B(3):181-189, 1986
+    \item P.J. Tavner and J. Penman, \emph{Condition Monitoring of Electrical Machines}, Research Studies Press, Ltd., 1987.
+    \item M.E.H. Benbouzid, ``A Review of Induction Motors Signature Analysis as a Medium  for  Faults  Detection'',  IEEE  Transactions on Industrial Electronics, \textbf{47}(5):984-993, October 2000.
+    \item A. Graps, ``An Introduction to Wavelets'', IEEE Computational Science and Engineering, \textbf{2}(2):50-61, Summer 1995.
+    \item Steven C. Chapra and Raymond P. Canale, \emph{Numerical Methods for Engineers with Programming and Software application}, Tata McGraw-Hill Publishing Co. Ltd., 3rd edition, 2000
+    \item James S. Walker, \emph{A Primer on Wavelets and their Scientific Applications}, Chapman \& Hall/CRC, 1999.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\LARGE{Thank you}
+\end{center}
+\end{frame}
+
+\end{document}

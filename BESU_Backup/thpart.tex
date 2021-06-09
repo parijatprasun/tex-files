@@ -1,0 +1,25 @@
+\section{Detection of Broken Rotor Bar}
+\subsection{Introduction}
+Broken rotor bars can be a serius problem to induction motor due to arduous operations. Though these do not initially cause a motor to fail, there can be serious secondary effects such as broken parts of the bar hitting the end winding or stator core of a high voltage motor at a high velocity. Or the broken bar can lift in the slot and cause damage to the stator core and winding. Thus serious mechanical damage to the insulation may follow, resulting in a costly repair and lost production \cite{noprint}. Broken rotor bars cause torque and speed oscillations at twice slip speed and subsequent forces and vibration are produced that can lead to mechanical degradation of bearings and other mechanical parts \cite{mfstm}.
+
+These faults can be caused by
+\begin{itemize}
+\item DOL starting duty cycles for which the rotor cage winding was not designed to withstand -- this causes high thermal and mechanical stresses. 
+\item Pulsating mechanical loads such as rciprocating compressors or coal crushers etc.~can subject to high mechanical stresses.
+\item Imperfections in the manufacturing process of the rotor cage.
+
+\subsection{Detection through MCSA}
+\subsubsection{Basic Theory}
+
+%%%%%%%%%%%%%%%%%%%%%Slip, etc.
+
+The rotor currents in cage winding produce an effective three-phase magnetic filed, which has the same number of poles as the stator field but it is rotating at slip frequency ($f_{2}=sf_{1}$) with respect to the rotating rotor. When the cage winding is symmetrical, there is only a forward rotating field at slip frequency with respect to the rotor. If rotor asymmetry occurs, then there will be a resultant backward rotating field at slip frequency with respect to the forward rotating rotor. The result of this is that, with respect to the stationary stator winding, this backward rotating field at slip frequency with respect to the rotor induces a voltage and current in the stator winding at
+\begin{equation}
+f_{sb}=f_{1}(1-2s) \unit[]{Hz}
+\end{equation}
+
+This is referred to as a twice slip frequency sideband due to broken rotor bars. There is a therefore a cyclic variation of current that causes a torque pulsation at twice slip frequency ($2sf_{1}$) and a corresponding speed oscillation that is also a function of the drive inertia. This speed oscillation can reduce the magnetude of the $f_{1}(1-2s)$ sideband, but an upper sideband current component at $f_{1}(1+2s)$ is induced in the stator winding due to the rotor oscillation. This upper sideband is also enhanced by the third time harmonic flux. Broken rotor bars therefore result in current components being induced in the stator winding at frequencies given by:
+\begin{equation}
+f_{sb}=f_{1}(1\plusminus2s) \unit[]{Hz}
+\end{equation}
+This gives $\plusminus2sf_{1}$ sidebands around the supply frequency component $f_{1}$.These are the classical twice slip frequency sidebands due to broken rotor bars.

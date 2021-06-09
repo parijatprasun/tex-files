@@ -1,0 +1,898 @@
+%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\title{\underline{\large{Application of Wavelet Transform in Condition Monitoring of Induction Motor}}}
+\date{}
+\author{}
+
+%%%%%%%%%%%% Page Formatting %%%%%%%%%%%%
+\setlength{\parindent}{0pt}
+\setlength{\voffset}{-1in}
+\setlength{\topmargin}{15mm}
+\setlength{\headheight}{5mm}
+\setlength{\headsep}{5mm}
+\setlength{\textheight}{247mm}
+\setlength{\footskip}{10mm}
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{30mm}
+%\setlength{\evensidemargin}{18mm} % valid only for `twoside'
+\setlength{\textwidth}{157mm}
+\setlength{\marginparsep}{0mm}
+\setlength{\marginparwidth}{0mm}
+
+% >>>>>>>>> OLD FORMATTING <<<<<<<<<<
+%\setlength{\parindent}{0pt}
+%\setlength{\footskip}{0.45in}
+%\setlength{\textheight}{10in}
+%\setlength{\hoffset}{-0.9in}
+%\setlength{\voffset}{-1.1in}
+%\setlength{\voffset}{-1in}
+%\setlength{\topmargin}{0.35in}
+%\setlength{\headheight}{0in}
+%\setlength{\textwidth}{6.2in}
+%\setlength{\marginparsep}{1in}
+%\setlength{\marginparwidth}{1in}
+%\setlength{\oddsidemargin}{1.1in}
+%\setlength{\evensidemargin}{1in}
+
+\flushbottom
+\frenchspacing
+%%%%%%%%%%% Picture files %%%%%%%%%%%%%%%
+%\includeonly{fig1,fig4,fig6,fig12,fig13,fig14,fig16,fig17,fig17a,fig18}
+
+%%%%%%%%%%%% Packages Used %%%%%%%%%%%%%%
+\usepackage{units}
+\usepackage[pdftex]{graphicx}
+\usepackage{url}
+\usepackage{enumerate}
+%\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage[procnames,noprocindex,noindent]{lgrind}
+%\usepackage{eepic}
+
+%%%%%%%%%% BEGINNING %%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%% This creates the cover page %%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+{\huge \textbf{Application of Wavelet Transform in}}\\
+\vspace{3.5pt}
+{\huge \textbf{Condition Monitoring of Induction Motor}}\\
+\vspace{0.5in}
+{\LARGE \textsc{Parijat Prasun Pal}}\\
+\vspace{3.5pt}
+{\Large \textsc{Roll No.} \texttt{160406005}}\\
+\vspace{3pt}
+{\Large \textsc{Registration No.} \texttt{160406005} \textsc{of} \texttt{2004-2005}}\\
+\vspace{0.5in}
+{\large \textit{Under the Guidance of}}\\
+\vspace{5pt}
+{\Large \textbf{Dr.~G.~Bandyopadhyay}}\\
+\vspace{3pt}
+{\large and}\\
+\vspace{3pt}
+{\Large \textbf{Dr.~P.~Chattopadhyay}}\\
+\vspace{0.75in}
+{\Large A Progress Report}\\
+\vspace{3pt}
+\Large{submitted in partial fulfilment of}\\
+\vspace{3pt}
+\Large{the requirements for the degree of}\\
+\vspace{4.5pt}
+{\Large \textbf{Master of Engineering (Electrical Engineering)}}\\
+\vspace{3.5pt}
+{\Large Specialisation:~\textit{Power Systems}}\\
+\vspace{0.5in}
+\includegraphics[scale=0.8]{besulogo}\\
+\vspace{0.5in}
+{\Large \textsf{Department of Electrical Engineering}}\\
+\vspace{3.5pt}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\Large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\Large West Bengal, India}\\
+\vfill
+{\Large \textbf{January, 2006}} 
+\end{center}
+\end{titlepage}
+
+%%%%%%%%% This makes the next page only with the line in \title{} %%%%%%%%%
+%\maketitle
+
+%=========== FORWARD ============
+\thispagestyle{empty}
+\vspace*{7mm}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{25mm}
+\begin{center}
+{\Large \textbf{Forward}}
+\end{center}
+
+\noindent We hereby forward the progress report entitled ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' submitted by Parijat Prasun Pal (Registration No. 160406005 of 2004-2005) under our guidance and supervision in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialisation: \emph{Power Systems}) from this university.
+
+\vspace{25mm}
+\begin{flushleft}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay) & & (Dr.~P.~Chattopadhyay)\\
+{\footnotesize Department of Electrical Engineering,} & & {\footnotesize Department of Electrical Engineering,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur} & & {\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103} & & {\footnotesize Howrah -- 711 103}
+\end{tabular}
+
+\vspace{20mm}
+\noindent \textbf{Countersigned by}
+
+\vspace{25mm}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay)& & (Dr.~D.~Ghosh)\\
+{\footnotesize Professor and Head,}& & {\footnotesize Dean,}\\
+{\footnotesize Department of Electrical Engineering,}& &{\footnotesize Faculty of Engineering, Architecture \& TRP,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur}& &{\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103}& &{\footnotesize Howrah -- 711 103}
+\end{tabular}
+\end{flushleft}
+\clearpage
+
+%=========== CERTIFICATE OF APPROVAL ===========
+\thispagestyle{empty}
+\vspace*{7mm}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{25mm}
+\begin{center}
+{\Large \textbf{Certificate of Approval}}
+\end{center}
+
+\noindent We hereby recommend that the progress report entitled ``Application of Wavelet Transform in Condition Monitoring of Induction Motor'' submitted by Parijat Prasun Pal (Registration No. 160406005 of 2004-2005) be accepted in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialisation: \emph{Power Systems}) from this university.
+
+\vspace{25mm}
+\hspace*{90mm} \textbf{Board of Examiners}
+
+\vspace{40pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+\vspace{20pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+\vspace{20pt}
+%\hspace*{90mm} \hrulefill
+\hspace*{90mm} \dotfill
+
+\clearpage
+ 
+%============ ACKNOWLEDGEMENT ============
+\thispagestyle{empty}
+\vspace*{65mm}
+\begin{center}
+{\Large \textbf{Acknowledgement}}
+\end{center}
+
+\noindent I am extremely grateful to my professors and guides Dr.~G.~Bandyopadyay, Professor and Head, and Dr.~P.~Chattopadhyay of the Department of Electrical Engineering, Bengal Engineering and Science University, Shibpur, without whose untiring effort and valuable advice it would have been an uphill task for me to proceed with my progress report. I am also greatly indebted to Dr.~P.~Syam for his critical examination and helpful suggestions for the improvement of my work in every possible respect. A very special thanks to Dr.~J.~Pal for his indispensable guidelines on document preparation and tremendous enthusiasm which made it possible to present this report. Moreover the Central Library with its almost exhaustive collection of books have also been a great help to me in the course of pursuing my work. Lastly one should never forget to pay his thanks to all the staff of the Department of Electrical Engineering for their continuous support in every way including the provision of computer and internet facilities.
+
+\vspace{25mm}
+\hspace*{100mm} Parijat Prasun Pal\\
+\clearpage
+
+%%%%%%%%% This creates the Table of Contents %%%%%%%%%%%
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+
+%%%%%%%%%%% Main Document starts %%%%%%%%%%%%%%%
+\section{Introduction}
+\subsection{Importance of Condition Monitoring}
+Maintenance has a significant role to keep a system healthy so as to obtain safe and smooth operation efficiently and cost-effectively. Normally three maintenance practices are adopted for any equipment or plant viz.~(i) Breakdown maintenance, where machines are repaired only after their failure, (ii) Preventive maintenance, where, in order to reduce the chances of unplanned outages, machines are serviced at a regular interval and (iii) Predictive maintenance or \emph{Condition Monitoring}, where a comprehensive programme of data collection and analysis provide early detection of a problem and identify the need for maintenance based on the condition of the monitored equipment, allowing maintenance to be performed in a planned and systematic manner before an equipment fails. It is, therefore, obvious that Breakdown maintenance is a crude method as well as expensive, whereas the Preventive maintenance is a regular method and reduces chances of breakdown. But the best maintenance strategy involves Predictive maintenance or Condition Monitoring where overall operational cost and plant shutdown time can be minimised. Condition Monitoring is a value addition to a total plant maintenance programme. It can reduce the number of unexpected failure by detecting the progress of failure beforehand and provide a more reliable scheduling tool for routine preventive maintenance programme, thus help achieving economic incentive. \cite{Penman},\cite{rps1} 
+
+The benefits expected from condition monitoring includes: 
+\begin{enumerate}
+\item Minimisation of machinery breakdowns or failures
+\item Lower maintenance cost
+\item Planned and anticipated maintenance
+\item Less repair down time
+\item Longer machine life
+\item Increase in production
+\item Reduction in small parts inventory
+\item Increased plant availability
+\item Increased overall profitability
+\item Greater safety and environmental protection
+\item Increased product quality and reduced waste
+\item Better customer relations
+\item Opportunity to specify and design better plant in future
+\item Substantial energy saving
+\item Verification of condition of new equipment
+\item Checking of repair
+\end{enumerate}
+
+It is, usually, suggested that the condition monitoring of an electrical equipment will yield benefits if a reliable monitoring system exists. This monitoring system can provide sufficient warning for a typical failure, causing a drastic reduction of repair cost. The net benefit will be positive, if the cost of the monitoring system is less than the likely saving in the cost of repairs following faults or defects.
+
+Thus the importance and benefits of condition monitoring technique have made the power engineers interested in employing this technique in addition to the traditional protective measures. Moreover, phenomenal advancements in the field of computational techniques and instrumentation have shown new hope for condition monitoring.
+
+\subsection{Different Monitoring Techniques}
+The effectiveness of condition monitoring greatly depends on the proper choice of monitoring parameters and techniques. Some important monitoring techniques \cite{Penman},\cite{rps1} of electrical machinery are discussed in what follows.
+
+\subsubsection{Mechanical Techniques}
+\paragraph{Vibration Monitoring:} All rotating machinery including motors possess vibration of certain level. When the vibration of a machine increases beyond acceptable level, it results in increase of wear on the machine and lead to its failure. The simplest method of fault detection by vibration measurement technique is to monitor the overall RMS level of vibrating frequency. But in the early stage of the damage, the overall RMS level of signal may not correctly indicate the defect. The frequency spectrum of the vibration signals need to be studied for detection. \cite{rps6},\cite{rps14}
+
+\paragraph{Speed Fluctuation:} Perturbations in load and defects within the rotor circuit of a motor may cause speed fluctuation, which can directly be used as an indicator of rotor damage.
+
+\subsubsection{Electrical Techniques}
+Electrical signals like voltage, current, instantaneous power, and their spectral components, axial flux, air-gap torque can be successfully utilised for detecting potential failure of electrical machines. The stator current waveform of an induction motor can be analysed to spot an existing or the beginning of a failure. This technique is known as \emph{Motor Current Signature Analysis (MCSA)} and it can perform the same detection of any incipient fault as the other monitoring techniques without accessing the rotating parts. \cite{57}
+
+\subsubsection{Chemical Techniques}
+Chemical degradation of various chemical substances like insulating materials, transformer oil, lubricating oil, etc.~due to heat and other electrical stresses helps to detect the failures in electrical machines. \cite{rps6}
+
+\subsubsection{Thermal Techniques}
+Excessive temperature rise due to supply or loading faults leads to the majority of the electrical machine failures. Hence the measurement of temperature has an important role in the condition monitoring of electrical machines. \cite{rps6}
+
+\section{Condition Monitoring of Induction Motor}
+Induction motors are being used extensively for different industrial applications since several decades. These applications range from intensive care units, defence applications to applications in power stations. Induction machines are called the workhorses of industry due to their widespread use in manufacturing. The heavy reliance of industry on these machines in critical applications makes catastrophic motor failures very expensive. Therefore, safety, reliability,  efficiency and performance are of major concerns of motor application. Hence issue of preventive and condition based maintenance, on-line monitoring, fault detection and diagnosis are of increasing importance.
+
+\subsection{Induction Motor Faults}
+\subsubsection*{Stator Faults}
+Induction motor stator faults are mainly due to inter-turn winding faults caused by insulation breakdown, and it was showed in a survey that 37\% of significant forced outages were found to have been caused by stator-windings. \cite{40}
+
+Stator current signature analysis is now a popular tool to find out stator-winding faults \cite{53},\cite{55} with the advantage of cheap cost, easy operation and multifunction. 
+%Fault conditions in induction motors cause the magnetic field in the air-gap of the machine to be nonuniform. This results in harmonics in the stator current which can be signatures of several faults \cite{56}. Beside the capability to detect turn-to-turn insulation faults, it can detect broken rotor bars, rotor eccentricity as well as mechanical faults on bearings \cite{57}-\cite{59}.
+
+\subsubsection*{Rotor Faults} 
+Induction motor rotor faults are mainly broken rotor bars as a result of pulsating load or direct on-line starting. It leads to torque pulsation, speed fluctuation, vibration, changes of the frequency component in the supply current and axial fields, combined with acoustic noise, overheating and arcing in the rotor and damaged rotor laminations. The most popular method for rotor fault detection is rotor current signature analysis as mentioned above. Other possible methods include vibration and air-gap monitoring.
+
+\subsubsection*{Bearing Faults}
+Rolling element bearings are overwhelmingly used in induction motors and motor reliability studies show that bearing problems account for over 40\% of all machine failures \cite{59}. Incipient bearing faults are detected through vibration and stator current monitoring method, and stator current monitoring has the advantage of ``noninvasion'' (requiring no sensors accessing to the rotating part of the motors).
+
+\subsubsection*{Air-Gap Eccentricities}
+Air-gap eccentricity must be kept to an acceptable level. There are two types of air-gap eccentricities, static and dynamic. With static eccentricity the minimum air-gap position is fixed in space, while for the dynamic, the centre of the rotor and the rotational centre do not coincide, so that the minimum air gap rotates \cite{rps6}. Unacceptable levels of them will occur after the motor has been running for a number of years. The air-gap eccentricity can be detected by using the stator core vibration and the stator current monitoring \cite{rps6}. 
+
+\subsection{Different Monitoring Methods for Induction Motor}
+Vibration, thermal, and acoustic analyses are some of the commonly used methods, for predictive maintenance, to monitor the health of the machine to prevent motor failures from causing expensive shut-downs. Vibration and thermal monitoring require additional sensors or transducers to be fitted on the machines. While some large motors may already come with vibration and thermal transducers, it is not economically or physically feasible to provide the same for smaller machines.
+
+The occurrence of a mechanical fault results in an unbalance in the motor windings and/or eccentricity of air-gap, which lead to a change in the air-gap space harmonics distribution. The anomaly exhibits itself in the harmonics spectrum of the stator current \cite{00897122-1}. Therefore by checking the existence of specific harmonics spectrum, detection of mechanical faults is possible. This idea, called MCSA, is based on the on-line monitoring and processing of the stator currents using fast Fourier transform (FFT), to detect typical spectrum lines, which arise in faulty systems \cite{00897122-6}. However, empirical diagnostic is more complicated owing to the following reasons --
+
+\begin{enumerate}[(i)]
+\item The stator current spectrum contains not only the components produced by motor faults, but also other components such as characteristic harmonics that exist because of supply voltage distortion, air gap space harmonics, slotting harmonics or load unbalance. 
+\item The signal is always embedded in strong background noise. 
+\item The measurement accuracy of slip and line frequency influences the spectrum line search. 
+\item The diagnostic system subjects to frequent transient and other various kinds of non-stationary interference from both inner and outer side of the motor. 
+\item Several faults may exist at the same time, while for different kinds of faults, the span of the corresponding feature harmonics are different.
+\end{enumerate}
+
+Wavelet transform allows time frequency analysis of signals therefore potentially provides much more information on the processed signal \cite{pswbook}. It uses large scale to analyse low frequency components and small scale to analyse high frequency components, therefore a small short time interference will not influence the overall spectrum. Another advantage is that it achieves a constant relative frequency resolution. For long term varying components, the absolute resolution is high, while for short term varying components, the absolute resolution is low.
+
+\section{Objective} \label{obj}
+Keeping the view points mentioned in the previous section in mind the proposed research work aims to design and develop an on-line monitoring and incipient fault detection scheme of induction motors by assessing the signature of the motor line current. Among various motor faults, proposed investigation will be restricted to \emph{bearing faults}, \emph{broken rotor bar} faults and faults due to \emph{eccentric rotor} only. This project will concentrate on advanced signal processing techniques like wavelet analysis, which will greatly increase the ability of automatic diagnosis.
+
+\section{Literature Survey}
+Before undertaking the problem a number of research paper published in different national, international journals, books and websites \cite{Penman}-[38] have been reviewed.
+
+The major breakthrough in the field of condition monitoring of rotating electrical machines was reported by Tavner \cite{rps1} in 1986. During the past 20 years, there have been continuing effort at studying and diagnosing faults in ac motor drives. There are a number of existing schemes developed by previous researchers for monitoring the various parts of a three phase induction motor. However, the plethora of fault diagnostics/detection and monitoring investigations can be divided into following categories: 
+
+\subsection{Model-Based Approaches}
+The first category includes traditional lumped-parameter modeling and analysis of faulty motor performance and case history study of actual motor with faults in stator, rotor and bearing. Although not the mainstream of motor condition monitoring, they are considered more suitable and favourable for smaller motors and variable-speed drives.
+
+A mathematical model of squirrel cage induction motor was built as a reference model in \cite{70}, then the deviations between the output of a measurement model and the reference model can be observed to detect and locate rotor faults. It showed the advantage of no need for frequency analysis so that it fits for variable-speed drive monitoring.
+
+\subsection{Thermal Monitoring Approaches}
+Like mechanical vibration and electrical signal, the measurement of temperature \cite{rps2},\cite{rps3} plays a dominant role in condition monitoring of electrical machines. Thermal monitoring of induction motor using bulk conduction parameter based thermal model, to estimate the temperature rise in different parts of the induction motor have been reported by various researchers \cite{rps3},\cite{rps17}. Observer based thermal modeling of induction motor has been presented in \cite{rps19}. Thermal monitoring of induction motor by means of rotor resistance identification has been studied in \cite{rps28}. A sensor-less temperature estimation in a squirrel cage induction motor has been reported in \cite{rps27}. Still more theories and methodologies are yet to be unveiled in this field.
+
+\subsection{Signal-Processing Approaches}
+This category comprises of the investigations that concentrate on the ``on-line'' motor condition monitoring and fault diagnosis using either vibration \cite{rps14} or motor terminal current, voltage, or instantaneous power waveforms \cite{pbc6}. However, most of the recent research has been focused on the practice of current monitoring, especially MCSA, which has showed potential to take the place of the status of vibration monitoring \cite{00873206} because it can provide the same indication without accessing the rotating part of the motor. This technique utilises results of spectral analysis of stator current to identify an existing or incipient fault of induction motor drives. Traditional Fourier transform techniques are used for the purpose of spectral analysis.
+
+\subsection{Emerging Technology Approaches}
+Some recent works show the development of various detection and diagnosis techniques for induction motor faults by the help of neural networks, fuzzy logic and AI techniques \cite{pbc2},\cite{pbc4},\cite{pbc5}. Although at present, these applications are limited to only a number of practical implementations, it is believed that these techniques along with advanced signal processing tools like instantaneous power FFT, Park's transformation, bispectrum, high resolution spectral analysis, wavelets \cite{00873206},\cite{00952496}, etc. will have significant role in electrical drives system diagnosis.
+   
+It is reflected from the recent publications that the technique of wavelet packet decomposition is being extensively used for signature analysis of mechanical faults of induction machines \cite{00897122}-\cite{01254628}. Detection of motor bearing damage \cite{01254628},\cite{00929510} and broken rotor bar \cite{00976461} are two major areas of conditional monitoring where wavelet techniques has been applied. 
+
+\section{Scope of Work}
+The Fourier analysis is very useful for many applications where the signals are stationary and it is generally used for induction motor fault detection. The Fourier transform is, however, not appropriate to analyse a signal that has a transitory characteristic such as drifts, abrupt changes, and frequency trends. To overcome this problem, it has been adapted to analyse small sections of the signal at a time. This technique is known as short-time Fourier transform (STFT), or windowing technique. But, the fixed size of the window, as it gives limited precision, is the main drawback of the STFT. The wavelet transform was then introduced with the idea of overcoming the difficulties mentioned above. A windowing technique with variable-size region is then used to perform the signal analysis, which can be the stator current \cite{00539845}. With this tool more precise information on both low- and high-frequency signals are achievable.
+
+The advantages of using wavelet techniques for fault monitoring and diagnosis of induction motors is increasing because these techniques help perform stator current signal analysis during transients. The wavelet technique can be used for a localised analysis in the time-frequency or time-scale domain. It is then a powerful tool for condition monitoring and fault diagnosis.
+     
+Proposed project work aims to eliminate all these limitations of present technology by using advanced signal processing tools of wavelet transform and related methods. Successful carrying out of the proposed work may solve many problems in the field of condition monitoring of induction motor.
+
+\section{Acquaintance with Wavelets}
+\subsection{The Inception of the Concept}
+Wavelets are a recently developed mathematical tool for signal analysis. Informally, a wavelet is a short-term duration wave. Wavelets are used as a kernel function in an integral transform, much in the same way that sines and cosines are used in Fourier analysis or the Walsh functions in Walsh analysis. 
+
+The development of wavelets can be linked to several separate trains of thought, starting with Haar's work in the early 20th century. Notable contributions to wavelet theory can be attributed to David Marr for his effective algorithm for numerical image processing using wavelets in the early 1980s. In 1980, Grossman and Morlet broadly defined wavelets in the context of quantum physics. Stephane Mallat's exceptional work on digital signal processing in 1985 inspired Y.~Meyer to construct the first nontrivial continuously differentiable wavelets. I.~Daubechies used Mallat's work to construct a set of wavelet orthonormal basis functions that have become the foundation of almost every modern wavelet application \cite{amara}.
+
+\subsection{The Need for Wavelets}
+Signal analysts already have at their disposal an impressive arsenal of tools. Perhaps the most well known of these is Fourier analysis, which breaks down a signal into constituent sinusoids of different frequencies. 
+
+For a continuous function of period $T$, the Fourier series is given by
+\begin{equation}
+f(x) = a_{0} + \sum_{n=1}^{\infty} \left( a_{n} \cos n\omega_{0}t + b_{n} \sin n\omega_{0}t \right)
+\end{equation}
+where the Fourier coefficients are calculated by,
+\begin{eqnarray*}
+a_{0} & = & \frac{1}{T} \int_{0}^{T} f(t)\,dt \\
+a_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \cos n\omega_{0}t\,dt \\
+b_{n} & = & \frac{2}{T} \int_{0}^{T} f(t) \sin n\omega_{0}t\,dt
+\end{eqnarray*}
+
+Another way to think of Fourier analysis is as a mathematical technique for transforming our view of the signal from time-based to frequency-based. Fourier transform is an extension to Fourier's idea to non-periodic functions (or waves). For many signals, Fourier analysis is extremely useful because the signal's frequency content is of great importance. So why other techniques, like wavelet analysis, are needed?
+         
+Fourier analysis has a serious drawback. In transforming to the frequency domain, time information is lost. When looking at a Fourier transform of a signal, it is impossible to tell when a particular event took place. If the signal properties do not change much over time -- that is, if it is what is called a stationary signal -- this drawback isn't very important. However, most interesting signals contain numerous nonstationary or transitory characteristics: \emph{drift}, \emph{trends}, \emph{abrupt changes}, and \emph{beginnings and ends of events}. These characteristics are often the most important part of the signal, and Fourier analysis is not suited in detecting them. 
+
+In an effort to correct this deficiency, Dennis Gabor (1946) adapted the Fourier transform to analyse only a small section of the signal at a time -- a technique called windowing the signal. Gabor's adaptation, called the Short-Time Fourier Transform (STFT), maps a signal into a two-dimensional function of time and frequency. The STFT represents a sort of compromise between the time- and frequency-based views of a signal. It provides some information about both when and at what frequencies a signal event occurs. However, this information can only be obtained with limited precision, and that precision is determined by the size of the window.
+
+While the STFT compromise between time and frequency information can be useful, the drawback is that once a particular size for the time window is chosen, that window is the same for all frequencies. Many signals require a more flexible approach -- one where the window size can be varied to determine more accurately either time or frequency.
+
+Wavelet analysis represents the next logical step: a windowing technique with variable-sized regions. Wavelet analysis allows the use of long time intervals where more precise low-frequency information is required, and shorter regions where high-frequency information is looked for. Wavelet algorithms process data at different scales or resolutions. The result in wavelet analysis is to see both the forest and the trees, so to speak. \cite{amara}
+
+\subsection{Idea behind Wavelets}
+A wavelet is a waveform of effectively limited duration that has an average value of zero. Comparing wavelets with sine waves, which are the basis of Fourier analysis, it  can be appreciated that sinusoids do not have limited duration -- they extend from minus to plus infinity. And where sinusoids are smooth and predictable, wavelets tend to be irregular and asymmetric. Fourier analysis consists of breaking up a signal into sine waves of various frequencies. Similarly, wavelet analysis is the breaking up of a signal into shifted and scaled versions of the original (or \emph{mother}) wavelet. So signals with sharp changes might be better analysed with an irregular wavelet than with a smooth sinusoid, just as some foods are better handled with a fork than a spoon. It also makes sense that local features can be described better with wavelets that have local extent. \cite{pswbook},\cite{waveletug}
+
+Therefore, to summarise the procedure of wavelet analysis may run like this -- a wavelet prototype function, called an analysing wavelet or mother wavelet is adopted and then temporal analysis is performed with a contracted, high-frequency version of the prototype wavelet, while frequency analysis is performed with a dilated, low-frequency version of the same wavelet. Thus the original signal or function can be represented in terms of a wavelet expansion (using coefficients in a linear combination of the wavelet functions). Data operations can be performed using just the corresponding wavelet coefficients.
+
+The problem of cutting a signal can be solved by a fully scalable modulated window that is shifted along the signal and for every position the spectrum is calculated. This process is repeated many times with a slightly shorter (or longer) window for every new cycle and in the end the result will be a collection of time-frequency representations of the signal, all with different resolutions. Because of this collection of representations a multiresolution analysis is possible.
+
+\subsection{Wavelet Analysis Techniques}
+\subsubsection*{Continuous Wavelet Transform}
+Mathematically, the process of Fourier analysis is represented by the Fourier transform:
+\begin{equation} \label{ft}
+F(\omega) = \int_{-\infty}^{+\infty} f(t)\,e^{-j\omega t}\,dt
+\end{equation}
+which is the sum over all time of the signal $f(t)$ multiplied by a complex exponential. The results of the transform are the Fourier coefficients $F(\omega)$, which when multiplied by a sinusoid of frequency $\omega$ yield the constituent sinusoidal components of the original signal.
+
+Similarly, the continuous wavelet transform (CWT) is defined as the sum over all time of the signal multiplied by scaled, shifted versions of the wavelet function $\psi$ \cite{daub}
+\begin{equation} \label{cwt}
+L_{\psi}f(s,\tau) = \int f(t)\psi^{\ast}_{s,\tau}(t)\,dt
+\end{equation}
+$f(t)$ is decomposed into a set of basis functions $\psi_{s,\tau}(t)$, called wavelets generated from a single basic wavelet $\psi(t)$, the so-called \emph{mother wavelet}, by scaling and translation:
+\begin{displaymath}
+\psi_{s,\tau}(t) = \frac{1}{\sqrt{|s|}} \, \psi \left( \frac{t - \tau}{s} \right)
+\end{displaymath}
+$s$ is the \emph{scale factor}, $\tau$ is the translation factor and the factor $|s|^{-1/2}$ is for energy normalisation across the different scales.
+
+\begin{figure}[h] 
+\centering
+\includegraphics[scale=0.8]{mw}
+\caption{Some popular \emph{mother wavelets}: (a) Haar, (b) Daubechies 2, (c) Morlet and (d) Mexican hat} \label{fig.1}
+\end{figure} 
+
+\subsubsection*{Discrete Wavelet Transform}
+Since the continuous wavelet transformation is achieved  by dilating and translating the mother wavelet continuously over the field of real numbers, it generates substantial redundant information. Therefore, instead of continuous dilation and translation, the mother wavelet may be dilated and translated discretely by careful selection of the terms $s$ and $\tau$. It turns out, rather remarkably, that if scales and positions based on powers of two -- so-called \emph{dyadic} scales and positions are chosen -- then the analysis will be much more efficient and just as accurate. Such an analysis is obtained from the discrete wavelet transform (DWT). \cite{daub}
+
+\subsubsection*{Wavelet Packet Transform} 
+The wavelet transform is actually a subset of a far more versatile transform, the wavelet packet transform. Wavelet packets are particular linear combinations of wavelets. They form bases which retain many of the orthogonality, smoothness, and localisation properties of their parent wavelets. The coefficients in the linear combinations are computed by a recursive algorithm making each newly computed sequence of wavelet packet coefficients the root of its own analysis tree.
+
+%%%% ============ END OF TERM PAPER =============
+\section{Proposed Scheme of Work}
+
+\begin{figure}[h]
+\centering
+\begin{picture}(300,320)(0,0)
+\input{psw}
+\end{picture}
+\caption{Proposed scheme of work} \label{psw}
+\end{figure}
+
+The schematic representation of the proposed work to be done is shown in Fig.~\ref{psw}. It shows that the processing of the motor line current signal will be required for the analysis. For the purpose of signal processing the data required are to be obtained from the analog to digital (A/D) converter and the data acquisition system (DAS), which will convert the motor line currents into appropriately sampled discrete data. After the signal processing of the line current the results will be further analysed and thus diagnosis of any motor fault will be possible from the post-processing of the result. Therefore, a great importance lays upon the signal processing part of the scheme. Since it is signal processing of discrete data, the primary and most popular tool available for digital signal processing is the discrete Fourier Transform or usually abbreviated DFT. To be more precise, the foundation of the digital signal processing is the fast Fourier transform, or FFT, which is an algorithm for computing the DFT with reduced execution time. 
+
+In the previous sections, however, the advantages of using wavelet transform has been established. But the importance of the traditional Fourier analysis cannot be overlooked because it helps immensely in understanding the principles of signal processing, both analog and digital. The motor current is expected to contain a number of signals having different frequencies and there is quite a possibility that the signals other than the fundamental one might be present for only a certain period of time. Therefore, the signal processing block of the scheme is to be so designed that it may be able to find the frequency as well as the duration of existence of the excess signals. The discrete Fourier transform tool, mainly FFT, is very much effective in determining the frequency content or spectra of a digital signal correctly. Wavelets, on the other hand, prove themselves very effective in order to determine the exact time instant of the occurrence of any change in the frequency of a signal.
+
+For the signal processing part of the scheme, therefore, the following tools are to be used:
+\begin{enumerate}[(i)]
+\item Fast Fourier transform (FFT)
+\item Discrete wavelet transform (DWT)
+\end{enumerate}
+
+Keeping this in mind computer programs for digital signal processing implementing the above-mentioned techniques have been developed in this semester. These programs are meant to perform signal processing operations, namely FFT and discrete wavelet transform (DWT), on the digital data obtained from the DAS. Presently offline data is being used for the programs. The results of the application of the FFT and DWT methods on the sample data will be produced in the following sections. Beside the basic principles of the tools the technique of implementing them on computer programs will be discussed as well.
+
+\section{Fast Fourier Transform (FFT)}
+\subsection{Basic Theory and Algorithm} \label{fftbas}
+Fourier transform converts an analog signal $x(t)$ for $-\infty < t < +\infty$ into a second signal $X(f)$ for $-\infty < f < +\infty$ as follows from (\ref{ft}):
+\begin{equation}
+X(f) = \int_{-\infty}^{+\infty} x(t)\,e^{-j2\pi ft}\,dt
+\end{equation}
+The signal $X(f)$, which is complex valued, is called the \emph{Fourier transform} of $x(t)$.
+
+Practical signal processing methods are applied to a sequence of discrete samples of $x(t)$. For example, an interval from 0 to $T$ can be divided into $N$ equispaced subintervals with widths of $\Delta t = T/N$. The subscript $n$ is employed to designate the discrete times at which samples are taken. Thus, $x(n)$ designates a value of the continuous function $x(t)$ taken at $t_{n}$. It should be noted that the data points are specified at $n=0,1,2,\ldots,N-1$. Hence, the Discrete Fourier Transform (DFT) of a signal $x$ may be defined as:
+\begin{equation} \label{dft}
+X(k) = \sum^{N-1}_{n=0} x(n)\,e^{-j2\pi n k/N}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+where $x(n)$ denotes the input signal at time (sample) $n$, and $X(k)$ denotes the $k^{\mathrm{th}}$ spectral sample.
+
+Therefore, the inverse Discrete Fourier Transform or IDFT may be written as:
+\begin{equation}
+x(n) = \frac{1}{N} \sum^{N-1}_{n=0} X(k)\,e^{j2\pi n k/N}, \quad n=0,1,2,\ldots,N-1
+\end{equation}
+
+The DFT and IDFT are very easy to implement in a computer algorithm. But unfortunately, the DFT can be relatively expensive to compute. It can be noted from (\ref{dft}) that the algorithm requires $N^{2}$ complex multiplications, which is not at all economical for data samples of even moderate size. 
+
+The fast Fourier transform (FFT) is an efficient but fast implementation of the discrete Fourier transform (DFT). It utilises the results of previous computations to reduce the number of operations. When $N$ is a power of 2, the computational complexity drops from ${\mathcal O}(N^2)$ (for the DFT) down to ${\mathcal O}(N\log_{2} N)$ for the FFT by the exploitation of the periodicity and symmetry of the trigonometric functions. The FFT was evidently first described by Gauss in 1805 and rediscovered by J.W. Cooley and J.W. Tukey in 1965, when they outlined an algorithm called \emph{Cooley-Tuckey algorithm} for calculating the FFT. Today, there are host of other approaches that are offshoots of this method. \cite{schilling}
+
+The basic idea behind each of these algorithms is that a DFT of length $N$ is decomposed, or ``decimated'' into successive smaller DFTs. There are two basic varieties of FFT, one based on \emph{decimation-in-time}, and the other on \emph{decimation-in-frequency}. The Cooley-Tuckey algorithm is a member of what are called decimation-in-time techniques. There is an alternative approach called the \emph{Sande-Tuckey algorithm}, which is a member of decimation-in-frequency techniques. \cite{chapra},\cite{nric}
+
+The technique of decimation-in-frequency has been adopted for the development of the FFT program. The algorithm can be appreciated from the following discussion.
+
+The expression for DFT can be rewritten from (\ref{dft}) as:
+\begin{equation} \label{dft2}
+X(k) = \sum_{n=0}^{N-1} x(n) W_{N}^{kn}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+where 
+\begin{equation} \label{wn}
+W_{N} \stackrel{\triangle}{=} e^{-j2\pi/N}
+\end{equation}
+
+The scalar $W_{N}$ satisfies $W_{N}^{N}=1$, so $W_{N}$ can be thought as the $N^{\mathrm{th}}$ root of unity.
+
+Now, if it supposed that $N$ is an integral power of 2, i.e. $N=2^{M}$ where $M$ is an integer, the sum in (\ref{dft2}) can be broken into two parts as follows: 
+\begin{equation} \label{dft3}
+X(k) = \sum_{n=0}^{(N/2) - 1} x(n) W_{N}^{kn} + \sum_{n=N/2}^{N-1} x(n) W_{N}^{kn}, \quad k=0,1,2,\ldots,N-1
+\end{equation}
+
+The second sum in (\ref{dft3}) can be rewritten using the change of variable $m=n+N/2$, so that the range of the second sum is consistent with the first, 
+\begin{eqnarray} 
+X(k) & = & \sum_{n=0}^{(N/2) - 1} x(n) W_{N}^{kn} + \sum_{m=0}^{(N/2)-1} x(m+N/2) W_{N}^{k(m+N/2)} \nonumber \\
+\textrm{or,}\quad X(k) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) + x(n+N/2) W_{N}^{kN/2} \right] W_{N}^{kn} \label{dft4}
+\end{eqnarray}
+
+It is recognised from (\ref{wn}) that $W_{N}^{N/2} = e^{-j\pi}$. Applying Euler's identity it follows that $W_{N}^{kN/2} = (-1)^{k}$. Using this observation the following simplification is obtained from (\ref{dft4}),
+
+\begin{equation} \label{dft5}
+X(k) = \sum_{n=0}^{(N/2) - 1} \left[ x(n) + (-1)^{k} x(n+N/2) \right] W_{N}^{kn}
+\end{equation}
+
+Therefore, the next step in this algorithm is to separate (\ref{dft5}) according to the even and odd values of $k$, i.e., 
+\begin{eqnarray}
+X(2k) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) + x(n+N/2) \right] W_{N}^{2kn} \label{even}\\
+X(2k+1) & = & \sum_{n=0}^{(N/2) - 1} \left[ x(n) - x(n+N/2) \right] W_{N}^{2kn} W_{N}^{n} \label{odd}
+\end{eqnarray}
+
+Next, two new sequences of length $N/2$ is defined as follows:
+\begin{eqnarray}
+a(n) & = & x(n) + x(n+N/2) \nonumber \\
+b(n) & = & \left[ x(n) - x(n+N/2) \right] W_{N}^{n} \nonumber
+\end{eqnarray}
+
+These sequences are substituted in (\ref{even}) and (\ref{odd}), respectively and since from (\ref{wn}) $W_{N}^{2kn} = W_{N/2}^{kn}$, (\ref{even}) and (\ref{odd}) are rewritten as
+\begin{eqnarray}
+X(2k) & = & \sum_{n=0}^{(N/2) - 1} a(n) W_{N/2}^{kn} \label{even2} \\
+X(2k+1) & = & \sum_{n=0}^{(N/2) - 1} b(n) W_{N/2}^{kn} \label{odd2}
+\end{eqnarray}
+
+Comparing these with (\ref{dft2}), it is seen that the even and odd pairs of $X(k)$ can be computed separately, using DFTs of length $N/2$ and hence a 50\% savings in computational efforts can be achieved: $2(N/2)^2=N^{2}/{2}$. This decomposition can be applied recursively until $N/2$ two-point DFTs as below are arrived at. 
+\begin{eqnarray}
+X(0) & = & x(0) + x(1) \\
+X(1) & = & x(0) - x(1)
+\end{eqnarray}
+
+Thus the total number of calculations for the entire computation becomes ${\mathcal O}(N\log_{2} N)$. For example, for $N=1024$ it requires approximately 1,048,576 floating point operations using DFT, while the number for FFT is only 5,120. \cite{schilling} A signal flow graph that summarises the computations involved in finding an eight-point DFT using the decimation-in-frequency FFT techniques is shown in Fig.~\ref{dif}. Here signals are added at the nodes and multiplied by the scalars present on the paths. \cite{chapra}
+
+\begin{figure}[h]
+\centering
+\begin{picture}(370,265)(0,0)
+\input{dif}
+\end{picture}
+\caption{Flow graph of the decimation-in-frequency decomposition of an eight-point DFT} \label{dif}
+\end{figure}
+
+One difficulty with the FFT that can be observed from Fig.~\ref{dif} is that the order of the computed points gets \emph{scrambled} with each iteration. Comparing the binary representations of the original DFT ordering with the FFT ordering, it is observed that the original DFT order can be recovered by a simple \emph{bit reversal} process. That is the Fourier coefficients can be unscrambled by reversing the bits of the indices as depicted in Table \ref{bit}. This process practically leads to the utilisation of the swap operation to get the reordering of the array elements. \cite{chapra},\cite{nric}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Scrambled order & Scrambled order & Bit-reversed order & Final result \\
+(decimal) & (binary) & (binary) & (decimal) \\
+\hline
+X(0) & X(000) & X(000) & X(0) \\
+X(4) & X(100) & X(001) & X(1) \\
+X(2) & X(010) & X(010) & X(2) \\
+X(6) & X(110) & X(011) & X(3) \\
+X(1) & X(001) & X(100) & X(4) \\
+X(5) & X(101) & X(101) & X(5) \\
+X(3) & X(011) & X(110) & X(6) \\
+X(7) & X(111) & X(111) & X(7) \\
+\hline
+\end{tabular}
+\caption{The bit-reversal process} \label{bit}
+\end{table}
+
+\subsection{Computer Program Development, Application and Analysis}
+The program for computing the FFT of any discrete data has been developed in C programming language applying the algorithm discussed above. The program has two major parts consisting of two functions for computing the FFT and doing the bit-reversal respectively. The first part essentially implements the computations depicted in Fig.~\ref{dif} to find Fourier coefficients. After the execution of the first part the second part is used to obtain the result in an orderly manner from the scrambled condition. The source codes are in \ref{pscfft}.
+
+The programs developed and furnished in \ref{pscfft} have been tested by executing on various data with different attributes. The following example illustrates the functionality of the FFT algorithm implemented in the programs.
+
+\paragraph{Example:} A common use of the Fourier transform is to find the frequency components of a signal buried in noise. The following discrete-time signal consisting of an underlying signal of 200 Hz and a disturbance of 50 Hz with $N=512$ has been considered for testing \cite{schilling}
+\begin{displaymath}
+x(n) = \cos \left( 2\pi\frac{200n}{N}\right) +0.5\sin \left( 2\pi\frac{50n}{N} \right)
+\end{displaymath}
+this signal is then corrupted with zero-mean random noise Fig.~\ref{figx}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=100mm]{x}
+\caption{A discrete-time signal $x(n)$} \label{figx}
+\end{figure}
+
+Now the presence of the 200 Hz and 50 Hz components is not obvious from direct inspection. 
+
+To isolate these terms from the noise the FFT is performed on the signal and the magnitude spectrum of the signal $x(n)$ obtained from the output is shown in Fig.~\ref{figxms}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=110mm]{ya}
+\caption{The magnitude spectrum of $x(n)$ obtained after performing fast Fourier transform} \label{figxms}
+\end{figure}
+
+Here the large peak at $f=200$ Hz indicates the presence and strength of the underlying signal and the smaller peak at $f=50$ Hz corresponds to the disturbance term. Finally, the distribution of energy over the remaining frequencies shows the presence of the random noise.
+
+The same signal $x(n)$ has been analysed for obtaining the FFT using `fft' utility of \textsc{Matlab} and the result is given in Fig.~\ref{figxmsml}, which shows that the result obtained from the developed program matches with that from a standard mathematical tool like \textsc{Matlab}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=110mm]{yaml}
+\caption{The magnitude spectrum of $x(n)$ obtained from \textsc{Matlab}} \label{figxmsml}
+\end{figure}
+
+\section{Discrete Wavelet Transform (DWT)}
+In the signal processing part of the proposed scheme the programs are needed to work extensively with \emph{discrete} or \emph{sampled} signals. The CWT algorithm as given in a simplified form in (\ref{cwt}) can be applied to a sampled signal in the form $\mathbf{f} = (f_{0},f_{1},f_{2},\ldots,f_{N-1})$, where $N$ is a positive even integer which is referred to as the \emph{length} of $\mathbf{f}$, for the scale factors $s_{1},\ldots,s_{M}$. But the resulting signal, in such transform, is ``larger'' than the original signal. A DWT linked to the corresponding CWT can be performed on a discretely sampled signal after a continuous-time signal $f(t)$ is constructed from it using a ``scaling function'' defined uniquely for the wavelet used. Furthermore, the notion of continuous-time signals may be done away with and the DWT may be formulated in purely discrete manner, i.e., for sequences of numbers. \cite{daub},\cite{stark}
+
+\subsection{Haar Transform} \label{ht}
+The Haar transform decomposes a discrete signal into two subsignals of half its length. One subsignal is a running average or \emph{trend} and the other subsignal is a running difference or \emph{fluctuation}. The \emph{first trend} subsignal, $\mathbf{a}^{1} = (a_{0},a_{1},\ldots,a_{N/2-1})$, for the signal $\mathbf{f}$ is computed by taking the running average such that 
+\begin{equation} \label{am}
+a_{m} = \frac{f_{2m}+f_{2m+1}}{\sqrt{2}}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+
+For example, the following discretely sampled signal of length 8 is considered \cite{walker}:
+\begin{displaymath}
+\mathbf{f} = (4,6,10,12,8,6,5,5)
+\end{displaymath}
+then its first trend subsignal can be calculated as indicated below:
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+ &   & 5 & & & & 11 & & & & 7 & & & & 5 &   \\
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{a}^{1}$: & & $5\sqrt{2}$ & & & & $11\sqrt{2}$ & & & & $7\sqrt{2}$ & & & & $5\sqrt{2}$ &   
+\end{tabular}
+\end{center}
+The multiplication by $\sqrt{2}$ is necessary in order to ensure that the Haar transform preserves the energy of a signal.
+
+The \emph{first fluctuation} subsignal for the signal $\mathbf{f}$, which is denoted by $\mathbf{d}^{1} = (d_{0},d_{1},\ldots,d_{N/2-1})$, for the signal $\mathbf{f}$ is computed by taking a running difference in the following way.
+\begin{equation} \label{dm}
+d_{m} = \frac{f_{2m} - f_{2m+1}}{\sqrt{2}}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+ &   & $-1$ & & & & $-1$ & & & & $1$ & & & & $0$ &   \\
+ &   & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ & & & & $\downarrow$ &  \\
+$\mathbf{d}^{1}$: & & $-\sqrt{2}$ & & & & $-\sqrt{2}$ & & & & $\sqrt{2}$ & & & & $0$ &   
+\end{tabular}
+\end{center}
+
+\subsubsection*{First Level Haar Transform}
+The first level Haar transform is the mapping $\mathbf{H}_{1}$ from a discrete signal $\mathbf{f}$ to its first trend $\mathbf{a}^{1}$ and first fluctuation $\mathbf{d}^{1}$ defined by
+\begin{equation} \label{map}
+\mathbf{f} \stackrel{\mathbf{H}_{1}}{\longmapsto} \left(\mathbf{a}^{1} \mid \mathbf{d}^{1}\right)
+\end{equation}
+
+The inverse of mapping $\mathbf{H}_{1}$ transforms signal $(\mathbf{a}^{1} \mid \mathbf{d}^{1})$ back to signal $\mathbf{f}$, via the following formula and the diagram:
+\begin{equation} \label{invmap}
+\mathbf{f} = \left(\frac{a_{0}+d_{0}}{\sqrt{2}},\frac{a_{0}-d_{0}}{\sqrt{2}},\ldots,\frac{a_{N/2-1}+d_{N/2-1}}{\sqrt{2}},\frac{a_{N/2-1} - d_{N/2-1}}{\sqrt{2}}\right)
+\end{equation}
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & & $5\sqrt{2}$ & & & & $11\sqrt{2}$ & & & & $7\sqrt{2}$ & & & & $5\sqrt{2}$ &   \\
+$\mathbf{d}^{1}$: & & $-\sqrt{2}$ & & & & $-\sqrt{2}$ & & & & $\sqrt{2}$ & & & & $0$ &   \\
+ &   & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ & & & & $\swarrow$$\searrow$ &  \\
+$\mathbf{f}$: & 4 & & 6 & & 10 & & 12 & & 8 & & 6 & & 5 & & 5 
+\end{tabular}
+\end{center}
+
+\subsubsection*{Haar Transform of Multiple Levels}
+Multiple level Haar transforms are easy to perform by simply repeating the process of 1-level transform. For example, the second level of a Haar transform is performed by computing a second level trend $\mathbf{a}^{2}$ and a second level fluctuation $\mathbf{d}^{2}$ for the first trend $\mathbf{a}^{1}$ \emph{only} as depicted in the following diagram:
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & $5\sqrt{2}$ & & $11\sqrt{2}$ & & $7\sqrt{2}$ & & $5\sqrt{2}$   \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+$\mathbf{a}^{2}$: & & $16$ & & & & $12$ &    
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{cccccccccccccccc}
+$\mathbf{a}^{1}$: & $5\sqrt{2}$ & & $11\sqrt{2}$ & & $7\sqrt{2}$ & & $5\sqrt{2}$   \\
+ &   & $\searrow$$\swarrow$ & & & & $\searrow$$\swarrow$ &  \\
+$\mathbf{d}^{2}$: & & $-6$ & & & & $2$ &    
+\end{tabular}
+\end{center}
+
+\subsubsection{Haar Wavelets}
+These are the simplest wavelets. The 1-level \emph{Haar wavelets}\footnote{These should not be confused with the scalar $W_{N}$ defined in \ref{fftbas}} are introduced to facilitate easy representation of the 1-level fluctuation subsignals by making use of scalar products with them and they are defined as
+\begin{eqnarray}
+\mathbf{W}_{0}^{1} & = &\left( \frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}},0,0,0,0,\ldots,0 \right) \nonumber \\
+\mathbf{W}_{1}^{1} & = & \left( 0,0,\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}},0,0,\ldots,0 \right) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{W}_{N/2-1}^{1} & = & \left( 0,0,0,0,\ldots,0,\frac{1}{\sqrt{2}},\frac{-1}{\sqrt{2}} \right) 
+\end{eqnarray}
+
+Using the 1-level Haar wavelets, the values for the first fluctuation subsignal $\mathbf{d}^{1}$ can be expressed as scalar products, e.g.,
+\begin{displaymath}
+d_{0}=\frac{f_{0}-f_{1}}{\sqrt{2}}=\mathbf{f} \cdot \mathbf{W}_{0}^{1}
+\end{displaymath}
+or, thus (\ref{dm}) can be summarised in terms of scalar products with the 1-level Haar wavelets as
+\begin{equation} \label{dm2}
+d_{m} = \mathbf{f} \cdot \mathbf{W}_{m}^{1}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+
+Certain elementary signals called 1-level \emph{Haar scaling signal} are also introduced to express the 1-level trend values as scalar products and they are defined as
+\begin{eqnarray}
+\mathbf{V}_{0}^{1} & = &\left( \frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}},0,0,0,0,\ldots,0 \right) \nonumber \\
+\mathbf{V}_{1}^{1} & = & \left( 0,0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}},0,0,\ldots,0 \right) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{V}_{N/2-1}^{1} & = & \left( 0,0,0,0,\ldots,0,\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}} \right) 
+\end{eqnarray}
+and using them the first trend values are expressed as scalar products
+\begin{equation} \label{am2}
+a_{m} = \mathbf{f} \cdot \mathbf{V}_{m}^{1}, \quad m=0,1,\ldots,N/2-1
+\end{equation}
+The ideas discussed above extend to every level of transform, and likewise the 2-level trend can be expressed by
+\begin{displaymath}
+\mathbf{a}^{2} = \left( \mathbf{f}\cdot\mathbf{V}_{0}^{2},\mathbf{f}\cdot\mathbf{V}_{1}^{2},\ldots,\mathbf{f}\cdot\mathbf{V}_{N/4-1}^{2} \right)
+\end{displaymath}
+
+\subsubsection{Multiresolution Analysis}
+\emph{Multiresolution analysis (MRA)} means the complete synthesis of discrete signal at the finest resolution by beginning with a very low resolution signal and successively adding on details to create higher resolution. \cite{walker}
+
+Equations (\ref{dm2}) and (\ref{am2}) show how 1-level Haar transform is expressed in terms of a certain basis set of elementary signals, the Haar wavelets and scaling signals. It is also possible to express the inverse of the 1-level Haar transform in terms of these same elementary signals and this leads to the first level of the Haar MRA. The signal $\mathbf{f}$ can be expressed from (\ref{invmap}) as
+\begin{displaymath}
+\mathbf{f} = \left( \frac{a_{0}}{\sqrt{2}},\frac{a_{0}}{\sqrt{2}},\frac{a_{1}}{\sqrt{2}},\frac{a_{1}}{\sqrt{2}},\ldots,\frac{a_{N/2-1}}{\sqrt{2}},\frac{a_{N/2-1}}{\sqrt{2}} \right) + 
+	\left( \frac{d_{0}}{\sqrt{2}},\frac{-d_{0}}{\sqrt{2}},\frac{d_{1}}{\sqrt{2}},\frac{-d_{1}}{\sqrt{2}},\ldots,\frac{d_{N/2-1}}{\sqrt{2}},\frac{-d_{N/2-1}}{\sqrt{2}} \right)
+\end{displaymath}
+This shows that $\mathbf{f}$ can be expressed as the sum of two signals like 
+\begin{equation}
+\mathbf{f}=\mathbf{A}^{1}+\mathbf{D}^{1}
+\end{equation}
+where the signal $\mathbf{A}^{1}$ is called the \emph{first averaged signal} \cite{walker} or \emph{approximation} and is defined by \cite{walker},\cite{nric}
+\begin{equation}
+\mathbf{A}^{1} = \left( \frac{a_{0}}{\sqrt{2}},\frac{a_{0}}{\sqrt{2}},\frac{a_{1}}{\sqrt{2}},\frac{a_{1}}{\sqrt{2}},\ldots,\frac{a_{N/2-1}}{\sqrt{2}},\frac{a_{N/2-1}}{\sqrt{2}} \right) 
+\end{equation}
+and the signal $\mathbf{D}^{1}$ is called the \emph{first detail signal} \cite{walker} or \emph{detail} and is defined by
+\begin{equation}
+\mathbf{D}^{1} = \left( \frac{d_{0}}{\sqrt{2}},\frac{-d_{0}}{\sqrt{2}},\frac{d_{1}}{\sqrt{2}},\frac{-d_{1}}{\sqrt{2}},\ldots,\frac{d_{N/2-1}}{\sqrt{2}},\frac{-d_{N/2-1}}{\sqrt{2}} \right) 
+\end{equation}
+
+Using Haar scaling signal and wavelets, these two signals are expressible as
+\begin{eqnarray}
+\mathbf{A}^{1} &=& a_{0}\mathbf{V}_{0}^{1}+a_{1}\mathbf{V}_{1}^{1}+\ldots+a_{N/2-1}\mathbf{V}_{N/2-1}^{1} \label{A1} \\
+\mathbf{D}^{1} &=& d_{0}\mathbf{W}_{0}^{1}+d_{1}\mathbf{W}_{1}^{1}+\ldots+d_{N/2-1}\mathbf{W}_{N/2-1}^{1} \label{D1}
+\end{eqnarray}
+Now, applying (\ref{dm2}) and (\ref{am2}), the last two equations can be rewritten as follows
+\begin{eqnarray*}
+\mathbf{A}^{1} &=& (\mathbf{f}\cdot\mathbf{V}_{0}^{1})\mathbf{V}_{0}^{1}+(\mathbf{f}\cdot\mathbf{V}_{1}^{1})\mathbf{V}_{1}^{1}+\ldots+(\mathbf{f}\cdot\mathbf{V}_{N/2-1}^{1})\mathbf{V}_{N/2-1}^{1} \\
+\mathbf{D}^{1} &=& (\mathbf{f}\cdot\mathbf{W}_{0}^{1})\mathbf{W}_{0}^{1}+(\mathbf{f}\cdot\mathbf{W}_{1}^{1})\mathbf{W}_{1}^{1}+\ldots+(\mathbf{f}\cdot\mathbf{W}_{N/2-1}^{1})\mathbf{W}_{N/2-1}^{1} 
+\end{eqnarray*}
+These show that the averaged signal is a combination of Haar scaling signals, with the values of the first trend subsignal as coefficients; and the detail signal is a combination of Haar wavelets, with the values of the first fluctuation subsignal as coefficients. Continuing with the signal $\mathbf{f}$ from \ref{ht}, which has its first trend subsignal $\mathbf{a}^{1}=(5\sqrt{2},11\sqrt{2},7\sqrt{2},5\sqrt{2})$ and first fluctuation subsignal $\mathbf{d}^{1}=(-\sqrt{2},-\sqrt{2},\sqrt{2},0)$, applying (\ref{A1}) the averaged signal comes as
+\begin{equation}
+\mathbf{A}^{1} = (5,5,11,11,7,7,5,5)
+\end{equation}
+and (\ref{D1}) yields
+\begin{equation}
+\mathbf{D}^{1} = (-1,1,-1,1,1,-1,0,0)
+\end{equation}
+
+This illustrates the basic idea of MRA. The signal $\mathbf{f}$ is expressed as a sum of a lower resolution, or averaged, signal $(5,5,11,11,7,7,5,5)$ added with a signal $(-1,1,-1,1,1,-1,0,0)$ made up of fluctuations or details. This idea can be extended to further levels, as many levels as the number of times that the signal length can be divided by 2. Hence the second level of MRA of a signal $\mathbf{f}$ involves expressing it as
+\begin{equation}
+\mathbf{f} = \mathbf{A}^{2} + \mathbf{D}^{2} + \mathbf{D}^{1}
+\end{equation}
+where $\mathbf{A}^{2}$ and $\mathbf{D}^{2}$ are the second averaged and second detail signals respectively, which satisfy that
+\begin{equation}
+\mathbf{A}^{1} = \mathbf{A}^{2} + \mathbf{D}^{2}
+\end{equation}
+
+\subsection{Daubechies Transform}
+The only difference between Haar and Daubechies transforms consists in how the respective scaling signals and wavelets are defined. There are many Daubechies transforms. The advent of them becomes significant due to the concept of what is called ``vanishing moments'' of a wavelet.
+The Haar wavelet has only one vanishing moment. For signal analysis purpose it is desired to have as many vanishing moments as possible because it is important for detecting and localising signal changes. The problem of having small number of vanishing moments has been solved by Ingrid Daubechies by constructing a \emph{family} of scaling functions and wavelets usually called the ``family of Daubechies wavelets'' and each member is labelled by a natural number $n=1,2,3,\ldots$. For a given $n$ the scaling functions and wavelets are denoted with the term ``dbn'' each with $2n$ non-zero values and the remarkable thing is that dbn wavelets have $n$ vanishing moments \cite{stark}.
+
+\subsubsection{Daubechies Wavelets}
+The simplest member of the family of Daubechies wavelets is db1. The corresponding scaling signals and wavelets are given by the Haar scaling signals and Haar wavelets, respectively.
+
+Apart from $n=1$ the discussion will be confined to $n=2$,i.e. the db2 wavelet transform. For $n=2$, first let the \emph{scaling numbers} be defined by
+\begin{equation}
+\alpha_{0}=\frac{1+\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{1}=\frac{3+\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{2}=\frac{3-\sqrt{3}}{4\sqrt{2}}, \quad \alpha_{3}=\frac{1-\sqrt{3}}{4\sqrt{2}}
+\end{equation}
+
+Using these scaling numbers, the 1-level db2 scaling signals are
+\begin{eqnarray}
+\mathbf{V}_{0}^{1} & = & ( \alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3},0,0,\ldots,0 ) \nonumber \\
+\mathbf{V}_{1}^{1} & = & ( 0,0,\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3},\ldots,0 ) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{V}_{N/2-2}^{1} & = & ( 0,0,\ldots,0,\alpha_{0},\alpha_{1},\alpha_{2},\alpha_{3} ) \nonumber \\ 
+\mathbf{V}_{N/2-1}^{1} & = & ( \alpha_{2},\alpha_{3},0,0,\ldots,0,\alpha_{0},\alpha_{1} )  
+\end{eqnarray}
+
+Now, let the \emph{wavelet numbers} be defined by,
+\begin{equation}
+\beta_{0}=\frac{1-\sqrt{3}}{4\sqrt{2}}, \quad \beta_{1}=\frac{\sqrt{3}-3}{4\sqrt{2}}, \quad \beta_{2}=\frac{3+\sqrt{3}}{4\sqrt{2}}, \quad \beta_{3}=\frac{-1-\sqrt{3}}{4\sqrt{2}}
+\end{equation}
+
+Therefore, the wavelet numbers are related to the scaling numbers by the relations: $\beta_{0}=\alpha_{3}$, $\beta_{1}=-\alpha_{2}$, $\beta_{2}=\alpha_{1}$, and $\beta_{3}=-\alpha_{0}$. Using these numbers the 1-level db2 wavelets are
+\begin{eqnarray}
+\mathbf{W}_{0}^{1} & = & ( \beta_{0},\beta_{1},\beta_{2},\beta_{3},0,0,\ldots,0 ) \nonumber \\
+\mathbf{W}_{1}^{1} & = & ( 0,0,\beta_{0},\beta_{1},\beta_{2},\beta_{3},\ldots,0 ) \nonumber \\
+	 & \vdots & 	\nonumber \\
+\mathbf{W}_{N/2-2}^{1} & = & ( 0,0,\ldots,0,\beta_{0},\beta_{1},\beta_{2},\beta_{3} ) \nonumber \\ 
+\mathbf{W}_{N/2-1}^{1} & = & ( \beta_{2},\beta_{3},0,0,\ldots,0,\beta_{0},\beta_{1} )  
+\end{eqnarray}
+
+From the scaling signals and wavelets for db2 it should be noted that the scaling signals and the wavelets are all translations by two time-units of $\mathbf{V}_{0}^{1}$ and $\mathbf{W}_{0}^{1}$ respectively, with a \emph{wrap-around} for the last vector.
+
+The second level scaling signals and wavelets are produced by following the following equations
+\begin{eqnarray}
+\mathbf{V}_{m}^{2} & = & \alpha_{0}\mathbf{V}_{2m}^{1}+\alpha_{1}\mathbf{V}_{2m+1}^{1}+\alpha_{2}\mathbf{V}_{2m+2}^{1}+\alpha_{3}\mathbf{V}_{2m+3}^{1} \\
+\mathbf{W}_{m}^{2} & = & \beta_{0}\mathbf{W}_{2m}^{1}+\beta_{1}\mathbf{W}_{2m+1}^{1}+\beta_{2}\mathbf{W}_{2m+2}^{1}+\beta_{3}\mathbf{W}_{2m+3}^{1} 
+\end{eqnarray}
+
+The idea of MRA is also equally applicable with the db2 wavelets. \cite{walker}
+
+\subsection{Computer Program Development, Application and Analysis}
+The program for computing the DWT of any discrete data has been developed in C programming language applying the theory discussed above. The program, has been designed to determine the trend and fluctuation subsignals from a given discrete signal and also to find the averaged and detail signals from them. In its present state the program is able to perform multi resolution analysis up to the second level and can use both Haar and db2 wavelet transforms. Since the program is aimed to accommodate the dbn family of wavelets in future, a generalised approach has been adopted to select the required Daubechies wavelet. The Haar transform, therefore, can be performed by selecting db1.
+
+There are two major parts of the program consisting of two functions for computing the subsignals and the averaged and detail signals, respectively. The first part essentially implements the computations described in (\ref{dm2}) and (\ref{am2}) to find the fluctuation and trend subsignals, respectively using appropriate scaling signals and wavelets depending upon the desired level of transform. After the execution of the first part the second part is used to obtain the averaged and detail signals applying the principle of (\ref{A1}) and (\ref{D1}) respectively taking care of the desired level too. The source codes are presented in \ref{pscdwt}.
+
+The programs have been tested by executing on various data with different attributes mainly to examine the effectiveness of the DWT algorithm implemented in the programs in correctly decomposing a discrete signal into its trend and fluctuation subsignals as well as in reconstructing the averaged and detail signals from those subsignals. The results has been cross-checked with those obtained from the ``Wavelet Toolbox'' available in \textsc{Matlab} and they are satisfactorily in accord with each other except the case of db2 wavelet transform of level 2, where reconstructions do not exactly match. This may be due to the large floating point multiplication required to generate the wavelet and scaling numbers. The following examples are meant for illustration purpose and show the results of DWT analysis on different signals for the first level only. Higher levels are required to garner more intricate details.
+
+\paragraph{Example 1:} A signal from 1024 sample values of the function described in \cite{walker} as below
+\begin{displaymath}
+g(t)=20t^{2}(1-t)^{4}\cos(12\pi t)
+\end{displaymath}
+over the interval $[0,1)$ has been taken to illustrate the 1-level Haar and Daubechies transforms. The trend and fluctuation subsignals has been concatenated to agree with (\ref{map}). The transforms are shown in Fig.~\ref{figexample} and Fig.~\ref{figexampledb} respectively. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=110mm]{example}
+\caption{A signal and its 1-level Haar transform} \label{figexample}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=110mm]{exampledb}
+\caption{A signal and its 1-level Daubechies (db2) transform} \label{figexampledb}
+\end{figure}
+
+Here it should be noted that the trend subsignal looks like the original signal, although shrunk by half its length and expanded by a factor of $\sqrt{2}$ vertically as expected from theory. A large percentage of the fluctuation's values are close to $0$ in magnitude. \cite{walker}
+
+\paragraph{Example 2:} Now a simple step signal is considered. After computing its first level averaged and detail signals it is found that Haar transform is not able to detect any change in the signal at the first level whereas db2 is effectively indicating a change at the position of transition. \cite{waveletug}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=155mm,height=180mm]{step}
+\caption{A step signal analysed with Haar (db1) and Daubechies (db2) wavelets for the first level} \label{figstep}
+\end{figure}
+
+\clearpage
+\paragraph{Example 3:} To verify the reconstruction operation of the DWT program
+an example of ``frequency breakdown'' \cite{waveletug}\footnote{The sample signal is available in the wavelet toolbox of MATLAB} is considered and its first averaged and detail signals are computed and depicted in Fig.~\ref{figfrbd}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=155mm,height=180mm]{frbd}
+\caption{A signal showing frequency breakdown and its first level wavelet analysis} \label{figfrbd}
+\end{figure}
+
+\clearpage
+\paragraph{Example 4:} A signal $x(n)$ is formed with $N=1024$ samples where $x(n)=\sin(2\pi\frac{5n}{N})$ from the beginning of sampling up to $n=307$, from $n=308$ up to $n=715$ the frequency is trebled and the amplitude is 125\% of the previous value, i.e. $x(n)=1.25\sin(2\pi\frac{15n}{N})$. From the next sample up to the end of sampling both previous frequency and amplitude are restored. This signal is used for the test of both the FFT and DWT programs. The resulting data of the FFT clearly shows the presence of the two frequencies, viz. 5 Hz and 15 Hz. The result of the wavelet transform shows the signal changes at the positions of their occurrence and the result obtained from db2 is far more appreciable than that from db1 as expected.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=155mm,height=180mm]{mysignal}
+\caption{A signal and its first level wavelet analysis} \label{figmsdwt}
+\end{figure}
+
+\section{Conclusion}
+Condition monitoring has become a very important technology in the field of electrical equipment maintenance, and has attracted more and more attention worldwide. The potential functions of failure prediction, defection identification, and life estimation bring a series of advantage for utility companies: reducing maintenance cost, lengthening equipment's life, enhancing safety of operators, minimising accident and the severity of destruction, as well as improving power quality. Due to these benefits condition monitoring is now a topic of immense interest to power system engineers as well as researchers.
+
+Research in recent years show that advanced signal processing techniques are of huge prospect in developing novel condition monitoring systems. Keeping this in mind computer programs for signal processing using FFT and DWT algorithm has been developed in this semester. The programs, however, need further development in order to enhance reliability and compatibility. Especially the programs for DWT are aimed to facilitate higher levels of transform with desired level of accuracy. So, the programs are almost ready to be used as tools for analysing signals obtained from healthy as well as faulty motors. Different motor faults are, therefore, needed to be simulated in order that it is possible to extract the features associated with each type of fault explicitly.
+
+To simulate the various motor faults mentioned in section \ref{obj} \emph{Machinery Fault Simulator (MFS)} by SpectraQuest, Inc., Richmond, Virginia, USA will be used. It will provide basic set-up for performing rotor dynamics experiments and bearing faults. The signals collected from this MFS will be analysed with the help of fast Fourier transform and discrete wavelet transform for feature extraction. Finally diagnostic algorithm will be derived from them.
+	 
+\clearpage
+
+\appendix
+\section{Program Source Code for FFT} \label{pscfft}
+\paragraph{Header File:} \textit{fft/fft.h}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{ffth}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/main.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{fftmain}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/fft.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{fftc}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{fft/bitrev.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{bitrev}
+\end{lgrind}
+}
+\clearpage
+
+\section{Program Source Code for DWT} \label{pscdwt}
+\paragraph{Header File:} \textit{dwt/dwt.h}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwth}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/main.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwtmain}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/dwt.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{dwtc}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/recon.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{recon}
+\end{lgrind}
+}
+
+\paragraph{Program File:} \textit{dwt/select.c}
+\vspace{5pt}
+{\scriptsize
+\begin{lgrind}
+\input{select}
+\end{lgrind}
+}
+
+\clearpage
+
+%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%
+\addcontentsline{toc}{section}{References}
+\bibliography{IEEEabrv,newbib}
+\bibliographystyle{IEEEtran}
+ % TEST 
+%%%%%%%%%%%%%% END %%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,452 @@
+%%%%%%%%%%%%%%%% PREAMBLE %%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\title{\underline{\large{POWER SYSTEM SECURITY ANALYSIS}}}
+\date{}
+\author{}
+
+%%%%%%%%%%%% Page Formatting %%%%%%%%%%%%
+\setlength{\parindent}{0pt}
+\setlength{\footskip}{0.45in}
+\setlength{\textheight}{10in}
+\setlength{\hoffset}{-0.9in}
+%\setlength{\voffset}{-1.1in}
+\setlength{\voffset}{-1in}
+\setlength{\topmargin}{0.35in}
+\setlength{\headheight}{0in}
+\setlength{\textwidth}{6.2in}
+\setlength{\marginparsep}{1in}
+\setlength{\marginparwidth}{1in}
+\setlength{\oddsidemargin}{1.1in}
+%\setlength{\evensidemargin}{1in}
+
+\flushbottom
+\frenchspacing
+%%%%%%%%%%% Picture files %%%%%%%%%%%%%%%
+%\includeonly{fig1,fig4,fig6,fig12,fig13,fig14,fig16,fig17,fig17a,fig18}
+
+%%%%%%%%%%%% Packages Used %%%%%%%%%%%%%%
+%\usepackage{units}
+\usepackage[pdftex]{graphicx}
+%\usepackage{url}
+\usepackage{enumerate}
+%\usepackage{eepic}
+%\usepackage{times}
+
+%%%%%%%%%% BEGINNING %%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%% This creates the cover page %%%%%%%%%%%%
+\begin{titlepage}
+\begin{center}
+{\LARGE \textbf{POWER SYSTEM SECURITY ANALYSIS}}\\
+\vspace{0.5in}
+{\large By}\\
+\vspace{10pt}
+{\Large \textsc{Manoj Kanti Biswas}}\\
+\vspace{3.5pt}
+{\large \textsc{Roll No.} \texttt{160406001}}\\
+\vspace{3pt}
+{\large \textsc{Registration No.} \texttt{160406001} \textsc{of} \texttt{2004-2005}}\\
+\vspace{0.5in}
+{\large \textit{Under the Guidance of}}\\
+\vspace{5pt}
+{\Large \textbf{Dr.~J.~Pal}}\\
+\vspace{1in}
+{\Large A Term Paper}\\
+\vspace{3pt}
+\Large{submitted in partial fulfilment of}\\
+\vspace{3pt}
+\Large{the requirements for the degree of}\\
+\vspace{4.5pt}
+{\Large \textbf{Master of Engineering (Electrical Engineering)}}\\
+\vspace{3.5pt}
+{\Large Specialization:~\textit{Power Systems}}\\
+\vspace{0.5in}
+%\includegraphics[scale=0.8]{besulogo}\\
+\vspace{0.5in}
+{\Large \textsf{Department of Electrical Engineering}}\\
+\vspace{3.5pt}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\Large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\Large West Bengal, India}\\
+\vfill
+{\Large \textbf{2005}} 
+\end{center}
+\end{titlepage}
+
+%%%%%%%%% This makes the next page only with the line in \title{} %%%%%%%%%
+%\maketitle
+
+\thispagestyle{empty}
+\vspace*{0.25in}
+\begin{center}
+{\Large \textbf{Bengal Engineering and Science University, Shibpur}}\\
+\vspace{3.5pt}
+{\large Howrah -- 711 103}\\
+\vspace{3.5pt}
+{\large West Bengal, India}
+\end{center}
+\hrule
+
+\vspace{0.75in}
+\begin{center}
+{\Large \textbf{Forward}}
+\end{center}
+
+\noindent I hereby forward the term paper entitled ``Power System Security Analysis'' submitted by Manoj Kanti Biswas (Registration No. 160406001 of 2004-2005) under my guidance and supervision in partial fulfilment of the requirements for the degree of Master of Engineering in Electrical Engineering (Specialization: \emph{Power Systems}) from this university.
+
+\vspace{0.85in}
+\begin{flushleft}
+(Dr.~J.~Pal) \\ 
+{\footnotesize Department of Electrical Engineering,}\\ 
+{\footnotesize Bengal Engineering and Science University, Shibpur} \\ 
+{\footnotesize Howrah -- 711 103} 
+
+\vspace{1.0in}
+\noindent \textbf{Countersigned by}
+
+\vspace{0.8in}
+\begin{tabular}{@{} lcl @{}}
+(Dr.~G.~Bandyopadhyay)& & (Dr.~D.~Ghosh)\\
+{\footnotesize Professor and Head,}& & {\footnotesize Dean,}\\
+{\footnotesize Department of Electrical Engineering,}& &{\footnotesize Faculty of Engineering, Architecture \& TRP,}\\
+{\footnotesize Bengal Engineering and Science University, Shibpur}& &{\footnotesize Bengal Engineering and Science University, Shibpur}\\
+{\footnotesize Howrah -- 711 103}& &{\footnotesize Howrah -- 711 103}
+\end{tabular}
+\end{flushleft}
+\clearpage
+
+\thispagestyle{empty}
+\vspace*{2.5in}
+\begin{center}
+{\Large \textbf{Acknowledgement}}
+\end{center}
+
+
+\vspace{1in}
+\textbf{Place:} Howrah \hfill Manoj Kanti Biswas\\
+\textbf{Date:} \\
+\clearpage
+
+%%%%%%%%% This creates the Table of Contents %%%%%%%%%%%
+\tableofcontents
+\clearpage
+\section{Introduction} 
+Energy provides the power to progress. The natural resources of a country may be large but they can only be turned into wealth if they are developed, used and exchanged for other goods. This cannot be achieved without energy. Availability of sufficient energy and its proper use in any country can result in its people rising from subsistence level to highest standard of living. Reliable operation of the power grid is crucially important. The demand of electrical energy in developing country is increases exponentially every year. Therefore the exiting components of power system are to operate within their design limits. Such operation entails best utilization of installed capacities and the system has to operate with smaller safety margin and greater exposure to uncertainties following any disturbance. Therefore the Power System Security aspect must be investigated with intimate attention to the problem so that a reliable operation of energy supply system can be ensured to the consumers. 
+
+\section{Power System Security}
+The Security is the ability of a system to withstand disturbances (``Contingencies''). So Power System can never be secure in absolute sense. The objective of power system operation is to keep the electrical power flows and bus voltage magnitude and angles within the acceptable limits despite changes in the load or available resources.
+
+\subsection{Power System Operating States}
+The power system is divided into 5 states. Those are Normal state, Emergency state, and Restorative state, Alert state and Extreme Emergency state. The normal state must be characterized by a certain level of security which requires a certain margin of generation in the form of spinning reserve. Should a generation margin fall below some threshold or should a disturbance be deemed imminent then the security level is reduced and the system enters the alert state. However, all equalities (E) and inequalities (I) are still observed and the system still operates fully synchronized and-with-luck could continued to do so far any length of time. However one would now initiate preventive control to restore proper generation margin and or eliminate disturbances so as to return the system to its normal state.
+
+If preventive control fails or if a sufficiently severe disturbance occurs, the system on occasion will enter the emergency state. One or several components are now overloaded and these components eventually fail, the system will start disintegrate. It is more urgent that the system be returned to the normal state by means of emergency control actions i.e., disconnection of faulted section or, if everything else fails, load shedding. Fig \ref{1.1} shows the states of power system.
+
+\begin{figure}[h]
+%\centering
+\begin{picture}(360,110)(-40,0)
+\put(50,0){\framebox(120,20){Extreme Emergency}}
+\put(200,0){\framebox(80,20){Emergency}}
+\put(70,40){\framebox(100,20){Restorative}}
+\put(200,40){\framebox(60,20){Alert}}
+\put(130,80){\framebox(100,20){Normal}}
+\put(130,90){\line(-1,0){120}}
+\put(10,90){\line(0,-1){80}}
+\put(10,10){\vector(1,0){40}}
+\put(230,90){\line(1,0){120}}
+\put(350,90){\line(0,-1){80}}
+\put(350,10){\vector(-1,0){70}}
+\put(200,10){\vector(-1,0){30}}
+\put(100,20){\vector(0,1){20}}
+\put(140,60){\vector(0,1){20}}
+\put(170,50){\vector(1,0){30}}
+\put(210,80){\vector(0,-1){20}}
+\put(220,60){\vector(0,1){20}}
+\put(220,40){\vector(0,-1){20}}
+\put(240,20){\vector(0,1){20}}
+\put(210,40){\line(0,-1){10}}
+\put(210,30){\line(-1,0){50}}
+\put(160,30){\vector(0,-1){10}}
+\end{picture}
+\caption{Power System Operating States} \label{1.1}
+\end{figure}
+
+\subsection{On-line Security Analysis}
+In an on-line environment security analysis differs from that at planning stage security analysis. The planning stage security analysis is carried out to test the ability of the system to withstand unexpected losses if certain system components. For this purpose a series of contingencies involving outages of transmission circuits or generating plants are considered. Given a base case load-flow data, the security analysis solves the load flow problem for each outage in turn to detect potential line overloads and /or unexpected voltage levels.
+
+For the time-varying real world operation, the system may experience several insecurity from the operator prospective, for example, a variety of elements undergo unscheduled shutdown, repair etc or bad weather condition which may be different from studies in planning stage. Therefore an operator has to be well versed equipped to cope up with any unplanned causalities to operating equipment in real-time operation of the system. In an on-line security analysis about 15 minutes time period is normally recommended for analysis and reporting.
+
+The basis procedure of on-line security analysis and control are Security Monitoring, Security Assessment, Security Enhancement, Emergency Control, Restorative Control and control in Extreme Emergency. Fig \ref{1.2} shows the main steps of on-line security analysis.
+
+\subsection{Different Modes of Power System Security}
+There are three different modes of power system security. These are Steady State Security, Transient Security and Dynamic Security.
+
+In real-time situation, tripping of a line may cause stability problem. The system may continue to operate in a new stable state after the disturbance is over. The `Static Security Assessment' basically needs steady state load flow analysis to be run on some fast computer utilizing some fast methods and the stability criterion is included in terms of the predefine limits on line flows and bus voltage magnitudes. It is assumed that after the occurrence of a disturbance the system will continue to operate in normal state, perhaps by the action of some controlling devices.
+
+On the other hand, if the disturbance is large the transient from stable to unknown (either stable or unstable) state is to be investigated under the computational methodologies of Dynamic Security Assessment. Steady state security is the ability of the power system to operate steady-state wise within the specified limit of safety and supply quality, following a contingency in the time period after fast-acting automatic control devices has restored the system load balance, but before slow-acting controls like transformer tapping and human decisions has responded.
+
+\begin{figure}[p]
+\centering
+\includegraphics[scale=0.8]{bigpic}
+\caption{Major Steps of On-line Security Analysis} \label{1.2}
+\end{figure}
+
+\subsection{Tools and Techniques for Security Analysis}
+The basic tool for Steady State Security Analysis is the Load flow. It is impractical to study all the possibility of circuit outages by full ac load flow technique due to time constrains in on-line environment. To assess steady state active power condition quickly, linearized or DC (P-$\theta$) load flow (DCLF) model is used successfully for many systems. For MW and Voltage security analysis the First Decoupled Load Flow (FDLF) technique is used. FDLF meets two basic requirement i.e. speed and accuracy in the on-line security analysis.
+
+Steady State Security Analysis deals with contingency analysis, ranking selection and evolution. These are described as follows.
+
+\subsubsection{Contingency Analysis:}
+Contingency analysis is the study of power system by which the impact (change in power flow in lines and bus voltage) on the system due to any unscheduled outage of a line component or generator or any disturbances (change in load demand environment effect, etc.) is assessed. It is the main security function.
+
+\subsubsection{Contingency Ranking:}
+Contingency ranking in descending order is obtained according to the value of a scalar index, normally called Performance Index-PI. The PI is a measurement of system-wide effect of a contingency event in the system.
+
+\subsubsection{Contingency Selection:}
+
+The contingencies are then chosen from either of the ranked lists starting from the top and going down the list or until predefined stopping criteria is reached. These are absolute fixed lists. The system depends on fixed list and variable list. The process of choosing a subset of containing severe contingency is called Contingency Selection.
+
+\subsubsection{Contingency Evaluation:}
+The contingency evaluation refers to the solution of full ac load flow (normally FDLF) model. After the selection of contingency for both MW and Voltage problem is over, the contingency evaluation is to be performed on each one of them.
+
+\section{Load Flow Analysis}
+The electrical power system consists of three main sub-systems. These are generating system, transmission system and distribution system.
+
+Load flow analysis is the solution of a power system under steady state condition subjected to certain inequality constraints under which the system operates. These constraints are in the form of bus voltages, reactive power generation of the generators, the tap setting of transformers etc. The load flow solution gives the bus voltages and phase angles and hence the power injection at all the buses and power flows through the transmission lines.
+
+The load flow is essential for the designing a new power network and for planning extension of the existing one for the increased load demand. These analyses require the calculations of numerous load flows under both normal and abnormal operating conditions. Load flow solution also gives the initial conditions of the system when the transient behavior of the system is to be studied.
+
+The load flow solution is desirable to maintain the system security since any fluctuation in the specified MW and Voltage limits of any system component may lead to outage of other components. To avoid such undesirable events the power system security analysis is required.
+
+Now a day, the computers and modern methods of network solution is used to analyze the complex interconnected system with greater accuracy. The control center computers are equipped with contingency analysis programs that model possible system troubles before they arise.
+
+\subsection{Signs and Conventions Used}
+\begin{eqnarray*}
+z & = &  r + jx \\
+y & = & g - jb \\
+S & = & VI^{\ast} = P + jQ 
+\end{eqnarray*}
+where 
+\begin{eqnarray*}
+Q & = & \textrm{`+ve' for inductive var} \\
+ & = & \textrm{`-ve' for capacitive var}
+\end{eqnarray*}
+
+\subsection{Transmission Line}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.9]{tl}
+\caption{Normal $\pi$ Representation of Transmission Line} \label{2.1}
+\end{figure}
+
+\begin{eqnarray*}
+Z_{km} & = & r_{km} + jx_{km} \\
+Y_{km} & = & \frac{1}{Z_{km}} \\
+	& = & \frac{1}{(r_{km} + jx_{km})} \\
+	& = & \frac{(r_{km} - jx_{km})}{(r_{km}^2 + x_{km}^2)}\\
+	& = & \frac{r_{km}}{(r_{km}^2+ x_{km}^2)} - j\frac{x_{km}}{(r_{km}^2 + x_{km}^2)}\\
+	& = & g_{km}- jb_{km} \\
+Z_{kom} & = & \frac{r_{kom}(-jx_{kom})}{r_{kom} + (-jx_{kom})} \\
+Y_{kom} & = & \frac{1}{Z_{kom}}\\
+	& = & \frac{1}{r_{kom}} + j\frac{1}{x_{kom}}\\
+	& = & g_{kom} + jb_{kom}
+\end{eqnarray*}
+
+\subsection{Classification of Buses for Load Flow Analysis}
+
+\subsubsection{Slack Bus:}
+
+A slack bus is the generator bus where the magnitude and phase angle of bus voltage is specified. Active and reactive powers are to be calculated. A slack bus is also known as swing bus. Since we take the voltage of this bus as a reference, it is also called reference bus. 
+
+\subsubsection{Load Bus:}
+
+A load bus is a bus where active power and reactive powers are specified. The magnitude and phase angle of bus voltages are to be calculated. It is also known as PQ bus.
+
+\subsubsection{Generator Bus:}
+
+The magnitude of bus voltage and real power are specified for generator bus. The reactive power and phase angle of the bus voltage are to be calculated. It is also known as PV bus.
+
+\subsubsection{Voltage Controlled Bus:}
+
+In some cases, the voltage controlled bus and PV bus are grouped together. But they are different physically and in some calculation strategies. Actually a voltage controlled bus has voltage control capabilities and uses a tap-adjustable transformer and/or a static var compensator instead of a generator.
+
+\subsection{Methods used for Load Flow Analysis}
+
+The power system is represented by the non-linear equations. The solutions of these equations are based on the iterative techniques because of their non-linearity. The methods used in load flow analysis are:
+
+\begin{enumerate}[a.]
+\item Gauss-Seidal Method
+\item Newton-Raphson Method
+\item Fast Decoupled Load-Flow Method
+\end{enumerate}
+
+The Linearized load flow, known as dc load flow, is also available for on-line
+application in the area of security analysis.
+
+\subsubsection{Advantages of Newton Raphson Method:}
+
+\begin{enumerate}[a.]
+\item More accuracy and surety of convergence compare to Gauss-Seidal Method.
+\item Less number of iteration is required.
+\item The number of iterations required by Newton-Raphson method using bus admittance matrix, is practically independent of the number of buses. The times for Gauss-Seidal method, increases almost directly with the number of buses. Though the time required for computation of the elements of the Jacobian is large, the total time required for the complete load flow analysis is less.
+\item The number of iterations is also insensitive to factors like slack bus selection, regulating transformers etc.
+\end{enumerate}
+
+\subsubsection{Nodal Analysis}
+
+Considering a large bus system, which have `m' number of bus.
+
+By applying KCL to $k^{th}$ bus, in general we get,
+
+\begin{equation}
+I_{k} = \sum_{m=1}^{n} Y_{km}V_{km} 
+\end{equation}
+
+For all `n' bus, we can write its matrix form as,
+
+\begin{equation}
+\bar{I}_{BUS} = Y_{BUS}\bar{V}_{BUS} 
+\end{equation}
+
+Where,
+\begin{eqnarray*}
+\bar{I}_{BUS} & = & (n \times 1) \textrm{column vector of bus currents}\\
+\bar{V}_{BUS} & = & (n \times 1) \textrm{column vector of bus voltages}\\
+Y_{BUS} & = & (n \times n) \textrm{matrix of admittances}
+\end{eqnarray*}
+
+\subsubsection{$Y_{BUS}$}
+
+\begin{displaymath}
+Y_{BUS} = \left[ \begin{array}{ccccccc}
+Y_{11} & Y_{12} & Y_{13} & Y_{14 } & \cdots & \cdots Y_{1n} \\	
+Y_{21} & Y_{22} & Y_{23} & Y_{24 } & \cdots & \cdots Y_{2n} \\
+Y_{31} & Y_{32} & Y_{33} & Y_{34 } & \cdots & \cdots Y_{3n} \\
+\cdots & \cdots & \cdots & \cdots & \cdots & \cdots \cdots \\
+\cdots & \cdots & \cdots & \cdots & \cdots & \cdots \cdots \\
+Y_{n1} & Y_{n2} & Y_{n3} & Y_{n4 } & \cdots & \cdots Y_{nn} 
+\end{array}
+\right]
+\end{displaymath}
+It follows that,
+\begin{enumerate}[a.]
+\item The diagonal elements of $Y_{BUS}$ are the self-admittance of the respective buses. The off diagonal elements of $Y_{BUS}$ are the transfer admittance of the respective buses.
+\item $Y_{BUS}$ is $(n\times n)$ matrix where $n$ is the number of buses.
+\item $Y_{BUS}$ is a symmetric matrix $(Y_{km} = Y_{mk})$, if the regulating transformer are not involved.
+\item $Y_{km} = 0$, if $k^{th}$ bus and $m^{th}$ bus are not connected.
+\end{enumerate}
+
+\begin{equation}
+Y_{BUS} = A^{t}[y]A
+\end{equation}
+
+$A$ is the bus incidence matrix. It is singular matrix.
+
+If there is no mutual coupling between the buses, then,
+
+\begin{equation}
+\begin{array}{ccc}
+Y_{kmm} & = & \sum_{k}^{} y_{km} \\
+Y_{mk} & = & -y_{km}
+\end{array}
+\end{equation}
+
+\section{Newton Raphson Method}
+
+The Taylor's Series expansion for a function of two variables is the basis of the Newton Raphson Method for solving the load flow problem.
+
+\subsection{Basic Algorithm}
+
+The Newton-Raphson Method is the formal application of a general algorithm for solving non-linear equations and constitutes successive solutions of the real Jacobian matrix equation.
+
+\begin{equation} \label{eq:nr}
+\left[ \begin{array}{c} 
+\Delta P \\
+\Delta Q \end{array} \right]
+=
+\left[ \begin{array}{cc} 
+H & N \\
+M & L \end{array} \right]
+\left[ \begin{array}{c} 
+\Delta \theta \\
+\nicefrac{\displaystyle{\Delta V_{m}}}{\displaystyle{V_{m}}} \end{array} \right]
+\end{equation}
+
+To apply the Newton Raphson Method to the solution of load flow solutions we may choose to express bus voltages and line admittances in polar form or rectangular form.
+
+If we choose polar form of voltage and rectangular form of admittance,
+\begin{eqnarray}
+E_{k} & = & V_{k}e^{j\theta_{k}} \nonumber \\
+E_{m} & = & V_{m}e^{j\theta_{m}} \nonumber \\ 
+Y_{km} & = & G_{km} - jB_{km} \nonumber \\
+Y_{km} & = & -y_{km} \\
+Y_{km} & = & \sum_{m\,\epsilon\,k \atop m \neq k} y_{km} + \sum_{m\, \epsilon\, k \atop m \neq k} y_{kom} \nonumber \\
+\theta_{km} & = & \theta_{k} - \theta_{m} \nonumber \\
+I_{k} & = & \sum_{m\, \epsilon\, k} Y_{km}E_{m} \nonumber
+\end{eqnarray}
+
+$M$ \& $k$, signifies that bus `m' is connected to bus `k', including the case $m=k$.
+
+\begin{eqnarray}
+S_{k} & = & P_{k} + jQ_{k} \nonumber \\
+	& = & E_{k}I_{k}^{\ast} \\
+	& = & E_{k} \sum_{m\, \epsilon\, k} Y_{km}^{\ast}E_{m}^{\ast} \nonumber
+\end{eqnarray}
+
+For equation \ref{eq:nr}, we have,
+\begin{eqnarray*}
+H_{km} &=& \frac{\partial P_{k}}{\partial \theta_{m}} \\
+	&=& V_{k}V_{m}(G_{km}\sin \theta_{km} + B_{km}\cos \theta_{km}) \\
+H_{kk} &=& \frac{\partial P_{k}}{\partial \theta_{k}} \\
+	&=& B_{kk}V_{k}^{2} - Q_{k} 
+\end{eqnarray*}
+\begin{eqnarray*}
+M_{km} &=& \frac{\partial Q_{k}}{\partial \theta_{m}} \\
+	&=& -V_{k}V_{m}(G_{km}\cos \theta_{km} + B_{km}\sin \theta_{km}) \\
+M_{kk} &=& \frac{\partial Q_{k}}{\partial \theta_{k}} \\
+	&=& -G_{kk}V_{k}^{2} + P_{k} 
+\end{eqnarray*}
+\begin{eqnarray}
+N_{km} &=& \frac{\partial P_{k}}{\nicefrac{\displaystyle{\partial V_{m}}}{\displaystyle{V_{m}}}} \nonumber \\
+	&=& V_{k}V_{m}(G_{km}\cos \theta_{km} - B_{km}\sin \theta_{km}) \nonumber \\
+	&=& -M_{km} \\
+N_{kk} &=& \frac{\partial Q_{k}}{\nicefrac{\displaystyle{\partial V_{k}}}{\displaystyle{V_{k}}}} \nonumber \\
+	&=& G_{kk}V_{k}^{2} + P_{k} \nonumber
+\end{eqnarray}
+\begin{eqnarray*}
+L_{km} &=& \frac{\partial Q_{k}}{\nicefrac{\displaystyle{\partial V_{m}}}{\displaystyle{V_{m}}}} \\
+	&=& V_{k}V_{m}(G_{km}\sin \theta_{km} + B_{km}\cos \theta_{km}) \\
+	&=& H_{km} \\ 
+L_{kk} &=& \frac{\partial P_{k}}{\nicefrac{\displaystyle{\partial V_{k}}}{\displaystyle{V_{k}}}} \\
+	&=& B_{kk}V_{k}^{2} + Q_{k} 
+\end{eqnarray*}
+
+\subsection{Line Flow}
+
+Line flow is the complex power flows from one bus to another bus through a particular line. The line flow from $k^th$ bus to $m^th$ bus by a particular line is expressed as,
+
+\begin{eqnarray}
+S_{km} &=& E_{k}I_{km}^{\ast} \nonumber \\
+	&=& E_{k}[(E_{k} - E_{m})y_{km} + E_{k}y_{kom}]^{\ast} \\
+S_{mk} &=& E_{m}I_{mk}^{\ast} \nonumber 
+\end{eqnarray}
+
+\section{Aim of the Project}
+
+It is highly desirable to operate the power system in normal state. The security analysis is done for the system when it is operating in normal state. The power system security analysis includes both the MW-security analysis and the Voltage security analysis.
+
+The aim of the project is to estimate the MW-security and Voltage-security of a power system and developing methods useful for trouble free operation in an on-line environment.
+
+\clearpage
+
+\begin{thebibliography}{99}
+\bibitem{stagg} G.W. Stagg and A.H.El-Abiad, ``Computer Methods in Power System Analysis'', McGraw-Hill Kogakusha, Ltd., New Delhi, 1968.
+\bibitem{dhar} R.N. Dhar, ``Computer Aided Power System Operation and Analysis'', Tata McGraw-Hill, New Delhi, 1982.
+\bibitem{steve} William D. Stevenson, Jr., ``Elements of Power System Analysis'', McGraw-Hill Book Co., 1968, 4th Edition 3rd Printing 1986.
+\bibitem{ww} A.J. Wood and B.F. Wollenberg, ``Power Generation, Operation and Control'', John Wiley and Sons, 1996.
+\bibitem{el} Olle I. Elgerd, ``Electric Energy Systems Theory'', Tata McGraw-Hill Co. Ltd, New Delhi, 2nd Edition 14th Reprint 2000.
+\end{thebibliography}
+
+\end{document}
